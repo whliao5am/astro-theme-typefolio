@@ -87,6 +87,9 @@ export default defineConfig({
 		},
 	},
 	vite: {
+		server: {
+			open: false,
+		},
 		optimizeDeps: {
 			exclude: ["@resvg/resvg-js"],
 		},
