@@ -18,5 +18,12 @@
 	"files.associations": {
 		"*.css": "tailwindcss"
 	},
-	"tailwindCSS.experimental.configFile": "./src/styles/global.css"
+	"tailwindCSS.experimental.configFile": "./src/styles/global.css",
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/build": true,
+    "**/pnpm-lock.yaml": true,
+    "**/.astro": true,
+  }
 }
