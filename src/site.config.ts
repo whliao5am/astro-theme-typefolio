@@ -19,8 +19,8 @@ export const siteConfig: SiteConfig = {
 	lang: "en-GB",
 	// Meta property, found in src/components/BaseHead.astro L:42
 	ogLocale: "en_GB",
-	/* 
-		- Used to construct the meta title property found in src/components/BaseHead.astro L:11 
+	/*
+		- Used to construct the meta title property found in src/components/BaseHead.astro L:11
 		- The webmanifest name found in astro.config.ts L:42
 		- The link value found in src/components/layout/Header.astro L:35
 		- In the footer found in src/components/layout/Footer.astro L:12
@@ -79,3 +79,11 @@ export const expressiveCodeOptions: AstroExpressiveCodeOptions = {
 	themes: ["dracula", "github-light"],
 	useThemedScrollbars: false,
 };
+
+export const breakpointsPx = {
+	sm: "640px",
+	md: "768px",
+	lg: "1024px",
+	xl: "1280px",
+	"2xl": "1536px",
+} as const;

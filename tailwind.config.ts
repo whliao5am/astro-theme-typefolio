@@ -1,8 +1,12 @@
 import type { Config } from "tailwindcss";
+import { breakpointsPx } from "./src/site.config";
 
 export default {
 	plugins: [require("@tailwindcss/typography")],
 	theme: {
+		screens: {
+			...breakpointsPx,
+		},
 		extend: {
 			typography: () => ({
 				DEFAULT: {
