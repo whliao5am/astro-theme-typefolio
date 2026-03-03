@@ -1,6 +1,5 @@
 /* would like to ignore ./src/pages/og-image/[slug].png.ts */
 @import "tailwindcss";
-@import url("https://google-fonts.mirrors.sjtug.sjtu.edu.cn/css2?family=Open+Sans:wght@400;600;700&display=swap");
 /* config for tailwindcss-typography plugin */
 @config "../../tailwind.config.ts";
 
@@ -11,6 +10,11 @@
 @theme {
 	--font-sans:
 		"Open Sans",
+		"Noto Sans SC",
+		"PingFang SC",
+		"Microsoft YaHei",
+		"Hiragino Sans GB",
+		"Segoe UI",
 		ui-sans-serif,
 		system-ui,
 		sans-serif;
