@@ -43,6 +43,11 @@
 		}
 	}
 
+	body {
+		@apply leading-relaxed tracking-[0.02em];
+		word-spacing: 0.06em;
+	}
+
 	:target {
 		scroll-margin-block: 5ex;
 	}

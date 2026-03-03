@@ -23,6 +23,16 @@ export default {
 						blockquote: {
 							borderLeftWidth: "0",
 						},
+						p: {
+							lineHeight: "1.9",
+							letterSpacing: "0.02em",
+							wordSpacing: "0.06em",
+						},
+						li: {
+							lineHeight: "1.85",
+							letterSpacing: "0.02em",
+							wordSpacing: "0.06em",
+						},
 						code: {
 							border: "1px dotted #666",
 							borderRadius: "2px",
