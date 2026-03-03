@@ -50,5 +50,20 @@ const {
 				]
 			}
 		</script>
+		<script>
+			import { pangu } from "pangu/browser";
+
+			const applyPanguToMain = () => {
+				const mainEl = document.getElementById("main");
+				if (mainEl) pangu.spacingNode(mainEl);
+			};
+
+			document.addEventListener("DOMContentLoaded", () => {
+				pangu.autoSpacingPage();
+				applyPanguToMain();
+			});
+
+			document.addEventListener("astro:page-load", applyPanguToMain);
+		</script>
 	</body>
 </html>
