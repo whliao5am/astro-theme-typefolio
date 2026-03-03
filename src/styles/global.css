@@ -73,7 +73,15 @@
 	.site-title-highlight {
 		position: relative;
 		display: inline-block;
+		white-space: nowrap;
+		user-select: none;
+		-webkit-user-select: none;
 		z-index: 0;
+	}
+
+	.site-title-highlight::selection {
+		background: transparent;
+		color: inherit;
 	}
 
 	.site-title-highlight::after {
@@ -92,7 +100,7 @@
 
 	html[data-theme="dark"] .site-title-highlight::after {
 		background: color-mix(in oklch, var(--color-accent) 78%, black);
-    opacity: 0.72;
+		opacity: 0.72;
 	}
 }
 
