@@ -69,6 +69,39 @@
 	.title {
 		@apply text-accent-2 text-2xl font-semibold;
 	}
+
+	.site-title-highlight {
+		position: relative;
+		display: inline-block;
+		white-space: nowrap;
+		user-select: none;
+		-webkit-user-select: none;
+		z-index: 0;
+	}
+
+	.site-title-highlight::selection {
+		background: transparent;
+		color: inherit;
+	}
+
+	.site-title-highlight::after {
+		content: "";
+		position: absolute;
+		left: 50%;
+		top: 60%;
+		width: 90%;
+		height: 30%;
+		transform: translateX(-50%);
+		background: color-mix(in oklch, var(--color-accent) 60%, white);
+		opacity: 0.72;
+		z-index: -1;
+		pointer-events: none;
+	}
+
+	html[data-theme="dark"] .site-title-highlight::after {
+		background: color-mix(in oklch, var(--color-accent) 78%, black);
+		opacity: 0.72;
+	}
 }
 
 @utility prose {
