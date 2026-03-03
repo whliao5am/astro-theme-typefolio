@@ -35,7 +35,14 @@ There is no standalone unit-test suite in this repository. Treat these as requir
 
 ## Commit & Pull Request Guidelines
 Use `gitmoji + Conventional Commits` for all commit titles:
-- Format: `<emoji> <type>[optional scope]: <description>`
+- Format:
+```
+<emoji> <type>[optional scope]: <description>
+
+[optional body]
+
+[optional footer]
+```
 - Core types: `feat`, `fix`; also allowed: `docs`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `style`.
 - Breaking changes: use `!` after type/scope or add `BREAKING CHANGE:` in the footer.
 - Examples:
