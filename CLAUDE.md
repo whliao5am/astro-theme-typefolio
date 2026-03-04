@@ -61,7 +61,7 @@ Follow `.github/pull_request_template.md`:
 - Update `src/site.config.ts` and `astro.config.ts` together when changing site URL, metadata, or integration behavior.
 
 ## Collaboration Rules
-- For frontend implementation tasks (for example Astro, Tailwind, HTML, CSS, JavaScript, TypeScript, and related APIs), query Context7 MCP docs/examples first before coding; if insufficient, state that clearly and then use local repository context.
+- For frontend implementation tasks (for example Astro, Tailwind CSS v4, HTML, CSS, JavaScript, TypeScript, and related APIs), query Context7 MCP docs/examples first before coding; if insufficient, state that clearly and then use local repository context.
 - `README.md` is for public-facing project usage/showcase content only; do not add personal collaboration habits or agent workflow rules there (for example Collaboration Conventions).
 - When a change affects behavior, configuration, interfaces, usage, or comments, update related docs in the same PR.
 - At minimum, keep `AGENTS.md`, `CLAUDE.md`, and impacted inline comments/docstrings in sync; update `README.md` only when user-facing behavior/usage docs actually change.

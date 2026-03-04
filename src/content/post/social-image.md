@@ -4,6 +4,10 @@ publishDate: "27 January 2023"
 description: "An example post for Astro Cactus, detailing how to add a custom social image card in the frontmatter"
 tags: ["example", "blog", "image"]
 ogImage: "/social-card.png"
+tldr:
+  - "You can set `ogImage` in frontmatter to skip auto-generated social cards."
+  - "Point `ogImage` to any image path that your site can access."
+  - "This post demonstrates a minimal working example."
 ---
 
 ## Adding your own social image to a post
