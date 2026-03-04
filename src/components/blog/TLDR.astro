@@ -1,0 +1,15 @@
+---
+interface Props {
+	points: string[];
+}
+
+const { points } = Astro.props;
+---
+
+<div class="mb-4" role="note" aria-label="Article summary">
+	<h2 class="mt-0 before:!text-gray-600 hover:before:!text-gray-600">TL;DR</h2>
+	<ul>
+		{points.map((point) => <li>{point}</li>)}
+	</ul>
+	<hr class="mt-0" aria-hidden="true" />
+</div>
