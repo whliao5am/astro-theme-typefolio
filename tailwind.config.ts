@@ -24,17 +24,17 @@ export default {
 							borderLeftWidth: "0",
 						},
 						p: {
-							lineHeight: "1.9",
+							lineHeight: "1.5",
 							letterSpacing: "0.02em",
 							wordSpacing: "0.06em",
 						},
 						li: {
-							lineHeight: "1.85",
+							lineHeight: "1.5",
 							letterSpacing: "0.02em",
 							wordSpacing: "0.06em",
 						},
 						code: {
-							border: "1px dotted #666",
+							backgroundColor: "var(--color-inline-code-bg)",
 							borderRadius: "2px",
 						},
 						kbd: {
