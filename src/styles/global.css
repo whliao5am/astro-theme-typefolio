@@ -76,6 +76,10 @@
 		@apply hover:decoration-link underline underline-offset-2 hover:decoration-2;
 	}
 
+	.typefolio-link-lighter {
+		@apply underline decoration-[0.06em] underline-offset-[0.16em] decoration-current/35 transition-[text-decoration-color,text-decoration-thickness] duration-150 ease-in-out hover:decoration-link hover:decoration-[0.09em] focus-visible:decoration-link focus-visible:decoration-[0.09em];
+	}
+
 	.title {
 		@apply text-accent-2 text-2xl font-semibold;
 	}

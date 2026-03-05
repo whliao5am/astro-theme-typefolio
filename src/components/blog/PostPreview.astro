@@ -6,9 +6,10 @@ import FormattedDate from "@/components/FormattedDate.astro";
 type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }> & {
 	post: CollectionEntry<"post">;
 	withDesc?: boolean;
+	linkClass?: string;
 };
 
-const { as: Tag = "div", post, withDesc = false } = Astro.props;
+const { as: Tag = "div", post, withDesc = false, linkClass = "typefolio-link" } = Astro.props;
 ---
 
 <FormattedDate
@@ -17,7 +18,7 @@ const { as: Tag = "div", post, withDesc = false } = Astro.props;
 />
 <Tag>
 	{post.data.draft && <span class="text-red-500">(Draft) </span>}
-	<a class="typefolio-link" href={`/posts/${post.id}/`}>
+	<a class={linkClass} href={`/posts/${post.id}/`}>
 		{post.data.title}
 	</a>
 </Tag>

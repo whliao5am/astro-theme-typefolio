@@ -67,11 +67,19 @@ const descYearKeys = Object.keys(groupedByYear).sort((a, b) => +b - +a);
 			{
 				pinnedPosts.length > 0 && (
 					<section class="mb-16">
-						<h2 class="title mb-6 text-xl">Pinned Posts</h2>
-						<ul class="space-y-4" role="list">
+						<h2 class="title mb-6 flex items-center gap-2 text-xl">
+							Pinned Posts
+							<Icon
+								aria-hidden="true"
+								class="text-accent h-5 w-5 rotate-45"
+								focusable="false"
+								name="mdi:pin-outline"
+							/>
+						</h2>
+						<ul class="space-y-1" role="list">
 							{pinnedPosts.map((p) => (
-								<li class="grid gap-1 sm:grid-cols-[auto_1fr]">
-									<PostPreview post={p} />
+								<li class="grid sm:grid-cols-[auto_1fr]">
+									<PostPreview post={p} linkClass="typefolio-link-lighter" />
 								</li>
 							))}
 						</ul>
@@ -85,10 +93,10 @@ const descYearKeys = Object.keys(groupedByYear).sort((a, b) => +b - +a);
 							<span class="sr-only">Posts in</span>
 							{yearKey}
 						</h2>
-						<ul class="mt-5 space-y-4 text-start">
+						<ul class="mt-5 space-y-1 text-start">
 							{groupedByYear[yearKey]?.map((p) => (
-								<li class="grid gap-1 sm:grid-cols-[auto_1fr] sm:[&_q]:col-start-2">
-									<PostPreview post={p} />
+								<li class="grid sm:grid-cols-[auto_1fr] sm:[&_q]:col-start-2">
+									<PostPreview post={p} linkClass="typefolio-link-lighter" />
 								</li>
 							))}
 						</ul>
@@ -122,7 +130,7 @@ const descYearKeys = Object.keys(groupedByYear).sort((a, b) => +b - +a);
 					<ul class="flex flex-wrap gap-2">
 						{uniqueTags.map((tag) => (
 							<li>
-								<a class="typefolio-link flex items-center justify-center" href={`/tags/${tag}/`}>
+								<a class="typefolio-link-lighter flex items-center justify-center" href={`/tags/${tag}/`}>
 									<span aria-hidden="true">#</span>
 									<span class="sr-only">View all posts with the tag</span>
 									{tag}
