@@ -9,15 +9,19 @@ import PageLayout from "@/layouts/Base.astro";
 import { collectionDateSort } from "@/utils/date";
 
 export const getStaticPaths = (async ({ paginate }) => {
+	const ENABLE_POSTS_PAGINATION = false;
 	const MAX_POSTS_PER_PAGE = 10;
-	const MAX_TAGS = 7;
-	const MAX_PINNED_POSTS = 3;
+	const MAX_TAGS = 10;
+	const MAX_PINNED_POSTS = 5;
 	const allPosts = await getAllPosts();
 	const allPostsByDate = allPosts.sort(collectionDateSort);
 	const uniqueTags = getUniqueTags(allPosts).slice(0, MAX_TAGS);
 	const pinnedPosts = allPostsByDate.filter((p) => p.data.pinned).slice(0, MAX_PINNED_POSTS);
+	const pageSize = ENABLE_POSTS_PAGINATION
+		? MAX_POSTS_PER_PAGE
+		: Math.max(allPostsByDate.length, 1);
 	return paginate(allPostsByDate, {
-		pageSize: MAX_POSTS_PER_PAGE,
+		pageSize,
 		props: { uniqueTags, pinnedPosts },
 	});
 }) satisfies GetStaticPaths;
@@ -55,7 +59,7 @@ const descYearKeys = Object.keys(groupedByYear).sort((a, b) => +b - +a);
 ---
 
 <PageLayout meta={meta}>
-	<div class="mb-12 flex items-center gap-3">
+	<div class="mb-6 flex items-center gap-3">
 		<h1 class="title">Posts</h1>
 		<a class="text-accent" href="/rss.xml" target="_blank">
 			<span class="sr-only">RSS feed</span>
@@ -66,8 +70,8 @@ const descYearKeys = Object.keys(groupedByYear).sort((a, b) => +b - +a);
 		<div>
 			{
 				pinnedPosts.length > 0 && (
-					<section class="mb-16">
-						<h2 class="title mb-6 flex items-center gap-2 text-xl">
+					<section class="mb-4">
+						<h2 class="title mb-4 flex items-center gap-2 text-xl">
 							Pinned Posts
 							<Icon
 								aria-hidden="true"
@@ -88,12 +92,12 @@ const descYearKeys = Object.keys(groupedByYear).sort((a, b) => +b - +a);
 			}
 			{
 				descYearKeys.map((yearKey) => (
-					<section class="mb-16">
+					<section class="mb-4">
 						<h2 id={`year-${yearKey}`} class="title text-lg">
 							<span class="sr-only">Posts in</span>
 							{yearKey}
 						</h2>
-						<ul class="mt-5 space-y-1 text-start">
+						<ul class="mt-2 space-y-1 text-start">
 							{groupedByYear[yearKey]?.map((p) => (
 								<li class="grid sm:grid-cols-[auto_1fr] sm:[&_q]:col-start-2">
 									<PostPreview post={p} />
@@ -103,7 +107,7 @@ const descYearKeys = Object.keys(groupedByYear).sort((a, b) => +b - +a);
 					</section>
 				))
 			}
-			<Pagination {...paginationProps} />
+			{<Pagination {...paginationProps} />}
 		</div>
 		{
 			!!uniqueTags.length && (
@@ -127,7 +131,7 @@ const descYearKeys = Object.keys(groupedByYear).sort((a, b) => +b - +a);
 							<path d="M6 9h-.01" />
 						</svg>
 					</h2>
-					<ul class="flex flex-wrap gap-2">
+						<ul class="flex flex-wrap gap-x-2 gap-y-1">
 						{uniqueTags.map((tag) => (
 							<li>
 								<a class="typefolio-link flex items-center justify-center" href={`/tags/${tag}/`}>
