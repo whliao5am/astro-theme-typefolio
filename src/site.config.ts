@@ -30,6 +30,13 @@ export const siteConfig: SiteConfig = {
 	url: "https://astro-typefolio.whliao.me/",
 };
 
+export const giscusConfig = {
+	category: "Announcements",
+	categoryId: "DIC_kwDORe2yqc4C3uHi",
+	repo: "whliao5am/astro-theme-typefolio-giscus",
+	repoId: "R_kgDORe2yqQ",
+} as const;
+
 // Used to generate links in both the Header & Footer.
 export const menuLinks: { path: string; title: string }[] = [
 	{
