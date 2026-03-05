@@ -5,6 +5,7 @@ import Masthead from "@/components/blog/Masthead.astro";
 import TLDR from "@/components/blog/TLDR.astro";
 import TOC from "@/components/blog/TOC.astro";
 import WebMentions from "@/components/blog/webmentions/index.astro";
+import { commentDisplayConfig } from "@/site.config";
 
 import BaseLayout from "./Base.astro";
 
@@ -37,8 +38,8 @@ const readingTime: string = remarkPluginFrontmatter.readingTime;
 			>
 				{tldr.length > 0 && <TLDR points={tldr} />}
 				<slot />
-				<Giscus />
-				<WebMentions />
+				{commentDisplayConfig.giscus && <Giscus />}
+				{commentDisplayConfig.webmentions && <WebMentions />}
 			</div>
 		</div>
 	</article>

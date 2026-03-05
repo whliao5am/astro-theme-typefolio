@@ -11,6 +11,7 @@ This template supports [Giscus](https://giscus.app/) comments on post pages.
 1. Ensure your comment repository is public, Discussions are enabled, and the giscus GitHub App is installed.
 2. Configure `giscusConfig` in `src/site.config.ts` (`repo`, `repoId`, `category`, `categoryId`).
 3. Theme sync is automatic: site `data-theme="light|dark"` maps to giscus `light|dark`.
+4. Control comment blocks display in `src/site.config.ts` via `commentDisplayConfig` (`giscus`, `webmentions`).
 
 ## Acknowledgment
 Thanks to the original author for their open-source work.
