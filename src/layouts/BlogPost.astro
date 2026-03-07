@@ -14,7 +14,7 @@ interface Props {
 }
 
 const { post } = Astro.props;
-const { ogImage, title, description, updatedDate, publishDate, tldr } = post.data;
+const { ogImage, title, description, updatedDate, publishDate, tldr, giscus } = post.data;
 const socialImage = ogImage ?? `/og-image/${post.id}.png`;
 const articleDate = updatedDate?.toISOString() ?? publishDate.toISOString();
 const { headings, remarkPluginFrontmatter } = await render(post);
@@ -38,7 +38,7 @@ const readingTime: string = remarkPluginFrontmatter.readingTime;
 			>
 				{tldr.length > 0 && <TLDR points={tldr} />}
 				<slot />
-				{commentDisplayConfig.giscus && <Giscus />}
+				{commentDisplayConfig.giscus && giscus && <Giscus />}
 				{commentDisplayConfig.webmentions && <WebMentions />}
 			</div>
 		</div>
