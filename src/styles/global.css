@@ -45,34 +45,8 @@
 	}
 
 	body {
-		@apply leading-relaxed tracking-[0.02em];
+		@apply leading-normal tracking-[0.02em];
 		word-spacing: 0.06em;
-	}
-
-	p {
-		line-height: 1.5;
-		letter-spacing: 0.02em;
-		word-spacing: 0.06em;
-	}
-
-	p + p {
-		margin-block-start: 0.6em;
-	}
-
-	li {
-		line-height: 1.5;
-		letter-spacing: 0.02em;
-		word-spacing: 0.06em;
-	}
-
-	ul,
-	ol {
-		margin-block: 1em;
-		padding-inline-start: 1.4em;
-	}
-
-	li + li {
-		margin-block-start: 0.2em;
 	}
 
 	:target {
@@ -141,13 +115,26 @@
 		opacity: 0.72;
 	}
 
-	.post-tags-list {
-		margin-block: 0;
-		padding-inline-start: 0;
+	.index-content p {
+		line-height: 1.5;
 	}
 
-	.post-tags-list > li + li {
-		margin-block-start: 0;
+	.index-content p + p {
+		margin-block-start: 0.6em;
+	}
+
+	.index-content li {
+		line-height: 1.5;
+	}
+
+	.index-content ul,
+	.index-content ol {
+		margin-block: 1em;
+		padding-inline-start: 1.4em;
+	}
+
+	.index-content li + li {
+		margin-block-start: 0.2em;
 	}
 }
 
