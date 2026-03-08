@@ -52,7 +52,7 @@ const paginationProps = {
 ---
 
 <PageLayout meta={meta}>
-	<nav class="mb-8" aria-label="Breadcrumbs">
+	<nav class="mb-4" aria-label="Breadcrumbs">
 		<ul class="flex items-center">
 			<li class="flex items-center">
 				<a class="text-accent" href="/tags/">Tags</a>
@@ -61,12 +61,12 @@ const paginationProps = {
 			<li aria-current="page" class=""><span aria-hidden="true">#</span>{tag}</li>
 		</ul>
 	</nav>
-	<h1 class="title capitalize">{tagMeta?.data.title ?? `Posts about ${tag}`}</h1>
-	<div class="index-content mb-16">
+	<h1 class="title capitalize mb-4">{tagMeta?.data.title ?? `Posts about ${tag}`}</h1>
+	<div class="index-content mb-4">
 		{tagMeta?.data.description && <p>{tagMeta.data.description}</p>}
 		{TagContent && <TagContent />}
 	</div>
-	<ul class="space-y-1">
+	<ul class="space-y-1 mt-8">
 		{
 			page.data.map((p) => (
 				<li class="grid gap-1 sm:grid-cols-[auto_1fr]">
