@@ -9,7 +9,7 @@ type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }> & {
 	linkClass?: string;
 };
 
-const { as: Tag = "div", post, withDesc = false, linkClass = "typefolio-link" } = Astro.props;
+const { as: Tag = "div", post, withDesc = false, linkClass = "typefolio-link-lighter" } = Astro.props;
 ---
 
 <FormattedDate
