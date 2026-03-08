@@ -25,26 +25,49 @@ const latestNotes = allNotes
 ---
 
 <PageLayout meta={{ title: "Home" }}>
-	<section>
-		<h1 class="title mb-12">Hello World!</h1>
-		<p class="mb-4">
-			Hi, I’m a theme for Astro, a simple starter that you can use to create your website or blog.
-			If you want to know more about how you can customise me, add more posts, and make it your own,
-			click on the GitHub icon link below and it will take you to my repo.
-		</p>
-		<SocialList />
-	</section>
+	<div class="index-content">
+		<section>
+			<h1 class="title mb-4">Hello World!</h1>
+			<p>
+				Hi, I’m a theme for Astro, a simple starter that you can use to create your website or blog.
+				If you want to know more about how you can customise me, add more posts, and make it your own,
+				click on the GitHub icon link below and it will take you to my repo.
+			</p>
+			<p>
+				Hi, I’m a theme for Astro, a simple starter that you can use to create your website or blog.
+				If you want to know more about how you can customise me, add more posts, and make it your own,
+				click on the GitHub icon link below and it will take you to my repo.
+			</p>
+			<SocialList />
+		</section>
+		<ul class="list-inside list-disc" role="list">
+			<li>I'm ultra fast as I'm a static site</li>
+			<li>I'm fully responsive</li>
+			<li>I come with a light and dark mode</li>
+			<li>I'm easy to customise and add additional content</li>
+			<li>I have Tailwind CSS styling</li>
+			<li>Shiki code syntax highlighting</li>
+			<li>Satori for auto generating OG images for blog posts</li>
+		</ul>
+		<ol class="list-inside list-decimal" role="list">
+			<li>Install dependencies with `pnpm install`.</li>
+			<li>Run the dev server with `pnpm dev`.</li>
+			<li>Edit content in `src/content/post` and preview changes.</li>
+			<li>Build for production using `pnpm build`.</li>
+		</ol>
+	</div>
+
 	{
 		pinnedPosts.length > 0 && (
-			<section class="mt-16">
-				<h2 class="title mb-6 flex items-center gap-2 text-xl">
+			<section class="mt-8">
+				<h2 class="title mb-4 flex items-center gap-2 text-xl">
 					Pinned Posts
-					<Icon
-						aria-hidden="true"
-						class="text-accent h-5 w-5 rotate-45"
-						focusable="false"
-						name="mdi:pin-outline"
-					/>
+          <Icon
+								aria-hidden="true"
+								class="h-5 w-5 rotate-45 text-accent"
+								focusable="false"
+								name="mdi:pin-outline"
+							/>
 				</h2>
 				<ul class="space-y-1" role="list">
 					{pinnedPosts.map((p) => (
@@ -58,8 +81,8 @@ const latestNotes = allNotes
 	}
 	{
 		latestNotes.length > 0 && (
-			<section class="mt-16">
-				<h2 class="title text-accent mb-6 text-xl">
+			<section class="mt-8">
+				<h2 class="title text-accent mb-4 text-xl">
 					<a href="/notes/">Notes</a>
 				</h2>
 				<ul class="space-y-6" role="list">

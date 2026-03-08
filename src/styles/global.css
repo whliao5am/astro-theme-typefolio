@@ -18,6 +18,7 @@
 	--color-accent: oklch(55.27% 0.195 19.06);
 	--color-accent-2: oklch(30.00% 0 0);
 	--color-quote: oklch(55.27% 0.195 19.06);
+	--color-inline-code-bg: rgb(0 0 0 / 6%);
 }
 
 @layer base {
@@ -39,11 +40,12 @@
 			--color-accent: oklch(70.91% 0.1415 163.7);
 			--color-accent-2: oklch(90.66% 0 0);
 			--color-quote: oklch(94.8% 0.106 136.49);
+			--color-inline-code-bg: rgb(255 255 255 / 10%);
 		}
 	}
 
 	body {
-		@apply leading-relaxed tracking-[0.02em];
+		@apply leading-normal tracking-[0.02em];
 		word-spacing: 0.06em;
 	}
 
@@ -115,6 +117,28 @@
 	html[data-theme="dark"] .site-title-highlight::after {
 		background: color-mix(in oklch, var(--color-accent) 78%, black);
 		opacity: 0.72;
+	}
+
+	.index-content p {
+		line-height: 1.5;
+	}
+
+	.index-content p + p {
+		margin-block-start: 0.6em;
+	}
+
+	.index-content li {
+		line-height: 1.5;
+	}
+
+	.index-content ul,
+	.index-content ol {
+		margin-block: 1em;
+		padding-inline-start: 1.4em;
+	}
+
+	.index-content li + li {
+		margin-block-start: 0.2em;
 	}
 }
 

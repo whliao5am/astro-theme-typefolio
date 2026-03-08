@@ -11,7 +11,7 @@ const { nextUrl, prevUrl } = Astro.props;
 
 {
 	(prevUrl || nextUrl) && (
-		<nav class="mt-8 flex items-center gap-x-4">
+		<nav class="mt-6 flex items-center gap-x-4">
 			{prevUrl && (
 				<a class="hover:text-accent me-auto py-2" href={prevUrl.url}>
 					{prevUrl.srLabel && <span class="sr-only">{prevUrl.srLabel}</span>}

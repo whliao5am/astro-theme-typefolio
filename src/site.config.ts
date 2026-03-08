@@ -92,11 +92,3 @@ export const expressiveCodeOptions: AstroExpressiveCodeOptions = {
 	themes: ["dracula", "github-light"],
 	useThemedScrollbars: false,
 };
-
-export const breakpointsPx = {
-	sm: "640px",
-	md: "768px",
-	lg: "1024px",
-	xl: "1280px",
-	"2xl": "1536px",
-} as const;
