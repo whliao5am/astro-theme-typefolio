@@ -49,6 +49,32 @@
 		word-spacing: 0.06em;
 	}
 
+	p {
+		line-height: 1.5;
+		letter-spacing: 0.02em;
+		word-spacing: 0.06em;
+	}
+
+	p + p {
+		margin-block-start: 0.6em;
+	}
+
+	li {
+		line-height: 1.5;
+		letter-spacing: 0.02em;
+		word-spacing: 0.06em;
+	}
+
+	ul,
+	ol {
+		margin-block: 1em;
+		padding-inline-start: 1.4em;
+	}
+
+	li + li {
+		margin-block-start: 0.2em;
+	}
+
 	:target {
 		scroll-margin-block: 5ex;
 	}
