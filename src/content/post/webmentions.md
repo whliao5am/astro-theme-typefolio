@@ -6,9 +6,9 @@ tags: ["webmentions", "astro", "social"]
 updatedDate: 6 December 2024
 pinned: true
 tldr:
-  - "You can set `ogImage` in frontmatter to skip auto-generated social cards."
-  - "Point `ogImage` to any image path that your site can access."
-  - "This post demonstrates a minimal working example."
+  - "1. You can set `ogImage` in frontmatter to skip auto-generated social cards."
+  - "2. Point `ogImage` to any image path that your site can access."
+  - "3. This post demonstrates a minimal working example."
 ---
 
 ## TLDR
