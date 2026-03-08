@@ -140,6 +140,15 @@
 		background: color-mix(in oklch, var(--color-accent) 78%, black);
 		opacity: 0.72;
 	}
+
+	.post-tags-list {
+		margin-block: 0;
+		padding-inline-start: 0;
+	}
+
+	.post-tags-list > li + li {
+		margin-block-start: 0;
+	}
 }
 
 @utility prose {
