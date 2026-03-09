@@ -2,6 +2,7 @@
 import { type CollectionEntry, getCollection } from "astro:content";
 import { Icon } from "astro-icon/components";
 import PostPreview from "@/components/blog/PostPreview.astro";
+import InlineIconLink from "@/components/InlineIconLink.astro";
 import Note from "@/components/note/Note.astro";
 import SocialList from "@/components/SocialList.astro";
 import { getAllPosts } from "@/data/post";
@@ -34,9 +35,16 @@ const latestNotes = allNotes
 				click on the GitHub icon link below and it will take you to my repo.
 			</p>
 			<p>
-				Hi, I’m a theme for Astro, a simple starter that you can use to create your website or blog.
-				If you want to know more about how you can customise me, add more posts, and make it your own,
-				click on the GitHub icon link below and it will take you to my repo.
+				Inline icon example:
+				<InlineIconLink
+					href="https://github.com/whliao5am/astro-theme-typefolio"
+					icon="mdi:github"
+					label="GitHub repository"
+					width="1.5em"
+					height="1.5em"
+					target="_blank"
+				/>
+				opens the repository in a new tab and stays aligned with text without changing line height.
 			</p>
 			<SocialList />
 		</section>
