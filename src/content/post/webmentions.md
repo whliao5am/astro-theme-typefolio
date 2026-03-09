@@ -13,7 +13,7 @@ tldr:
 
 ## TLDR
 
-1. Add a link on your homepage to either your GitHub profile and/or email address as per [IndieLogin's](https://indielogin.com/setup) instructions. You _could_ do this via `src/components/SocialList.astro`, just be sure to include `isWebmention` to the relevant link if doing so.
+1. Add a link on your homepage to either your GitHub profile and/or email address as per [IndieLogin's](https://indielogin.com/setup) instructions. You can do this with your own anchor markup or a reusable link component such as `src/components/InlineIconLink.astro`.
 2. Create an account @ [Webmention.io](https://webmention.io/) by entering your website's address.
 3. Add the link feed and api key to a `.env` file with the key `WEBMENTION_URL` and `WEBMENTION_API_KEY` respectively, you could rename `.env.example` found in this template. You can also add the optional `WEBMENTION_PINGBACK` link here too.
 4. Go to [brid.gy](https://brid.gy/) and sign-in to each social account[s] you wish to link.
@@ -31,7 +31,7 @@ Your going to have to create a couple of accounts to get things up-and-running. 
 
 ### Add link(s) to your profile(s)
 
-Firstly, you need to add a link on your site to prove ownership. If you have a look at [IndieLogin's](https://indielogin.com/setup) instructions, it gives you 2 options, either an email address and/or GitHub account. I've created the component `src/components/SocialList.astro` where you can add your details into the `socialLinks` array, just include the `isWebmention` property to the relevant link which will add the `rel="me authn"` attribute. Whichever way you do it, make sure you have a link in your markup as per IndieLogin's [instructions](https://indielogin.com/setup)
+Firstly, you need to add a link on your site to prove ownership. If you have a look at [IndieLogin's](https://indielogin.com/setup) instructions, it gives you 2 options, either an email address and/or GitHub account. You can place this link directly in your template or use `src/components/InlineIconLink.astro`, then set `rel="me authn"` on the relevant link. Whichever way you do it, make sure you have a link in your markup as per IndieLogin's [instructions](https://indielogin.com/setup)
 
 ```html
 <a href="https://github.com/your-username" rel="me">GitHub</a>

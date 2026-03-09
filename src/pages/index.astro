@@ -4,7 +4,6 @@ import { Icon } from "astro-icon/components";
 import PostPreview from "@/components/blog/PostPreview.astro";
 import InlineIconLink from "@/components/InlineIconLink.astro";
 import Note from "@/components/note/Note.astro";
-import SocialList from "@/components/SocialList.astro";
 import { getAllPosts } from "@/data/post";
 import PageLayout from "@/layouts/Base.astro";
 import { collectionDateSort } from "@/utils/date";
@@ -46,7 +45,6 @@ const latestNotes = allNotes
 				/>
 				opens the repository in a new tab and stays aligned with text without changing line height.
 			</p>
-			<SocialList />
 		</section>
 		<ul class="list-inside list-disc" role="list">
 			<li>I'm ultra fast as I'm a static site</li>
