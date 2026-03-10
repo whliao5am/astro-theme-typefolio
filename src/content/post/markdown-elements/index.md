@@ -37,11 +37,22 @@ $$
 
 ## Emphasis
 
+**这是粗体文本**
+
 **This is bold text**
+
+_这是斜体文本_
 
 _This is italic text_
 
+~~这是删除线文本~~
+
 ~~Strikethrough~~
+
+<p style="font-weight: 400;">这是normal / This is normal</p>
+<p style="font-weight: 600;">这是semibold / This is
+semibold</p>
+<p style="font-weight: 700;">这是bold / This is bold</p>
 
 ## Quotes
 

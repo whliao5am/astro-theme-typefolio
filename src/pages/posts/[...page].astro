@@ -67,7 +67,7 @@ const descYearKeys = Object.keys(groupedByYear).sort((a, b) => +b - +a);
 		</a>
 	</div>
 	<div class="grid sm:grid-cols-[3fr_1fr] sm:gap-x-8 sm:gap-y-16">
-		<div>
+		<div class="mt-6 lg:mt-0 order-last sm:order-0">
 			{
 				pinnedPosts.length > 0 && (
 					<section class="mb-4">
@@ -111,7 +111,7 @@ const descYearKeys = Object.keys(groupedByYear).sort((a, b) => +b - +a);
 		</div>
 		{
 			!!uniqueTags.length && (
-				<aside>
+				<aside class="order-first sm:order-0">
 					<h2 class="title mb-4 flex items-center gap-2 text-lg">
 						Tags
 						<svg
