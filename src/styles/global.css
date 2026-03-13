@@ -145,10 +145,14 @@
 
 .prose :where(h2):not(:where(.not-prose, .not-prose *)) {
 	@apply mt-[1.4em] mb-[0.7em];
+}
 
-	&:first-of-type {
-		margin-top: 0;
-	}
+.prose > :where(h2):first-child:not(:where(.not-prose, .not-prose *)) {
+	margin-top: 0;
+}
+
+.prose > :first-child :where(h2):first-child:not(:where(.not-prose, .not-prose *)) {
+	margin-top: 0;
 }
 
 .prose :where(h3):not(:where(.not-prose, .not-prose *)) {
