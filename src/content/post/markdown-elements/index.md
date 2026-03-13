@@ -60,9 +60,13 @@ semibold</p>
 
 ## Blockquotes
 
+Blockquote with a title, tests....
+
 > Blockquotes can also be nested...
 >
 > > ...by using additional greater-than signs right next to each other...
+
+blockquote with a title, tests....
 
 ## References
 
@@ -100,7 +104,7 @@ Ordered
 Start numbering with offset:
 
 57. foo
-1. bar
+58. bar
 
 ## Code
 

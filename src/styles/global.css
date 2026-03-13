@@ -17,7 +17,7 @@
 	--color-link: oklch(55.44% 0.0431 185.69);
 	--color-accent: oklch(55.27% 0.195 19.06);
 	--color-accent-2: oklch(30.00% 0 0);
-	--color-quote: oklch(55.27% 0.195 19.06);
+	--color-quote: oklch(45.27% 0.195 19.06);
 	--color-inline-code-bg: rgb(0 0 0 / 6%);
 }
 
@@ -39,7 +39,7 @@
 			--color-link: oklch(70.44% 0.1133 349);
 			--color-accent: oklch(70.91% 0.1415 163.7);
 			--color-accent-2: oklch(90.66% 0 0);
-			--color-quote: oklch(94.8% 0.106 136.49);
+			--color-quote: oklch(75.8% 0.106 136.49);
 			--color-inline-code-bg: rgb(255 255 255 / 10%);
 		}
 	}
@@ -143,6 +143,69 @@
 	}
 }
 
+.prose :where(h2):not(:where(.not-prose, .not-prose *)) {
+	@apply mt-[1.4em] mb-[0.7em];
+
+	&:first-of-type {
+		margin-top: 0;
+	}
+}
+
+.prose :where(h3):not(:where(.not-prose, .not-prose *)) {
+	@apply mt-[1.2em] mb-[0.55em];
+}
+
+.prose :where(h4):not(:where(.not-prose, .not-prose *)) {
+	@apply mt-[1.2em] mb-[0.45em];
+}
+
+.prose :where(p):not(:where(.not-prose, .not-prose *)) {
+	@apply my-[0.4em] leading-normal tracking-[0.02em];
+	word-spacing: 0.06em;
+}
+
+.prose :where(blockquote):not(:where(.not-prose, .not-prose *)) {
+	@apply my-[0.4em];
+}
+
+.prose :where(li):not(:where(.not-prose, .not-prose *)) {
+	@apply my-[0.4em] leading-normal tracking-[0.02em];
+	word-spacing: 0.06em;
+}
+
+.prose :where(h2, h3, h4, hr) + :where(h2):not(:where(.not-prose, .not-prose *)) {
+	margin-top: 1.4em;
+}
+
+.prose :where(h2, h3, h4, hr) + :where(h3):not(:where(.not-prose, .not-prose *)) {
+	margin-top: 1.2em;
+}
+
+.prose :where(h2, h3, h4, hr) + :where(h4):not(:where(.not-prose, .not-prose *)) {
+	margin-top: 1em;
+}
+
+.prose :where(h2, h3, h4, hr) + :where(p):not(:where(.not-prose, .not-prose *)) {
+	margin-top: 0.6em;
+}
+
+.prose :where(hr):not(:where(.not-prose, .not-prose *)) {
+	@apply my-4;
+}
+
+.prose :where(li):not(:where(.not-prose, .not-prose *)) > :where(p):not(:where(.not-prose, .not-prose *)) {
+	@apply my-0;
+}
+
+.prose :where(ul):not(:where(.not-prose, .not-prose *)) {
+	@apply my-4;
+	@apply pl-4;
+}
+
+.prose :where(ol):not(:where(.not-prose, .not-prose *)) {
+	@apply my-4;
+}
+
 @utility prose {
 	--tw-prose-body: var(--color-global-text);
 	--tw-prose-bold: var(--color-global-text);
@@ -153,8 +216,4 @@
 	--tw-prose-links: var(--color-global-text);
 	--tw-prose-quotes: var(--color-quote);
 	--tw-prose-th-borders: #666;
-}
-
-.prose hr {
-	@apply my-4;
 }
