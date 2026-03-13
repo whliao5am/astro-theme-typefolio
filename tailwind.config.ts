@@ -20,16 +20,6 @@ export default {
 						blockquote: {
 							borderLeftWidth: "0",
 						},
-						p: {
-							lineHeight: "1.5",
-							letterSpacing: "0.02em",
-							wordSpacing: "0.06em",
-						},
-						li: {
-							lineHeight: "1.5",
-							letterSpacing: "0.02em",
-							wordSpacing: "0.06em",
-						},
 						code: {
 							backgroundColor: "var(--color-inline-code-bg)",
 							borderRadius: "2px",
