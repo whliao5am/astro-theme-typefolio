@@ -3,7 +3,6 @@ import type { Config } from "tailwindcss";
 export default {
 	plugins: [require("@tailwindcss/typography")],
 	theme: {
-
 		extend: {
 			typography: () => ({
 				DEFAULT: {
@@ -16,9 +15,6 @@ export default {
 									textDecorationThickness: "2px",
 								},
 							},
-						},
-						blockquote: {
-							borderLeftWidth: "0",
 						},
 						code: {
 							backgroundColor: "var(--color-inline-code-bg)",
@@ -86,6 +82,56 @@ export default {
 							fontSize: "var(--text-sm)",
 							fontWeight: "400",
 						},
+						h2: {
+							marginTop: "1.4em",
+							marginBottom: "0.7em",
+						},
+						h3: {
+							marginTop: "1.2em",
+							marginBottom: "0.55em",
+						},
+						h4: {
+							marginTop: "1.2em",
+							marginBottom: "0.45em",
+						},
+						":where(h2, h3, h4, hr) + :where(p)": {
+							marginTop: "0.6em",
+						},
+						p: {
+							marginTop: "0.4em",
+							marginBottom: "0.4em",
+							lineHeight: "1.5",
+							letterSpacing: "0.02em",
+							wordSpacing: "0.06em",
+						},
+            "ul, ol": {
+              marginTop: "0.6em",
+              marginBottom: "0.6em",
+            },
+						li: {
+							marginTop: "0.4em",
+							marginBottom: "0.4em",
+							lineHeight: "1.5",
+							letterSpacing: "0.02em",
+							wordSpacing: "0.06em",
+						},
+						"ul > li > ul, ul > li > ol, ol > li > ul, ol > li > ol": {
+							marginTop: "0",
+							marginBottom: "0",
+						},
+						hr: {
+							marginTop: "1rem",
+							marginBottom: "1rem",
+						},
+						blockquote: {
+							borderLeftWidth: "0",
+							marginTop: "0.4em",
+							marginBottom: "0.4em",
+						},
+            "blockquote p": {
+              marginTop: "0",
+              marginBottom: "0",
+            },
 					},
 				},
 			}),

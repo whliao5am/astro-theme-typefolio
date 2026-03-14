@@ -17,6 +17,26 @@ pinned: true
 
 ###### This is a H6 Heading
 
+## This is a H2 Heading
+
+test
+
+### This is a H3 Heading
+
+test
+
+#### This is a H4 Heading
+
+test
+
+##### This is a H5 Heading
+
+test
+
+###### This is a H6 Heading
+
+test
+
 ## Horizontal Rules
 
 ---
