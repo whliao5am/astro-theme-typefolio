@@ -39,6 +39,12 @@ test
 
 ## Horizontal Rules
 
+test
+
+---
+
+test
+
 ---
 
 ---

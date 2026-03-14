@@ -19,6 +19,7 @@
 	--color-accent-2: oklch(30.00% 0 0);
 	--color-quote: oklch(45.27% 0.195 19.06);
 	--color-inline-code-bg: rgb(0 0 0 / 6%);
+	--color-rule: oklch(82.032% 0.00009 271.152);
 }
 
 @layer base {
@@ -41,6 +42,7 @@
 			--color-accent-2: oklch(90.66% 0 0);
 			--color-quote: oklch(75.8% 0.106 136.49);
 			--color-inline-code-bg: rgb(255 255 255 / 10%);
+			--color-rule: oklch(46% 0.01 255);
 		}
 	}
 
@@ -149,7 +151,6 @@
 	--tw-prose-bullets: var(--color-global-text);
 	--tw-prose-code: var(--color-global-text);
 	--tw-prose-headings: var(--color-accent-2);
-	--tw-prose-hr: 0.5px dashed #666;
 	--tw-prose-links: var(--color-global-text);
 	--tw-prose-quotes: var(--color-quote);
 	--tw-prose-th-borders: #666;

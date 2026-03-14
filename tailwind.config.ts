@@ -30,7 +30,8 @@ export default {
 							},
 						},
 						hr: {
-							borderTopStyle: "dashed",
+							borderTopStyle: "solid",
+							borderTopColor: "var(--color-rule)",
 						},
 						strong: {
 							fontWeight: "700",
@@ -125,8 +126,8 @@ export default {
               marginBottom: "calc(var(--spacing)*3)",
             },
 						hr: {
-							marginTop: "1rem",
-							marginBottom: "1rem",
+							marginTop: "calc(var(--spacing)*6)",
+							marginBottom: "calc(var(--spacing)*6)",
 						},
 						blockquote: {
 							borderLeftWidth: "0",
