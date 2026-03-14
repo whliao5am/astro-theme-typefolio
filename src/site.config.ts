@@ -69,13 +69,15 @@ export const expressiveCodeOptions: AstroExpressiveCodeOptions = {
 		borderRadius: "4px",
 		codeFontFamily:
 			'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
-		codeFontSize: "0.875rem",
-		codeLineHeight: "1.7142857rem",
-		codePaddingInline: "1rem",
+		codeFontSize: "0.8125rem",
+		codeLineHeight: "1.55",
+		codePaddingBlock: "0.75rem",
+		codePaddingInline: "0.875rem",
 		frames: {
 			frameBoxShadowCssValue: "none",
 		},
-		uiLineHeight: "inherit",
+		uiFontSize: "0.8125rem",
+		uiLineHeight: "1.55",
 	},
 	themeCssSelector(theme, { styleVariants }) {
 		// If one dark and one light theme are available
@@ -89,6 +91,6 @@ export const expressiveCodeOptions: AstroExpressiveCodeOptions = {
 		return `[data-theme="${theme.name}"]`;
 	},
 	// One dark, one light theme => https://expressive-code.com/guides/themes/#available-themes
-	themes: ["dracula", "github-light"],
+	themes: ["github-dark", "github-light"],
 	useThemedScrollbars: false,
 };

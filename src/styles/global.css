@@ -143,6 +143,22 @@
 	.index-content li + li {
 		margin-block-start: 0.2em;
 	}
+
+	.expressive-code .copy button {
+		width: 1.75rem !important;
+		height: 1.75rem !important;
+	}
+
+	.expressive-code .copy button::after {
+		margin: 0.35rem !important;
+	}
+
+	@media (hover: hover) {
+		.expressive-code .copy button {
+			width: 1.5rem !important;
+			height: 1.5rem !important;
+		}
+	}
 }
 
 @utility prose {
