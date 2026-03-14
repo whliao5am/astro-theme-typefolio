@@ -22,7 +22,11 @@ export default {
 						},
 						kbd: {
 							"&:where([data-theme='dark'], [data-theme='dark'] *)": {
-								background: "var(--color-global-text)",
+								color: "var(--tw-prose-invert-kbd)",
+								backgroundColor:
+									"color-mix(in oklab, var(--tw-prose-invert-kbd) 8%, transparent)",
+								boxShadow:
+									"0 0 0 1px var(--tw-prose-invert-kbd-shadows), 0 3px 0 var(--tw-prose-invert-kbd-shadows)",
 							},
 						},
 						hr: {
