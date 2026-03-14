@@ -71,8 +71,8 @@ export default {
 							"text-align": "left",
 						},
 						".expressive-code, .admonition, .github-card": {
-							marginTop: "calc(var(--spacing)*4)",
-							marginBottom: "calc(var(--spacing)*4)",
+							marginTop: "calc(var(--spacing)*3)",
+							marginBottom: "calc(var(--spacing)*3)",
 						},
 					},
 				},
@@ -93,9 +93,6 @@ export default {
 						h4: {
 							marginTop: "1.2em",
 							marginBottom: "0.45em",
-						},
-						":where(h2, h3, h4, hr) + :where(p)": {
-							marginTop: "0.6em",
 						},
 						p: {
 							marginTop: "0.4em",
@@ -119,6 +116,10 @@ export default {
 							marginTop: "0",
 							marginBottom: "0",
 						},
+            table: {
+              marginTop: "calc(var(--spacing)*3)",
+              marginBottom: "calc(var(--spacing)*3)",
+            },
 						hr: {
 							marginTop: "1rem",
 							marginBottom: "1rem",
