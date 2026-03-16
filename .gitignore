@@ -24,3 +24,5 @@ pnpm-debug.log*
 .cache
 .astro
 structure.md
+AGENTS.md
+CLAUDE.md
