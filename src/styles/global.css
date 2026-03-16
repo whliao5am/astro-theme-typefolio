@@ -144,20 +144,23 @@
 		margin-block-start: 0.2em;
 	}
 
-	.expressive-code .copy button {
-		width: 1.75rem !important;
-		height: 1.75rem !important;
-	}
+}
 
-	.expressive-code .copy button::after {
-		margin: 0.35rem !important;
-	}
+/* Keep copy button styles outside Tailwind layers: Expressive Code injects `.copy` markup at runtime,
+ * so layer-based rules can be tree-shaken away before they ever reach the browser. */
+:root .expressive-code .copy button {
+	width: 1.75rem;
+	height: 1.75rem;
+}
 
-	@media (hover: hover) {
-		.expressive-code .copy button {
-			width: 1.5rem !important;
-			height: 1.5rem !important;
-		}
+:root .expressive-code .copy button::after {
+	margin: 0.35rem;
+}
+
+@media (hover: hover) {
+	:root .expressive-code .copy button {
+		width: 1.5rem;
+		height: 1.5rem;
 	}
 }
 
