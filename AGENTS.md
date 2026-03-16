@@ -4,6 +4,7 @@
 Core app code lives in `src/`:
 - `src/pages/`: route-driven Astro pages (`posts`, `notes`, `tags`, RSS, OG image endpoint).
 - `src/components/` and `src/layouts/`: reusable UI and page shells.
+- `src/components/blog/`: blog-specific UI such as TOC, backlinks, and comment blocks.
 - `src/content/`: Markdown/MDX collections (`post`, `note`, `tag`). Filenames become slugs.
 - `src/plugins/` and `src/utils/`: remark plugins and shared helpers.
 - `src/styles/`: global, block, and component-level CSS.

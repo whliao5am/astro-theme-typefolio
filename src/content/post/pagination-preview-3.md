@@ -8,3 +8,5 @@ pinned: false
 ---
 
 This is the third temporary post for pagination testing.
+
+For a related entry in the same series, see [Pagination Preview Post 2](/posts/pagination-preview-2/).

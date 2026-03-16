@@ -1,0 +1,55 @@
+---
+import type { CollectionEntry } from "astro:content";
+import FormattedDate from "@/components/FormattedDate.astro";
+
+interface Props {
+	posts: CollectionEntry<"post">[];
+}
+
+const { posts } = Astro.props;
+---
+
+{
+	posts.length > 0 && (
+		<section class="not-prose mt-12">
+			<details class="backlinks-details group">
+				<summary
+					aria-level="2"
+					class="backlinks-summary text-accent-2 hover:text-accent focus-visible:text-accent cursor-pointer text-xl font-semibold"
+					role="heading"
+				>
+					Backlinks
+				</summary>
+				<ul class="mt-4 space-y-2" role="list">
+					{posts.map((post) => (
+						<li class="grid gap-1 sm:grid-cols-[auto_1fr] sm:gap-3">
+							<FormattedDate
+								class="min-w-30 font-semibold text-gray-600 dark:text-gray-400"
+								date={post.data.publishDate}
+							/>
+							<a class="typefolio-link-lighter" href={`/posts/${post.id}/`}>
+								{post.data.title}
+							</a>
+						</li>
+					))}
+				</ul>
+			</details>
+		</section>
+	)
+}
+
+<style>
+	.backlinks-summary {
+		list-style-position: outside;
+	}
+
+	.backlinks-summary::marker {
+		color: rgb(82 82 91);
+		transition: color 160ms ease;
+	}
+
+	.backlinks-details:hover .backlinks-summary::marker,
+	.backlinks-summary:focus-visible::marker {
+		color: var(--color-accent);
+	}
+</style>

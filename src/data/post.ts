@@ -1,10 +1,50 @@
-import { type CollectionEntry, getCollection } from "astro:content";
+import { type CollectionEntry, getCollection, render } from "astro:content";
+import { collectionDateSort } from "@/utils/date";
 
 /** filter out draft posts based on the environment */
 export async function getAllPosts(): Promise<CollectionEntry<"post">[]> {
 	return await getCollection("post", ({ data }) => {
 		return import.meta.env.PROD ? !data.draft : true;
 	});
+}
+
+let backlinksByPostPromise: Promise<Map<string, CollectionEntry<"post">[]>> | undefined;
+
+export async function getBacklinksForPost(postId: string): Promise<CollectionEntry<"post">[]> {
+	backlinksByPostPromise ??= createBacklinksByPostMap();
+	const backlinksByPost = await backlinksByPostPromise;
+
+	return backlinksByPost.get(postId) ?? [];
+}
+
+async function createBacklinksByPostMap(): Promise<Map<string, CollectionEntry<"post">[]>> {
+	const posts = await getAllPosts();
+	const postsById = new Map(posts.map((post) => [post.id, post]));
+	const backlinksByPost = new Map<string, CollectionEntry<"post">[]>();
+
+	for (const sourcePost of posts) {
+		const { remarkPluginFrontmatter } = await render(sourcePost);
+		const outboundPostLinks = new Set<string>(
+			((remarkPluginFrontmatter.outboundPostLinks as string[] | undefined) ?? []).filter(Boolean),
+		);
+
+		for (const targetPostId of outboundPostLinks) {
+			if (targetPostId === sourcePost.id || !postsById.has(targetPostId)) continue;
+
+			const backlinks = backlinksByPost.get(targetPostId) ?? [];
+			backlinks.push(sourcePost);
+			backlinksByPost.set(targetPostId, backlinks);
+		}
+	}
+
+	for (const [postId, backlinks] of backlinksByPost) {
+		const uniqueBacklinks = [...new Map(backlinks.map((post) => [post.id, post])).values()].sort(
+			collectionDateSort,
+		);
+		backlinksByPost.set(postId, uniqueBacklinks);
+	}
+
+	return backlinksByPost;
 }
 
 /** Get tag metadata by tag name */

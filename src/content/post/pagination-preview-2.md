@@ -7,4 +7,18 @@ draft: false
 pinned: false
 ---
 
+## Pagination Preview Post 2
+
 This is the second temporary post for pagination testing.
+
+For a related entry in the same series, see [Pagination Preview Post 3](/posts/pagination-preview-3/).
+
+## Test code block
+
+```astro
+<div>
+    <h1>Hello, world!</h1>
+</div>
+```
+
+test code...
