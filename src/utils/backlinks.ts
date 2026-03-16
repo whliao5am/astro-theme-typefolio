@@ -5,7 +5,7 @@ const siteOrigin = new URL(siteConfig.url).origin;
 
 export function getPostIdFromFilePath(filePath: string): string | undefined {
 	const normalizedPath = filePath.split(path.sep).join("/");
-	const contentRoot = "/src/content/post/";
+	const contentRoot = "/src/content/blog/";
 	const rootIndex = normalizedPath.lastIndexOf(contentRoot);
 	if (rootIndex === -1) return;
 
@@ -21,12 +21,12 @@ export function resolvePostLinkToId(
 ): string | undefined {
 	if (!href || href.startsWith("#")) return;
 
-	const baseUrl = new URL(`/posts/${currentPostId ? `${currentPostId}/` : ""}`, siteConfig.url);
+	const baseUrl = new URL(`/blog/${currentPostId ? `${currentPostId}/` : ""}`, siteConfig.url);
 	const resolvedUrl = new URL(href, baseUrl);
 	if (resolvedUrl.origin !== siteOrigin) return;
 
 	const pathSegments = resolvedUrl.pathname.split("/").filter(Boolean);
-	if (pathSegments[0] !== "posts" || pathSegments.length < 2) return;
+	if (!["blog"].includes(pathSegments[0] ?? "") || pathSegments.length < 2) return;
 
 	return pathSegments.slice(1).join("/");
 }

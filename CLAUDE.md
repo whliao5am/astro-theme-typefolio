@@ -2,10 +2,10 @@
 
 ## Project Structure & Module Organization
 Core app code lives in `src/`:
-- `src/pages/`: route-driven Astro pages (`posts`, `notes`, `tags`, RSS, OG image endpoint).
+- `src/pages/`: route-driven Astro pages (`blog`, `notes`, `tags`, RSS, OG image endpoint).
 - `src/components/` and `src/layouts/`: reusable UI and page shells.
 - `src/components/blog/`: blog-specific UI such as TOC, backlinks, and comment blocks.
-- `src/content/`: Markdown/MDX collections (`post`, `note`, `tag`). Filenames become slugs.
+- `src/content/`: Markdown/MDX collections (`blog`, `note`, `tag`). Filenames become slugs.
 - `src/plugins/` and `src/utils/`: remark plugins and shared helpers.
 - `src/styles/`: global, block, and component-level CSS.
 Static files are in `public/`. Build output is generated in `dist/`.
@@ -15,7 +15,7 @@ Use `pnpm` (CI uses Node 22 + pnpm):
 - `pnpm install`: install dependencies.
 - `pnpm dev`: run local dev server at `localhost:3000`.
 - `pnpm build`: production build to `dist/`.
-- `pnpm postbuild`: generate Pagefind search index from `dist/`.
+- `pnpm blogbuild`: generate Pagefind search index from `dist/`.
 - `pnpm preview`: preview built output locally.
 - `pnpm check`: Astro + Biome checks (`astro check && biome check`).
 - `pnpm lint`: apply Biome fixes where possible.
@@ -32,7 +32,7 @@ Use `pnpm` (CI uses Node 22 + pnpm):
 There is no standalone unit-test suite in this repository. Treat these as required quality gates:
 - `pnpm check` for type/lint validation.
 - `pnpm build` to verify production output.
-- For search-related changes, run `pnpm postbuild` and validate Pagefind behavior locally with `pnpm preview`.
+- For search-related changes, run `pnpm blogbuild` and validate Pagefind behavior locally with `pnpm preview`.
 
 ## Commit & Pull Request Guidelines
 Use `gitmoji + Conventional Commits` for all commit titles:

@@ -15,7 +15,7 @@ tldr:
 This post is an example of how to add a custom [open graph](https://ogp.me/) social image, also known as an OG image, to a blog post.
 By adding the optional ogImage property to the frontmatter of a post, you opt out of [satori](https://github.com/vercel/satori) automatically generating an image for this page.
 
-If you open this markdown file `src/content/post/social-image.md` you'll see the ogImage property set to an image which lives in the public folder[^1].
+If you open this markdown file `src/content/blog/social-image.md` you'll see the ogImage property set to an image which lives in the public folder[^1].
 
 ```yaml
 ogImage: "/social-card.png"

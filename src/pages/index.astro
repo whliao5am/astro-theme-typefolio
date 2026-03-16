@@ -10,7 +10,7 @@ import { collectionDateSort } from "@/utils/date";
 
 // Posts
 const allPosts = await getAllPosts();
-const allPostsByDate = allPosts.sort(collectionDateSort) as CollectionEntry<"post">[];
+const allPostsByDate = allPosts.sort(collectionDateSort) as CollectionEntry<"blog">[];
 
 // Pinned Posts, set to a max of 3;
 const MAX_PINNED_POSTS = 5;
@@ -58,7 +58,7 @@ const latestNotes = allNotes
 		<ol class="list-inside list-decimal" role="list">
 			<li>Install dependencies with `pnpm install`.</li>
 			<li>Run the dev server with `pnpm dev`.</li>
-			<li>Edit content in `src/content/post` and preview changes.</li>
+			<li>Edit content in `src/content/blog` and preview changes.</li>
 			<li>Build for production using `pnpm build`.</li>
 		</ol>
 	</div>

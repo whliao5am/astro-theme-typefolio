@@ -11,7 +11,7 @@ pinned: false
 
 This is the second temporary post for pagination testing.
 
-For a related entry in the same series, see [Pagination Preview Post 3](/posts/pagination-preview-3/).
+For a related entry in the same series, see [Pagination Preview Post 3](/blog/pagination-preview-3/).
 
 ## Test code block
 

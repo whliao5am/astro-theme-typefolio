@@ -104,7 +104,7 @@ Second example containing a reference[^2] with a link to the source.
 
 [^2]: Second reference with a link.
 
-If you check out this example in `src/content/post/markdown-elements/index.md`, you'll notice that the references and the heading "Footnotes" are added to the bottom of the page via the [remark-rehype](https://github.com/remarkjs/remark-rehype#options) plugin.
+If you check out this example in `src/content/blog/markdown-elements/index.md`, you'll notice that the references and the heading "Footnotes" are added to the bottom of the page via the [remark-rehype](https://github.com/remarkjs/remark-rehype#options) plugin.
 
 ## Lists
 
@@ -217,7 +217,7 @@ function demo() {
 
 ## Images
 
-Image in the same folder: `src/content/post/markdown-elements/logo.png`
+Image in the same folder: `src/content/blog/markdown-elements/logo.png`
 
 ![Astro theme cactus logo](./logo.png)
 

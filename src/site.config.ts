@@ -54,7 +54,7 @@ export const menuLinks: { path: string; title: string }[] = [
 		title: "About",
 	},
 	{
-		path: "/posts/",
+		path: "/blog/",
 		title: "Blog",
 	},
 	{

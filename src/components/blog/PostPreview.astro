@@ -4,7 +4,7 @@ import type { HTMLTag, Polymorphic } from "astro/types";
 import FormattedDate from "@/components/FormattedDate.astro";
 
 type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }> & {
-	post: CollectionEntry<"post">;
+	post: CollectionEntry<"blog">;
 	withDesc?: boolean;
 	linkClass?: string;
 };
@@ -23,7 +23,7 @@ const {
 />
 <Tag>
 	{post.data.draft && <span class="text-red-500">(Draft) </span>}
-	<a class={linkClass} href={`/posts/${post.id}/`}>
+	<a class={linkClass} href={`/blog/${post.id}/`}>
 		{post.data.title}
 	</a>
 </Tag>
