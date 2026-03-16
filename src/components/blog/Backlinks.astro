@@ -12,10 +12,10 @@ const { posts } = Astro.props;
 {
 	posts.length > 0 && (
 		<section class="not-prose mt-7">
-			<details class="backlinks-details group">
+			<details class="group">
 				<summary
 					aria-level="2"
-					class="backlinks-summary text-accent-2 focus-visible:text-accent cursor-pointer text-xl font-semibold"
+					class="text-accent-2 marker:text-gray-600 group-hover:marker:text-accent focus-visible:marker:text-accent list-inside cursor-pointer text-lg font-semibold transition-colors sm:list-outside focus-visible:text-accent"
 					role="heading"
 				>
 					Backlinks
@@ -39,19 +39,3 @@ const { posts } = Astro.props;
 		</section>
 	)
 }
-
-<style>
-	.backlinks-summary {
-		list-style-position: outside;
-	}
-
-	.backlinks-summary::marker {
-		color: rgb(82 82 91);
-		transition: color 160ms ease;
-	}
-
-	.backlinks-details:hover .backlinks-summary::marker,
-	.backlinks-summary:focus-visible::marker {
-		color: var(--color-accent);
-	}
-</style>
