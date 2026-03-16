@@ -50,6 +50,7 @@ Use `gitmoji + Conventional Commits` for all commit titles:
   - `✨ feat(search): add tag filter shortcuts`
   - `🐛 fix(og-image): handle missing cover image`
   - `♻️ refactor: simplify remark plugin wiring`
+- When merging a feature branch into `main`, use a regular merge commit (`git merge --no-ff`) instead of fast-forward.
 
 Follow `.github/pull_request_template.md`:
 - Describe scope (minor fix vs larger change).
