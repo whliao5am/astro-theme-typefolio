@@ -4,6 +4,7 @@ Astro Typefolio is a personal blog/portfolio template based on Astro, suitable f
 ## Features
 - Markdown/MDX content with LaTeX math support via KaTeX (`$...$`, `$$...$$`)
 - Giscus comments for blog posts with light/dark theme sync
+- Automatic blog backlinks section for posts referenced by other posts
 
 ## TODO
 - [ ] Update giscus theme color.

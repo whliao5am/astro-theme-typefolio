@@ -4,6 +4,7 @@
 Core app code lives in `src/`:
 - `src/pages/`: route-driven Astro pages (`posts`, `notes`, `tags`, RSS, OG image endpoint).
 - `src/components/` and `src/layouts/`: reusable UI and page shells.
+- `src/components/blog/`: blog-specific UI such as TOC, backlinks, and comment blocks.
 - `src/content/`: Markdown/MDX collections (`post`, `note`, `tag`). Filenames become slugs.
 - `src/plugins/` and `src/utils/`: remark plugins and shared helpers.
 - `src/styles/`: global, block, and component-level CSS.
@@ -49,6 +50,7 @@ Use `gitmoji + Conventional Commits` for all commit titles:
   - `✨ feat(search): add tag filter shortcuts`
   - `🐛 fix(og-image): handle missing cover image`
   - `♻️ refactor: simplify remark plugin wiring`
+- When merging a feature branch into `main`, use a regular merge commit (`git merge --no-ff`) instead of fast-forward.
 
 Follow `.github/pull_request_template.md`:
 - Describe scope (minor fix vs larger change).
