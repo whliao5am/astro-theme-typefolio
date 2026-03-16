@@ -143,7 +143,6 @@
 	.index-content li + li {
 		margin-block-start: 0.2em;
 	}
-
 }
 
 /* Keep copy button styles outside Tailwind layers: Expressive Code injects `.copy` markup at runtime,

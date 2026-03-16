@@ -23,8 +23,7 @@ export default {
 						kbd: {
 							"&:where([data-theme='dark'], [data-theme='dark'] *)": {
 								color: "var(--tw-prose-invert-kbd)",
-								backgroundColor:
-									"color-mix(in oklab, var(--tw-prose-invert-kbd) 8%, transparent)",
+								backgroundColor: "color-mix(in oklab, var(--tw-prose-invert-kbd) 8%, transparent)",
 								boxShadow:
 									"0 0 0 1px var(--tw-prose-invert-kbd-shadows), 0 3px 0 var(--tw-prose-invert-kbd-shadows)",
 							},
@@ -106,10 +105,10 @@ export default {
 							letterSpacing: "0.02em",
 							wordSpacing: "0.06em",
 						},
-            "ul, ol": {
-              marginTop: "0.6em",
-              marginBottom: "0.6em",
-            },
+						"ul, ol": {
+							marginTop: "0.6em",
+							marginBottom: "0.6em",
+						},
 						li: {
 							marginTop: "0.4em",
 							marginBottom: "0.4em",
@@ -121,10 +120,10 @@ export default {
 							marginTop: "0",
 							marginBottom: "0",
 						},
-            table: {
-              marginTop: "calc(var(--spacing)*3)",
-              marginBottom: "calc(var(--spacing)*3)",
-            },
+						table: {
+							marginTop: "calc(var(--spacing)*3)",
+							marginBottom: "calc(var(--spacing)*3)",
+						},
 						hr: {
 							marginTop: "calc(var(--spacing)*6)",
 							marginBottom: "calc(var(--spacing)*6)",
@@ -134,10 +133,10 @@ export default {
 							marginTop: "0.4em",
 							marginBottom: "0.4em",
 						},
-            "blockquote p": {
-              marginTop: "0",
-              marginBottom: "0",
-            },
+						"blockquote p": {
+							marginTop: "0",
+							marginBottom: "0",
+						},
 					},
 				},
 			}),
