@@ -7,10 +7,10 @@ Astro Typefolio is a personal blog/portfolio template based on Astro, suitable f
 - Automatic blog backlinks section for posts referenced by other posts
 
 ## TODO
+- [ ] Photography template.
 - [ ] Better open graph png images.
 - [ ] Update giscus theme color.
-- [ ] Better robots.txt, sitemap.
-- [ ] Better image pipeline.
+- [ ] Better image, icon pipeline.
 - [ ] Better pagefind search style.
 
 ## Giscus Comments
