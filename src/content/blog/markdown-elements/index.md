@@ -219,8 +219,7 @@ function demo() {
 
 Image in the same folder: `src/content/blog/markdown-elements/logo.webp`
 
-<img src="./logo.webp" alt="Astro theme cactus logo"
-width="240" height="240" />
+![Astro theme cactus logo](./logo.webp)
 
 ## Links
 

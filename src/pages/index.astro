@@ -2,6 +2,8 @@
 import { type CollectionEntry, getCollection } from "astro:content";
 import { Icon } from "astro-icon/components";
 import PostPreview from "@/components/blog/PostPreview.astro";
+import type { WhatsNewItem } from "@/components/home/WhatsNewTimeline.astro";
+import WhatsNewTimeline from "@/components/home/WhatsNewTimeline.astro";
 import InlineIconLink from "@/components/InlineIconLink.astro";
 import Note from "@/components/note/Note.astro";
 import { getAllPosts } from "@/data/post";
@@ -22,6 +24,45 @@ const allNotes = await getCollection("note");
 const latestNotes = allNotes
 	.sort(collectionDateSort)
 	.slice(0, MAX_NOTES) as CollectionEntry<"note">[];
+
+const whatsNewItems: WhatsNewItem[] = [
+	{
+		date: "Mar 2026",
+		kind: "milestone",
+		label: "Milestone",
+		description:
+			"Released a redesigned archive view prototype with improved reading rhythm and lighter metadata treatment across the homepage.",
+	},
+	{
+		date: "Feb 2026",
+		kind: "service",
+		label: "Service",
+		description:
+			"Joined the fictional Aurora Systems Workshop program committee to review submissions on dependable software tooling and interface design.",
+	},
+	{
+		date: "Jan 2026",
+		kind: "paper",
+		label: "Paper",
+		description:
+			"Shared a sample preprint on modular note-taking workflows for small research groups, using a fully synthetic project and placeholder dataset.",
+		href: "/blog/markdown-elements/",
+	},
+	{
+		date: "Dec 2025",
+		kind: "talk",
+		label: "Talk",
+		description:
+			"Gave an internal demo on how a clean timeline can present research progress, product updates, and writing milestones on a single homepage.",
+	},
+	{
+		date: "Nov 2025",
+		kind: "award",
+		label: "Award",
+		description:
+			"Received the imaginary North Pier Design Mention for a prototype blog that balanced editorial typography with practical documentation needs.",
+	},
+];
 ---
 
 <PageLayout meta={{ title: "Home" }}>
@@ -85,6 +126,9 @@ const latestNotes = allNotes
 			</section>
 		)
 	}
+
+	<WhatsNewTimeline items={whatsNewItems} />
+
 	{
 		latestNotes.length > 0 && (
 			<section class="mt-8">
