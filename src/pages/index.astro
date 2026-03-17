@@ -1,11 +1,10 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content";
+import { type CollectionEntry } from "astro:content";
 import { Icon } from "astro-icon/components";
 import PostPreview from "@/components/blog/PostPreview.astro";
 import type { WhatsNewItem } from "@/components/home/WhatsNewTimeline.astro";
 import WhatsNewTimeline from "@/components/home/WhatsNewTimeline.astro";
 import InlineIconLink from "@/components/InlineIconLink.astro";
-import Note from "@/components/note/Note.astro";
 import { getAllPosts } from "@/data/post";
 import PageLayout from "@/layouts/Base.astro";
 import { collectionDateSort } from "@/utils/date";
@@ -17,13 +16,6 @@ const allPostsByDate = allPosts.sort(collectionDateSort) as CollectionEntry<"blo
 // Pinned Posts, set to a max of 3;
 const MAX_PINNED_POSTS = 5;
 const pinnedPosts = allPostsByDate.filter((p) => p.data.pinned).slice(0, MAX_PINNED_POSTS);
-
-// Notes
-const MAX_NOTES = 5;
-const allNotes = await getCollection("note");
-const latestNotes = allNotes
-	.sort(collectionDateSort)
-	.slice(0, MAX_NOTES) as CollectionEntry<"note">[];
 
 const whatsNewItems: WhatsNewItem[] = [
 	{
@@ -128,21 +120,4 @@ const whatsNewItems: WhatsNewItem[] = [
 	}
 
 	<WhatsNewTimeline items={whatsNewItems} />
-
-	{
-		latestNotes.length > 0 && (
-			<section class="mt-8">
-				<h2 class="title text-accent mb-4 text-xl">
-					<a href="/notes/">Notes</a>
-				</h2>
-				<ul class="space-y-6" role="list">
-					{latestNotes.map((note) => (
-						<li>
-							<Note note={note} as="h3" isPreview />
-						</li>
-					))}
-				</ul>
-			</section>
-		)
-	}
 </PageLayout>
