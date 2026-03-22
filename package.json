@@ -12,7 +12,9 @@
 		"preview": "astro preview",
 		"check": "astro check && biome check",
 		"lint": "biome check --write",
-		"format": "prettier -w . --cache"
+		"format": "prettier -w . --cache",
+		"hooks:install": "pre-commit install --install-hooks --hook-type pre-commit --hook-type pre-push",
+		"hooks:run": "pre-commit run --all-files && pre-commit run --all-files --hook-stage pre-push"
 	},
 	"dependencies": {
 		"@astrojs/markdown-remark": "^6.3.9",

@@ -71,7 +71,7 @@ pnpm preview
 | `pnpm lint`          | Apply Biome fixes where possible                               |
 | `pnpm format`        | Format the project with Prettier                               |
 | `pnpm hooks:install` | Install `pre-commit` Git hooks for `pre-commit` and `pre-push` |
-| `pnpm hooks:run`     | Run all configured `pre-commit` hooks across the repository    |
+| `pnpm hooks:run`     | Run both the `pre-commit` and `pre-push` hook suites manually  |
 
 ## Git Hooks
 
@@ -90,6 +90,8 @@ Configured hooks:
 
 - `pre-commit`: runs `prettier`, `biome`, and basic YAML/whitespace hygiene checks on staged files.
 - `pre-push`: runs `pnpm astro check` and `pnpm build` to mirror the current GitHub Actions validation flow before code leaves your machine.
+
+This split keeps normal commits quick while still catching project-wide type and build regressions before you push.
 
 ## Configure
 
