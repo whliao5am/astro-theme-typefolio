@@ -28,39 +28,56 @@ const {
 			<slot />
 		</main>
 		<Footer />
-		<script is:inline type="speculationrules">
-			{
-				"prefetch": [
-					{
-						"where": {
-							"href_matches": "/*"
-						},
-						"eagerness": "immediate"
-					}
-				],
-				"prerender": [
-					{
-						"where": {
-							"href_matches": "/*"
-						},
-						"eagerness": "moderate"
-					}
-				]
-			}
-		</script>
 		<script>
 			import { pangu } from "pangu/browser";
+
+			const speculationRules = {
+				prefetch: [
+					{
+						where: {
+							href_matches: "/*",
+						},
+						eagerness: "immediate",
+					},
+				],
+				prerender: [
+					{
+						where: {
+							href_matches: "/*",
+						},
+						eagerness: "moderate",
+					},
+				],
+			};
+			const speculationRulesSelector =
+				'script[type="speculationrules"][data-typefolio-speculation]';
+			const supportsSpeculationRules =
+				typeof HTMLScriptElement.supports === "function" &&
+				HTMLScriptElement.supports("speculationrules");
+
+			const ensureSpeculationRules = () => {
+				if (!supportsSpeculationRules) return;
+				if (document.querySelector(speculationRulesSelector)) return;
+
+				const script = document.createElement("script");
+				script.type = "speculationrules";
+				script.dataset.typefolioSpeculation = "true";
+				script.textContent = JSON.stringify(speculationRules);
+				document.head.appendChild(script);
+			};
 
 			const applyPanguToMain = () => {
 				const mainEl = document.getElementById("main");
 				if (mainEl) pangu.spacingNode(mainEl);
 			};
 
+			ensureSpeculationRules();
 			document.addEventListener("DOMContentLoaded", () => {
 				pangu.autoSpacingPage();
 				applyPanguToMain();
 			});
 
+			document.addEventListener("astro:page-load", ensureSpeculationRules);
 			document.addEventListener("astro:page-load", applyPanguToMain);
 		</script>
 	</body>
