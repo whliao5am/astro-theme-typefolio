@@ -2,7 +2,8 @@
 	--project-card-border: color-mix(in oklch, var(--color-global-text) 16%, var(--color-global-bg));
 	--project-card-shadow: 0.2rem 0.2rem 0
 		color-mix(in oklch, var(--color-global-text) 16%, var(--color-global-bg));
-	@apply grid min-h-full gap-[0.85rem] border px-4 pt-4 pr-[1.05rem] pb-4;
+	@apply grid min-h-full content-start gap-2 border px-4 pt-3 pr-3 pb-3;
+	grid-template-rows: auto 1fr;
 	background: var(--color-global-bg);
 	border-color: var(--project-card-border);
 	box-shadow: var(--project-card-shadow);
@@ -27,5 +28,6 @@ html[data-theme="dark"] .project-card {
 }
 
 .project-card-description {
-	@apply m-0 leading-[1.65];
+	@apply m-0;
+	align-self: start;
 }

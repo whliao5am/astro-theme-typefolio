@@ -97,22 +97,22 @@ const projectGroups: ProjectGroup[] = [
 
 const meta = {
 	title: "Projects",
-	description: "A curated overview of projects across Typst, agent skills, and Astro.",
+	description: "A curated overview of projects.",
 };
 ---
 
 <PageLayout meta={meta}>
-	<section class="index-content grid gap-10">
+	<section class="index-content grid gap-4">
 		<div>
 			<h1 class="title mb-4">Projects</h1>
-			<p class="max-w-2xl leading-[1.7]">
+			<p>
 				A small collection of work spanning publishing systems, agent workflows, and content-first
 				web experiments. Each entry is intentionally brief: just enough context to show the shape of
 				the idea and where it leads next.
 			</p>
 		</div>
 
-		<div class="grid gap-11">
+		<div class="grid gap-4">
 			{
 				projectGroups.map((group) => (
 					<section
@@ -127,7 +127,7 @@ const meta = {
 						</h2>
 						<ul class="m-0 grid list-none gap-4 p-0 md:grid-cols-2" role="list">
 							{group.projects.map((project) => (
-								<li>
+								<li class="m-0">
 									<ProjectCard {...project} />
 								</li>
 							))}
