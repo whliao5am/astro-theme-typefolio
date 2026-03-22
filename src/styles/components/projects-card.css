@@ -16,15 +16,16 @@ html[data-theme="dark"] .project-card {
 }
 
 .project-card-heading {
-	@apply grid grid-cols-[auto_1fr] items-start gap-3;
+	@apply relative;
 }
 
 .project-card-icon {
-	@apply text-accent-2 inline-flex min-h-[1.65rem] min-w-[1.65rem] items-center justify-center pt-[0.05rem] text-base leading-none font-bold;
+	@apply text-accent-2 pointer-events-none absolute top-0 left-0 inline-flex items-center justify-center text-2xl leading-none font-bold;
 }
 
 .project-card-title {
 	@apply text-accent-2 m-0 text-base leading-[1.45] font-semibold;
+	padding-inline-start: calc(2.2rem);
 }
 
 .project-card-description {
