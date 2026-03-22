@@ -1,5 +1,7 @@
 ---
 import { WEBMENTION_PINGBACK, WEBMENTION_URL } from "astro:env/client";
+import { ClientRouter } from "astro:transitions";
+import ThemeProvider from "@/components/ThemeProvider.astro";
 import { siteConfig } from "@/site.config";
 import type { SiteMeta } from "@/types";
 import "@/styles/global.css";
@@ -17,6 +19,7 @@ const socialImageURL = new URL(ogImage ? ogImage : "/social-card.png", Astro.url
 <meta charset="utf-8" />
 <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 <title>{siteTitle}</title>
+<ThemeProvider />
 <link href="/fonts/google-fonts.css" rel="stylesheet" />
 
 {/* Icons */}
@@ -85,3 +88,4 @@ const socialImageURL = new URL(ogImage ? ogImage : "/social-card.png", Astro.url
 }
 
 <meta content={Astro.generator} name="generator" />
+<ClientRouter fallback="swap" />
