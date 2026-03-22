@@ -102,30 +102,30 @@ const meta = {
 ---
 
 <PageLayout meta={meta}>
-	<section class="projects-page">
-		<div class="projects-intro">
+	<section class="index-content grid gap-10">
+		<div>
 			<h1 class="title mb-4">Projects</h1>
-			<p class="max-w-2xl">
+			<p class="max-w-2xl leading-[1.7]">
 				A small collection of work spanning publishing systems, agent workflows, and content-first
 				web experiments. Each entry is intentionally brief: just enough context to show the shape of
 				the idea and where it leads next.
 			</p>
 		</div>
 
-		<div class="projects-groups">
+		<div class="grid gap-11">
 			{
 				projectGroups.map((group) => (
 					<section
-						class="projects-group"
+						class="grid gap-4"
 						aria-labelledby={`projects-group-${group.title.toLowerCase().replace(/\s+/g, "-")}`}
 					>
 						<h2
-							class="title projects-group-title text-xl"
+							class="title mb-0 text-xl"
 							id={`projects-group-${group.title.toLowerCase().replace(/\s+/g, "-")}`}
 						>
 							{group.title}
 						</h2>
-						<ul class="projects-grid" role="list">
+						<ul class="m-0 grid list-none gap-4 p-0 md:grid-cols-2" role="list">
 							{group.projects.map((project) => (
 								<li>
 									<ProjectCard {...project} />
