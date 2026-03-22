@@ -1,0 +1,141 @@
+---
+import ProjectCard from "@/components/projects/ProjectCard.astro";
+import PageLayout from "@/layouts/Base.astro";
+
+type ProjectItem = {
+	astroIcon?: string;
+	description: string;
+	href: string;
+	icon?: string;
+	title: string;
+};
+
+type ProjectGroup = {
+	projects: ProjectItem[];
+	title: string;
+};
+
+const projectGroups: ProjectGroup[] = [
+	{
+		title: "Typst",
+		projects: [
+			{
+				icon: "T",
+				title: "Typst Portfolio Kit",
+				href: "https://example.com/projects/typst-portfolio-kit",
+				description:
+					"A clean publishing starter for essays, CVs, and slide decks, designed to keep typography crisp without overcomplicating authoring.",
+			},
+			{
+				icon: "§",
+				title: "Paper Layout Lab",
+				href: "https://example.com/projects/paper-layout-lab",
+				description:
+					"An experimental set of reusable Typst components for research notes, technical reports, and review-ready PDF workflows.",
+			},
+			{
+				icon: "µ",
+				title: "Micro Thesis Template",
+				href: "https://example.com/projects/micro-thesis-template",
+				description:
+					"A compact thesis template focused on sensible defaults, reliable references, and a calmer visual rhythm for academic writing.",
+			},
+		],
+	},
+	{
+		title: "Agent Skills",
+		projects: [
+			{
+				icon: "⚙️",
+				title: "Prompt Review Toolkit",
+				href: "https://example.com/projects/prompt-review-toolkit",
+				description:
+					"A reusable skill set for reviewing prompts, surfacing ambiguity, and tightening agent-facing specs before implementation begins.",
+			},
+			{
+				icon: "😆",
+				title: "Automation Starter Pack",
+				href: "https://example.com/projects/automation-starter-pack",
+				description:
+					"A small library of repeatable agent workflows for routine checks, recurring summaries, and low-friction project maintenance.",
+			},
+			{
+				icon: "⌘",
+				title: "Docs-to-Skills Bridge",
+				href: "https://example.com/projects/docs-to-skills-bridge",
+				description:
+					"A pattern for turning stable team documentation into lightweight, discoverable skills that keep agent behavior aligned with practice.",
+			},
+		],
+	},
+	{
+		title: "Astro",
+		projects: [
+			{
+				astroIcon: "mdi:rocket-launch",
+				title: "Typefolio",
+				href: "https://example.com/projects/typefolio",
+				description:
+					'An editorial Astro theme shaped around reading comfort, understated visual hierarchy, and a cleaner home for long-form writing. Example astro-icon usage: astroIcon: "mdi:rocket-launch".',
+			},
+			{
+				icon: "◫",
+				title: "Research Notes Garden",
+				href: "https://example.com/projects/research-notes-garden",
+				description:
+					"A quiet Astro knowledge space for short notes, cross-linked references, and incremental public thinking.",
+			},
+			{
+				icon: "∞",
+				title: "Launch Log",
+				href: "https://example.com/projects/launch-log",
+				description:
+					"A simple project journal template for tracking releases, experiments, and changelog-style updates without bloated tooling.",
+			},
+		],
+	},
+];
+
+const meta = {
+	title: "Projects",
+	description: "A curated overview of projects.",
+};
+---
+
+<PageLayout meta={meta}>
+	<section class="index-content grid gap-4">
+		<div>
+			<h1 class="title mb-4">Projects</h1>
+			<p>
+				A small collection of work spanning publishing systems, agent workflows, and content-first
+				web experiments. Each entry is intentionally brief: just enough context to show the shape of
+				the idea and where it leads next.
+			</p>
+		</div>
+
+		<div class="grid gap-4">
+			{
+				projectGroups.map((group) => (
+					<section
+						class="grid gap-4"
+						aria-labelledby={`projects-group-${group.title.toLowerCase().replace(/\s+/g, "-")}`}
+					>
+						<h2
+							class="title mb-0 text-xl"
+							id={`projects-group-${group.title.toLowerCase().replace(/\s+/g, "-")}`}
+						>
+							{group.title}
+						</h2>
+						<ul class="m-0 grid list-none gap-4 p-0 md:grid-cols-2" role="list">
+							{group.projects.map((project) => (
+								<li class="m-0">
+									<ProjectCard {...project} />
+								</li>
+							))}
+						</ul>
+					</section>
+				))
+			}
+		</div>
+	</section>
+</PageLayout>
