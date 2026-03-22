@@ -3,9 +3,10 @@ import ProjectCard from "@/components/projects/ProjectCard.astro";
 import PageLayout from "@/layouts/Base.astro";
 
 type ProjectItem = {
+	astroIcon?: string;
 	description: string;
 	href: string;
-	icon: string;
+	icon?: string;
 	title: string;
 };
 
@@ -52,7 +53,7 @@ const projectGroups: ProjectGroup[] = [
 					"A reusable skill set for reviewing prompts, surfacing ambiguity, and tightening agent-facing specs before implementation begins.",
 			},
 			{
-				icon: "↗",
+				icon: "😆",
 				title: "Automation Starter Pack",
 				href: "https://example.com/projects/automation-starter-pack",
 				description:
@@ -71,11 +72,11 @@ const projectGroups: ProjectGroup[] = [
 		title: "Astro",
 		projects: [
 			{
-				icon: "✦",
+				astroIcon: "mdi:rocket-launch",
 				title: "Typefolio",
 				href: "https://example.com/projects/typefolio",
 				description:
-					"An editorial Astro theme shaped around reading comfort, understated visual hierarchy, and a cleaner home for long-form writing.",
+					'An editorial Astro theme shaped around reading comfort, understated visual hierarchy, and a cleaner home for long-form writing. Example astro-icon usage: astroIcon: "mdi:rocket-launch".',
 			},
 			{
 				icon: "◫",

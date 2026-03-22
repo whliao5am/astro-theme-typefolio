@@ -28,6 +28,11 @@ html[data-theme="dark"] .project-card {
 	padding-inline-start: calc(2.2rem);
 }
 
+.project-card-astro-icon {
+	inline-size: 100%;
+	block-size: 100%;
+}
+
 .project-card-description {
 	@apply m-0;
 	align-self: start;

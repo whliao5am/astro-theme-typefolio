@@ -1,17 +1,22 @@
 ---
+import { Icon } from "astro-icon/components";
+
 type Props = {
+	astroIcon?: string;
 	description: string;
 	href: string;
-	icon: string;
+	icon?: string;
 	title: string;
 };
 
-const { description, href, icon, title } = Astro.props;
+const { astroIcon, description, href, icon, title } = Astro.props;
 ---
 
 <article class="project-card">
 	<div class="project-card-heading">
-		<span aria-hidden="true" class="project-card-icon">{icon}</span>
+		<span aria-hidden="true" class="project-card-icon">
+			{astroIcon ? <Icon class="project-card-astro-icon" name={astroIcon} /> : icon}
+		</span>
 		<h3 class="project-card-title">
 			<a class="typefolio-link-lighter" href={href} rel="noreferrer noopener" target="_blank">
 				{title}
