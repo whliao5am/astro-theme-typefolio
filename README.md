@@ -1,54 +1,101 @@
 # Typefolio
 
-Typefolio is a typography-focused blog and portfolio starter built with [Astro](https://astro.build/). It began as a fork of `astro-theme-cactus`, then evolved into a more editorial, reading-first theme with tighter spacing, bilingual typography support, a restrained black-and-white visual system, and several blog-oriented quality-of-life improvements.
+![Typefolio banner](./.github/assets/readme-banner.jpeg)
 
-The original upstream README is preserved in [`README-cactus.md`](./README-cactus.md).
+Typefolio is a typography-first personal website starter built with [Astro](https://astro.build/), designed for researchers and developers who value clarity, elegance, and focus. Its name comes from type and folio, reflecting a professional, minimal, and academic-minded approach to presenting writing, projects, and ideas. Guided by the principle of Occam's razor, Typefolio keeps only the elements that matter most, delivering a clean reading experience and the most essential features for serious personal publishing.
 
 ## Table Of Contents
 
 - [Typefolio](#typefolio)
   - [Table Of Contents](#table-of-contents)
   - [Key Features](#key-features)
+  - [Demo 💻](#demo-)
   - [Quick Start](#quick-start)
+    - [Deploy to Online Hosting](#deploy-to-online-hosting)
+    - [Clone the Template](#clone-the-template)
+    - [Fork the Template](#fork-the-template)
+    - [Local deployment](#local-deployment)
   - [Commands](#commands)
   - [Configure](#configure)
-  - [Adding Posts, Notes, and Tags](#adding-posts-notes-and-tags)
+  - [Adding Posts and Tags](#adding-posts-and-tags)
     - [Post Frontmatter](#post-frontmatter)
-    - [Note Frontmatter](#note-frontmatter)
     - [Tag Frontmatter](#tag-frontmatter)
   - [Search](#search)
   - [Comments](#comments)
-  - [Acknowledgment](#acknowledgment)
+  - [Developer Guide](#developer-guide)
+    - [TODO](#todo)
+    - [Git Hooks](#git-hooks)
   - [License](#license)
+  - [Acknowledgment](#acknowledgment)
 
 ## Key Features
 
-- Astro v5 starter for personal blogs, notes, and portfolio-style publishing
-- Markdown and MDX content collections for posts, notes, and tag pages
-- Black-and-white light/dark theme with a custom Typefolio visual identity
-- Four built-in accent palettes: the original scheme plus Slate Blue, Sepia Ink, and Muted Teal
-- Local bilingual font loading for English and Simplified Chinese text
-- Automatic CJK/Latin spacing refinement via [pangu](https://github.com/vinta/pangu.js)
-- Tuned prose spacing and blog typography for long-form reading
-- Sticky table of contents with active section highlighting on desktop
-- TL;DR block support via frontmatter
-- LaTeX math rendering via KaTeX (`$...$`, `$$...$$`)
-- Automatic backlinks for posts referenced by other posts
-- Giscus comments with theme synchronization and per-post opt-out
-- Homepage `What's New` timeline for research, writing, and project updates
-- Refined pinned-post presentation on the homepage and blog index
-- Generated OG images with a Typefolio theme icon
-- RSS, sitemap, robots.txt, web app manifest, and Pagefind-powered static search
-- Expressive Code syntax highlighting and Astro Icon integration
+- Astro v5 fast 🚀
+- Tailwind v4
+- Responsive & SEO-friendly
+- Better dark & light mode
+- custom Typefolio visual them
+- Tuned elements spacing and typography
+- MD & [MDX](https://docs.astro.build/en/guides/markdown-content/#mdx-only-features) posts & index pages
+  - TL;DR block support
+  - LaTeX support via KaTeX
+  - Automatic backlinks
+  - Giscus comments
+  - [Admonitions](https://astro-cactus.chriswilliams.dev/posts/markdown-elements/admonitions/) card
+  - [Expressive Code](https://expressive-code.com/) code blocks and syntax highlighter
+  - Github card
+- Project Showcase
+- Local bilingual font 🇬🇧 🇨🇳
+- Automatic CJK/Latin spacing via [pangu](https://github.com/vinta/pangu.js)
+- `What's New` timeline for research, writing, and project updates
+- [Satori](https://github.com/vercel/satori) for open graph generation
+- [Automatic RSS feeds](https://docs.astro.build/en/guides/rss)
+- [Webmentions](https://webmention.io/)
+- Auto-generated:
+  - [sitemap](https://docs.astro.build/en/guides/integrations-guide/sitemap/)
+  - [robots.txt](https://github.com/alextim/astro-lib/blob/main/packages/astro-robots-txt/README.md)
+  - [web app manifest](https://github.com/alextim/astro-lib/blob/main/packages/astro-webmanifest/README.md)
+- [Pagefind](https://pagefind.app/) static search library integration
+- [Astro Icon](https://github.com/natemoo-re/astro-icon) svg icon component
+
+## Demo 💻
+
+Check out the [Demo](https://typefolio.chriswilliams.dev/), hosted on Netlify.
 
 ## Quick Start
+
+### Deploy to Online Hosting
+
+[![Deploy with Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/chrismwilliams/astro-theme-cactus) [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fchrismwilliams%2Fastro-theme-cactus&project-name=astro-theme-cactus)
+
+[Astro docs](https://docs.astro.build/en/guides/deploy/) has a great section and breakdown of how to deploy your own Astro site on various platforms and their idiosyncrasies.
+
+### Clone the Template
+
+```bash
+# npm 7+
+npm create astro@latest -- --template chrismwilliams/astro-theme-cactus
+
+# pnpm
+pnpm dlx create-astro --template chrismwilliams/astro-theme-cactus
+```
+
+### Fork the Template
+
+[Create a new repo](https://github.com/chrismwilliams/astro-theme-cactus/generate) from this template.
+
+If you've forked the template, you can [sync the fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork) with your own project, remembering to **not** click Discard Changes as you will lose your own.
+
+If you have a template repository, you can add this template as a remote, [as discussed here](https://stackoverflow.com/questions/56577184/github-pull-changes-from-a-template-repository).
+
+### Local deployment
 
 ```bash
 pnpm install
 pnpm dev
 ```
 
-Then open `http://localhost:3000`.
+Then open `http://localhost:4321`.
 
 To build and preview production output locally:
 
@@ -63,7 +110,7 @@ pnpm preview
 | Command              | Action                                                         |
 | :------------------- | :------------------------------------------------------------- |
 | `pnpm install`       | Install dependencies                                           |
-| `pnpm dev`           | Start the local dev server at `localhost:3000`                 |
+| `pnpm dev`           | Start the local dev server at `localhost:4321`                 |
 | `pnpm build`         | Build the production site to `./dist/`                         |
 | `pnpm blogbuild`     | Generate the Pagefind search index from `./dist/`              |
 | `pnpm preview`       | Preview the production build locally                           |
@@ -72,26 +119,6 @@ pnpm preview
 | `pnpm format`        | Format the project with Prettier                               |
 | `pnpm hooks:install` | Install `pre-commit` Git hooks for `pre-commit` and `pre-push` |
 | `pnpm hooks:run`     | Run both the `pre-commit` and `pre-push` hook suites manually  |
-
-## Git Hooks
-
-This repository uses [`pre-commit`](https://pre-commit.com/) to keep local checks aligned with [`.github/workflows/ci.yml`](./.github/workflows/ci.yml).
-
-Install the tool once on your machine, then install the repository hooks:
-
-```bash
-uv tool install pre-commit
-pnpm hooks:install
-```
-
-If you do not use `uv`, `pipx install pre-commit` works as well.
-
-Configured hooks:
-
-- `pre-commit`: runs `prettier`, `biome`, and basic YAML/whitespace hygiene checks on staged files.
-- `pre-push`: runs `pnpm astro check` and `pnpm build` to mirror the current GitHub Actions validation flow before code leaves your machine.
-
-This split keeps normal commits quick while still catching project-wide type and build regressions before you push.
 
 ## Configure
 
@@ -113,17 +140,15 @@ This split keeps normal commits quick while still catching project-wide type and
   - This includes the intro copy and the `What's New` timeline items.
 - Add or edit content inside:
   - `src/content/blog/`
-  - `src/content/note/`
   - `src/content/tag/`
 
-## Adding Posts, Notes, and Tags
+## Adding Posts and Tags
 
 This project uses [Astro Content Collections](https://docs.astro.build/en/guides/content-collections/) to organize local Markdown and MDX files with schema validation in `src/content.config.ts`.
 
-Adding a post, note, or tag page is as simple as creating a new `.md` or `.mdx` file in:
+Adding a post or tag page is as simple as creating a new `.md` or `.mdx` file in:
 
 - `src/content/blog`
-- `src/content/note`
 - `src/content/tag`
 
 The filename becomes the slug. Tag entries can override the generated tag archive copy for matching tag names.
@@ -161,14 +186,6 @@ giscus: true
 ---
 ```
 
-### Note Frontmatter
-
-| Property      | Description                              |
-| :------------ | :--------------------------------------- |
-| `title`       | Note title. Required.                    |
-| `description` | Optional meta description.               |
-| `publishDate` | ISO 8601 datetime with offset. Required. |
-
 ### Tag Frontmatter
 
 | Property      | Description                           |
@@ -205,6 +222,38 @@ Typefolio supports [Giscus](https://giscus.app/) comments on blog posts.
 4. Toggle comment providers globally through `commentDisplayConfig` in `src/site.config.ts`.
 5. Disable comments per post with `giscus: false` in the post frontmatter.
 
+## Developer Guide
+
+### TODO
+
+- [ ] Photography template.
+- [ ] Better open graph png images.
+- [ ] Update giscus theme color.
+- [ ] Better image, icon pipeline.
+- [ ] Better pagefind search style.
+- [ ] Selected paper section.
+- [ ] Important news, news pages.
+
+### Git Hooks
+
+This repository uses [`pre-commit`](https://pre-commit.com/) to keep local checks aligned with [`.github/workflows/ci.yml`](./.github/workflows/ci.yml).
+
+Install the tool once on your machine, then install the repository hooks:
+
+```bash
+uv tool install pre-commit
+# or
+pipx install pre-commit
+```
+
+```bash
+pnpm hooks:install
+```
+
+## License
+
+MIT. See [LICENSE](./LICENSE).
+
 ## Acknowledgment
 
 Typefolio is based on:
@@ -218,7 +267,3 @@ Related inspiration:
 - [Motherfucking Website](https://motherfuckingwebsite.com/)
 - [Better Motherfucking Website](http://bettermotherfuckingwebsite.com/)
 - [The Best Motherfucking Website](https://thebestmotherfucking.website/)
-
-## License
-
-MIT. See [LICENSE](./LICENSE).
