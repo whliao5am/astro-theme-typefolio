@@ -17,7 +17,7 @@ For a related entry in the same series, see [Pagination Preview Post 3](/blog/pa
 
 ```astro
 <div>
-    <h1>Hello, world!</h1>
+	<h1>Hello, world!</h1>
 </div>
 ```
 
