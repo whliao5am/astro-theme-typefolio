@@ -68,6 +68,9 @@
 	"overrides": [
 		{
 			"includes": ["**/*.astro"],
+			"formatter": {
+				"enabled": false
+			},
 			"linter": {
 				"rules": {
 					"style": {
