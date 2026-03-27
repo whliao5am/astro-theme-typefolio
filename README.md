@@ -38,8 +38,6 @@ Typefolio is a typography-first personal website starter built with [Astro](http
 
 ## Key Features
 
-- Astro v5 fast 🚀
-- Tailwind v4
 - Responsive & SEO-friendly
 - Better dark & light mode
 - custom Typefolio visual them
