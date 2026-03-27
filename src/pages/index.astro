@@ -11,11 +11,15 @@ import { collectionDateSort } from "@/utils/date";
 
 // Posts
 const allPosts = await getAllPosts();
-const allPostsByDate = allPosts.sort(collectionDateSort) as CollectionEntry<"blog">[];
+const allPostsByDate = allPosts.sort(
+	collectionDateSort,
+) as CollectionEntry<"blog">[];
 
 // Pinned Posts, set to a max of 3;
 const MAX_PINNED_POSTS = 5;
-const pinnedPosts = allPostsByDate.filter((p) => p.data.pinned).slice(0, MAX_PINNED_POSTS);
+const pinnedPosts = allPostsByDate
+	.filter((p) => p.data.pinned)
+	.slice(0, MAX_PINNED_POSTS);
 
 const whatsNewItems: WhatsNewItem[] = [
 	{
@@ -30,7 +34,7 @@ const whatsNewItems: WhatsNewItem[] = [
 		kind: "service",
 		label: "Service",
 		description:
-			"Expanded the starter with Pagefind-powered static search and tighter archive navigation for readers moving between notes, posts, and topic pages.",
+			"Expanded the template with Pagefind-powered static search and tighter archive navigation for readers moving between notes, posts, and topic pages.",
 	},
 	{
 		date: "Jan 2026",
@@ -62,10 +66,11 @@ const whatsNewItems: WhatsNewItem[] = [
 		<section>
 			<h1 class="title mb-4">Astro Typefolio</h1>
 			<p>
-				Typefolio is a professional, elegant, static-fast Astro template for researchers and developers
-				who want a focused place for writing, projects, notes, and release updates.
-				It keeps the entry surface concise so visitors understand the template quickly without
-				wading through a starter-kit checklist.
+				Typefolio is a professional, elegant, static-fast Astro template for
+				researchers and developers who want a focused place for writing,
+				projects, notes, and release updates. It keeps the entry surface concise
+				so visitors understand the template quickly without wading through a
+				starter-kit checklist.
 			</p>
 			<p>
 				Use the
@@ -77,12 +82,16 @@ const whatsNewItems: WhatsNewItem[] = [
 					height="1.5em"
 					target="_blank"
 				/>
-				to clone the template, inspect the current feature set, and track the official v1 content
-				refresh.
+				to clone the template, inspect the current feature set, and track the official
+				v1 content refresh.
 			</p>
 			<p>
-				From here, the homepage points to the essentials first: pinned writing, current news, and
-				the repository entry point that powers the full Typefolio setup.
+				From here, the homepage points to the essentials first: pinned writing,
+				current news, and the repository entry point that powers the full
+				Typefolio setup. For the full capability breakdown, visit the <a
+					class="typefolio-link"
+					href="/about">About page</a
+				>.
 			</p>
 		</section>
 	</div>
@@ -92,12 +101,12 @@ const whatsNewItems: WhatsNewItem[] = [
 			<section class="mt-8">
 				<h2 class="title mb-4 flex items-center gap-2 text-xl">
 					Pinned Posts
-          <Icon
-								aria-hidden="true"
-								class="h-5 w-5 rotate-45 text-accent"
-								focusable="false"
-								name="mdi:pin-outline"
-							/>
+					<Icon
+						aria-hidden="true"
+						class="text-accent h-5 w-5 rotate-45"
+						focusable="false"
+						name="mdi:pin-outline"
+					/>
 				</h2>
 				<ul class="space-y-1" role="list">
 					{pinnedPosts.map((p) => (
