@@ -1,41 +1,64 @@
 # Concerns
 
-## Overview
+## 1. Dirty Working Tree During Mapping
 
-The codebase is small and readable, but several areas are fragile because they depend on build-time conventions, browser behavior, or manual workflow discipline rather than automated enforcement.
+The repository is currently not clean. Mapping happened while webmention-related files were being removed from the working tree. Any planning that assumes the last commit matches the current local state could drift if those changes are not committed or are later modified.
 
-## Build And Workflow Concerns
+## 2. No Automated Tests For Core Custom Logic
 
-- Search is a two-step workflow: `pnpm build` followed by `pnpm blogbuild`. Missing the second step leaves search unavailable in production despite a successful site build.
-- The repo currently relies on process documentation instead of automated CI definitions visible in the codebase root.
-- Hooks can rewrite files at commit time, which can surprise contributors and interrupt commits if they expect a pure validation pass.
+There are no unit or integration tests for:
 
-## Frontend Runtime Concerns
+- [`src/plugins/remark-admonitions.ts`](../../src/plugins/remark-admonitions.ts)
+- [`src/plugins/remark-github-card.ts`](../../src/plugins/remark-github-card.ts)
+- [`src/plugins/remark-post-backlinks.ts`](../../src/plugins/remark-post-backlinks.ts)
+- [`src/utils/backlinks.ts`](../../src/utils/backlinks.ts)
+- [`src/utils/generateToc.ts`](../../src/utils/generateToc.ts)
 
-- `src/components/Search.astro` implements a custom element, dialog behavior, keyboard shortcuts, and lazy imports in one file. This is a likely regression hotspot.
-- `src/components/blog/Giscus.astro` depends on third-party script loading and theme synchronization via `postMessage` and DOM observation.
-- `src/layouts/Base.astro` adds multiple document-level event listeners and runtime enhancements; subtle lifecycle issues may emerge during Astro page transitions.
+These are high-value custom behaviors with failure modes that `pnpm check` will not fully catch.
 
-## Content Pipeline Concerns
+## 3. Client-Side GitHub API Calls Are Fragile
 
-- Backlinks depend on markdown link resolution behavior between `src/plugins/remark-post-backlinks.ts`, `src/utils/backlinks.ts`, and `src/data/post.ts`. Link-shape changes can silently break derived backlinks.
-- Content schemas are reasonably strict, but the note collection requires a specific datetime format that contributors may get wrong.
-- Example/demo content is mixed with theme source content, which can blur the line between shipped feature examples and maintainers' intended defaults.
+[`src/plugins/remark-github-card.ts`](../../src/plugins/remark-github-card.ts) emits inline scripts that fetch GitHub APIs in the browser. Risks:
 
-## Architecture Concerns
+- unauthenticated rate limits
+- API shape changes
+- content layout breakage when fetch fails
+- CSP sensitivity because cards depend on inline script execution
 
-- Theme configuration is centralized, which is good, but many files depend on `src/site.config.ts`; changes there have broad blast radius.
-- There is no dedicated abstraction layer for client-side interactive features, so custom elements and inline scripts may accumulate complexity over time.
-- The project uses both Tailwind config customization and global CSS tokens; future styling changes need care to avoid drift between the two systems.
+## 4. Search Is Easy To Misread During Development
 
-## Testing And Reliability Concerns
+[`src/components/Search.astro`](../../src/components/Search.astro) intentionally disables real search in dev mode. This is documented, but it creates a common confusion path: the feature appears present but is not testable until build plus Pagefind indexing have been run.
 
-- No automated unit/e2e coverage exists for route behavior, client interactivity, or plugin transforms.
-- OG image generation in `src/pages/og-image/[...slug].png.ts` depends on binary/font tooling that can fail in environment-specific ways.
-- Pagefind behavior is only validated when maintainers remember to run `pnpm blogbuild` and preview locally.
+## 5. Heavy Reliance On Inline Scripts
 
-## Security And Operational Concerns
+Theme switching, search, GitHub cards, and post UI behaviors are implemented with inline scripts inside Astro files. This keeps the architecture simple, but it raises maintenance cost around:
 
-- The site is mostly static, so the attack surface is low, but third-party scripts like Giscus still deserve scrutiny.
-- Canonical URLs and feed output depend on `siteConfig.url`; incorrect values can leak into OG/RSS/sitemap output.
-- The deleted `.example.env` noted in recent history suggests environment example coverage may now be incomplete if new secrets are introduced later.
+- lifecycle events during Astro page transitions
+- CSP hardening
+- duplicated DOM-query logic
+- subtle hydration-free regressions
+
+## 6. Generated Output Is Present In Repo
+
+`dist/` exists locally and may be checked or reasoned about accidentally. Since routes and tag pages are derived from content, stale generated output can mislead debugging if a contributor inspects `dist/` before rebuilding.
+
+## 7. Some Content And Copy Still Look Template-Like
+
+[`src/pages/index.astro`](../../src/pages/index.astro) and parts of [`README.md`](../../README.md) still contain starter-theme language and placeholder-style examples. That is acceptable for a template repo, but it can blur the line between “showcase content” and “real product behavior.”
+
+## 8. Comment System Is Publicly Configured
+
+Giscus identifiers in [`src/site.config.ts`](../../src/site.config.ts) are public-safe, but they are hard-coded to a specific repo/category. Template consumers who forget to replace them may accidentally point discussions at the upstream configuration.
+
+## 9. Build-Time Rendering Features Increase Change Risk
+
+The project combines several build-sensitive features:
+
+- MDX
+- custom remark plugins
+- KaTeX
+- expressive-code
+- Satori/Resvg OG images
+- Pagefind post-processing
+
+This is still manageable, but it means seemingly small content or config edits can have wide downstream effects. Any roadmap touching markdown, rendering, or asset pipelines should plan explicit build verification.

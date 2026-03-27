@@ -2,50 +2,66 @@
 
 ## Formatting
 
-- Tabs are the indentation standard, documented in `AGENTS.md`
-- Prettier is configured in `.prettierrc.js`
-- Biome formatting and lint rules are configured in `biome.json`
-- The codebase prefers semicolons and double quotes
+- Indentation uses tabs, consistent with [`biome.json`](../../biome.json) and [`.prettierrc.js`](../../.prettierrc.js).
+- JavaScript and TypeScript use semicolons and double quotes.
+- Astro files are formatted by Prettier with the `astro` parser override.
+- Tailwind classes are kept inline in Astro markup rather than abstracted aggressively.
 
-## File Naming
+## TypeScript And Import Style
 
-- Astro components use `PascalCase`, for example `src/components/BaseHead.astro`
-- Utility modules use descriptive lowercase/camelCase names, for example `src/utils/generateToc.ts`
-- Markdown content uses slug-friendly filenames and directory names, for example `src/content/blog/cover-image/index.md`
+- The codebase prefers explicit typing for public helpers, for example in [`src/data/post.ts`](../../src/data/post.ts) and [`src/utils/generateToc.ts`](../../src/utils/generateToc.ts).
+- Path alias `@/*` is used for imports from `src/`.
+- `import type` is enforced by Biome outside Astro overrides.
+- ESM syntax is used everywhere.
 
-## TypeScript Patterns
+## Content Schema Conventions
 
-- Shared interfaces are centralized in `src/types.ts`
-- Astro route files frequently use `GetStaticPaths` and `InferGetStaticPropsType`, as in `src/pages/blog/[...slug].astro`
-- Type imports are used in many TS files, matching the Biome rule set
-- Constants are preferred over mutable state unless caching is intentional, as in `backlinksByPostPromise` in `src/data/post.ts`
+- Frontmatter is validated centrally in [`src/content.config.ts`](../../src/content.config.ts).
+- Blog content fields have strong defaults:
+  - `draft: false`
+  - `pinned: false`
+  - `giscus: true`
+  - `tldr: []`
+- Tags are normalized to lowercase and deduplicated before use.
 
-## Configuration Patterns
+## Component Patterns
 
-- Site-wide metadata is centralized in `src/site.config.ts`
-- Astro integration wiring stays in `astro.config.ts`
-- Route and layout code reads from `siteConfig` rather than duplicating metadata
+- Layouts are thin composition layers; route files usually fetch data and pass it down.
+- Interactive behavior is embedded with inline `<script>` blocks in Astro components rather than moved into a framework runtime.
+- Web components are used for isolated browser interactions:
+  - `site-search`
+  - `theme-toggle`
 
-## Content Conventions
+## Markdown Plugin Patterns
 
-- Blog entries support `title`, `description`, `publishDate`, optional `updatedDate`, `tags`, `tldr`, `pinned`, and `giscus` per `src/content.config.ts`
-- Tag names are normalized to lowercase and de-duplicated in `src/content.config.ts`
-- Notes have a simpler schema and require ISO datetime strings with timezone offsets
+- Plugins are single-purpose and colocated under `src/plugins/`.
+- Shared AST helpers are extracted to [`src/utils/remark.ts`](../../src/utils/remark.ts).
+- Plugin output often augments Astro frontmatter via `file.data.astro.frontmatter`, as seen in [`src/plugins/remark-reading-time.ts`](../../src/plugins/remark-reading-time.ts) and [`src/plugins/remark-post-backlinks.ts`](../../src/plugins/remark-post-backlinks.ts).
 
-## UI And Styling Conventions
+## Error Handling Style
 
-- Tailwind utility classes are heavily used inline in Astro templates
-- Component-specific CSS is extracted when inline utilities would be unwieldy, for example `src/styles/blocks/search.css`
-- Typography customizations are centralized in `tailwind.config.ts`
+- Most UI-side failures degrade gracefully with `console.warn`, not thrown runtime errors.
+- Examples:
+  - Missing dialog/button in [`src/components/Search.astro`](../../src/components/Search.astro)
+  - GitHub card fetch failures in [`src/plugins/remark-github-card.ts`](../../src/plugins/remark-github-card.ts)
+  - Invalid theme value warnings in [`src/components/ThemeProvider.astro`](../../src/components/ThemeProvider.astro)
 
-## Error Handling And Defensive Code
+## Data And State Conventions
 
-- Utility functions often return `undefined` instead of throwing for invalid inputs, for example `resolvePostLinkToId()` in `src/utils/backlinks.ts`
-- Client-side components tend to warn and return early when expected DOM nodes are missing, for example `src/components/Search.astro`
-- Draft filtering is environment-sensitive through `import.meta.env.PROD` in `src/data/post.ts`
+- There is minimal shared mutable state.
+- The one notable module-level cache is `backlinksByPostPromise` in [`src/data/post.ts`](../../src/data/post.ts), used to avoid recomputing backlinks repeatedly.
+- DOM state is generally read from attributes such as `data-theme` rather than centralized stores.
 
-## Documentation And Workflow Conventions
+## Accessibility And Semantics
 
-- Repository process rules are duplicated in `AGENTS.md` and `CLAUDE.md`
-- The repo expects related docs/config comments to be updated when behavior changes
-- The project currently has some executable-bit noise on text files, which appears incidental rather than intentional
+- The repo includes structural a11y patterns:
+  - skip link via [`src/components/SkipLink.astro`](../../src/components/SkipLink.astro)
+  - labeled nav/breadcrumb/feed/comment regions
+  - `sr-only` text for icon-only buttons and links
+- Biome’s accessibility rules are enabled with selective overrides in [`biome.json`](../../biome.json).
+
+## Documentation Conventions
+
+- Repo usage and setup are documented in [`README.md`](../../README.md).
+- Collaboration and repo workflow rules are duplicated in [`AGENTS.md`](../../AGENTS.md) and [`CLAUDE.md`](../../CLAUDE.md).
+- The repository currently expects doc updates alongside behavior/config changes.

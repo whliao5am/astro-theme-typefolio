@@ -2,57 +2,77 @@
 
 ## Overview
 
-The project is mostly self-contained and build-time oriented. It has very few runtime service dependencies, but it integrates with multiple content, metadata, and deployment-adjacent tools.
+The codebase is mostly self-contained. External integrations are concentrated in build-time Astro integrations, client-side embeds, and content enhancement APIs.
 
 ## Astro Integrations
 
-- `@astrojs/mdx` in `astro.config.ts` enables `.mdx` content support
-- `@astrojs/sitemap` generates `sitemap-index.xml`
-- `astro-robots-txt` generates `robots.txt`
-- `astro-webmanifest` generates `manifest.webmanifest` and app icons from `public/icon.svg`
-- `astro-expressive-code` adds themed code block rendering
-- `astro-icon` loads icon sets for use in components such as `src/pages/index.astro` and `src/components/blog/Giscus.astro`
+Configured in [`astro.config.ts`](../../astro.config.ts):
 
-## Content Integrations
+- `expressiveCode(expressiveCodeOptions)` for enhanced code blocks.
+- `icon()` from `astro-icon`.
+- `sitemap()` from `@astrojs/sitemap`.
+- `mdx()` from `@astrojs/mdx`.
+- `robotsTxt()` from `astro-robots-txt`.
+- `webmanifest()` from `astro-webmanifest`.
 
-- Astro content collections load from local files using `glob()` in `src/content.config.ts`
-- RSS feeds are generated from local collection data in `src/pages/rss.xml.ts` and `src/pages/notes/rss.xml.ts`
-- Pagefind indexing is invoked post-build by the `blogbuild` script in `package.json`
+These are build-time integrations with no custom remote credentials visible in the repo.
 
-## Comment And Embedding Integrations
+## Search Integration
 
-- Giscus is the only live third-party comment integration, implemented in `src/components/blog/Giscus.astro`
-- Repository/category identifiers are configured in `src/site.config.ts`
-- The Giscus client script is loaded from `https://giscus.app/client.js`
+- **Pagefind** is wired as a post-build step through `pnpm blogbuild` in [`package.json`](../../package.json).
+- The UI is lazy-loaded in [`src/components/Search.astro`](../../src/components/Search.astro) using `@pagefind/default-ui`.
+- Search only functions against generated build artifacts under `dist/pagefind/`.
 
-## Frontend Runtime Integrations
+## Comments Integration
 
-- `pangu/browser` is loaded in `src/layouts/Base.astro` to auto-insert CJK/Latin spacing
-- The browser `speculationrules` API is used in `src/layouts/Base.astro` for prefetch/prerender hints
-- Pagefind UI is lazy-loaded client-side in `src/components/Search.astro`
+- **Giscus** is the only comment provider currently wired.
+- Configuration lives in [`src/site.config.ts`](../../src/site.config.ts) via `giscusConfig`.
+- The embed is mounted client-side in [`src/components/blog/Giscus.astro`](../../src/components/blog/Giscus.astro).
+- Required identifiers:
+  - `repo`
+  - `repoId`
+  - `category`
+  - `categoryId`
 
-## Build-Time Asset Integrations
+## GitHub API Usage
 
-- `satori` and `@resvg/resvg-js` render blog OG images in `src/pages/og-image/[...slug].png.ts`
-- Local font binaries from `src/assets/roboto-mono-regular.ttf` and `src/assets/roboto-mono-700.ttf` are embedded into OG image generation
-- Local Google font subsets are served from `public/fonts/`
+- [`src/plugins/remark-github-card.ts`](../../src/plugins/remark-github-card.ts) generates client-side cards that fetch:
+  - `https://api.github.com/repos/{owner}/{repo}`
+  - `https://api.github.com/users/{username}`
+- These requests are unauthenticated and run in the browser after page load.
+- Failure mode is soft: the card stays in an error state and logs a warning.
 
-## External Services And APIs
+## RSS And Metadata
 
-- No database integration is present
-- No auth provider integration is present
-- No payment provider integration is present
-- No webhook receiver or sender exists in the current codebase
-- No custom backend API routes are present beyond generated assets/feeds like RSS and OG image endpoints
+- Blog RSS route: [`src/pages/rss.xml.ts`](../../src/pages/rss.xml.ts)
+- Notes RSS route: [`src/pages/notes/rss.xml.ts`](../../src/pages/notes/rss.xml.ts)
+- Base metadata and feed auto-discovery links live in [`src/components/BaseHead.astro`](../../src/components/BaseHead.astro).
 
-## Deployment And Hosting Assumptions
+## OG Image Pipeline
 
-- README links deployment flows for Netlify and Vercel
-- The app itself is configured for static output, so hosting assumptions are CDN/static hosting friendly
-- `siteConfig.url` in `src/site.config.ts` is treated as canonical site origin and is used in multiple generation flows
+- [`src/pages/og-image/[...slug].png.ts`](../../src/pages/og-image/[...slug].png.ts) integrates:
+  - `satori` for SVG rendering
+  - `satori-html` for templated markup
+  - `@resvg/resvg-js` for PNG output
+- Fonts are loaded from local assets:
+  - [`src/assets/roboto-mono-regular.ttf`](../../src/assets/roboto-mono-regular.ttf)
+  - [`src/assets/roboto-mono-700.ttf`](../../src/assets/roboto-mono-700.ttf)
 
-## Integration Risks
+## Typography And Browser Features
 
-- Giscus relies on external script availability and correct repository metadata
-- Pagefind requires an explicit extra step after `pnpm build`
-- OG image generation depends on font files and `@resvg/resvg-js` availability at build time
+- `pangu/browser` is imported in [`src/layouts/Base.astro`](../../src/layouts/Base.astro) to insert CJK/Latin spacing client-side.
+- The base layout also injects browser speculation rules for prefetch and prerender.
+
+## CI And Developer Tooling
+
+- GitHub Actions CI in [`.github/workflows/ci.yml`](../../.github/workflows/ci.yml) installs Node 22 and runs `pnpm check` plus `pnpm build`.
+- `pre-commit` hooks in [`.pre-commit-config.yaml`](../../.pre-commit-config.yaml) run:
+  - YAML/EOL/whitespace checks
+  - Biome on staged JS/TS-like files
+  - Prettier on staged Astro/Markdown/HTML-like files
+
+## Environment And Secrets
+
+- There are currently no active runtime secrets declared in the app config.
+- Giscus values are hard-coded in [`src/site.config.ts`](../../src/site.config.ts), which is acceptable for public repo/discussion identifiers but not for private secrets.
+- Legacy webmention env wiring appears removed in the current working tree.

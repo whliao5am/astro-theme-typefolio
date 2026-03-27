@@ -2,58 +2,61 @@
 
 ## Overview
 
-This repository is a static-first Astro theme for personal publishing. The primary stack is Astro 5, TypeScript, Tailwind CSS v4, and Markdown/MDX content collections, with additional plugins for typography, math, code rendering, search, RSS, and social images.
+Typefolio is a static Astro 5 site starter built on Node.js 22 and `pnpm`. The repo is published as an npm template package (`package.json`) and produces static HTML, RSS, and generated OG images through Astro build-time routes.
 
-## Languages
+## Runtime
 
-- TypeScript in app/config files such as `astro.config.ts`, `tailwind.config.ts`, `src/content.config.ts`, and `src/pages/og-image/[...slug].png.ts`
-- Astro component files in `src/components/`, `src/layouts/`, and `src/pages/`
-- Markdown and MDX content in `src/content/blog/`, `src/content/note/`, and `src/content/tag/`
-- CSS in `src/styles/global.css`, `src/styles/blocks/search.css`, and `src/styles/components/*.css`
-- YAML for Git hooks in `.pre-commit-config.yaml`
+- **Language:** TypeScript-first project with Astro components and Markdown/MDX content.
+- **Runtime:** Node.js 22 in CI and local development (`README.md`, `.github/workflows/ci.yml`).
+- **Package manager:** `pnpm` with a lockfile committed at `pnpm-lock.yaml`.
+- **Module system:** ESM via `"type": "module"` in `package.json`.
 
-## Runtime And Build
+## Core Frameworks
 
-- Node.js 22 is the expected runtime per `AGENTS.md`
-- `pnpm` is the package manager and lockfile owner via `pnpm-lock.yaml`
-- ESM is enabled with `"type": "module"` in `package.json`
-- Astro outputs a static site via `astro build`
-- Vite powers local dev/build and is extended in `astro.config.ts`
+- **Astro:** Main app framework and router (`astro`, `@astrojs/mdx`, `@astrojs/sitemap`, `@astrojs/rss`).
+- **Tailwind CSS v4:** Styling entry through `@tailwindcss/vite` in [`astro.config.ts`](../../astro.config.ts) and prose customization in [`tailwind.config.ts`](../../tailwind.config.ts).
+- **Astro Icon:** Inline icon rendering in components like [`src/pages/index.astro`](../../src/pages/index.astro) and [`src/components/blog/Giscus.astro`](../../src/components/blog/Giscus.astro).
+- **astro-expressive-code:** Build-time code block rendering configured from [`src/site.config.ts`](../../src/site.config.ts).
 
-## Core Frameworks And Libraries
+## Content Stack
 
-- `astro` in `package.json` is the core framework
-- `@astrojs/mdx`, `@astrojs/sitemap`, and `@astrojs/rss` handle content extensions and output
-- `@tailwindcss/vite` and `tailwindcss` provide styling infrastructure
-- `astro-expressive-code` powers code block rendering, configured from `src/site.config.ts`
-- `astro-icon` provides icon rendering in Astro components
-- `astro-robots-txt` and `astro-webmanifest` generate site metadata assets
+- **Astro Content Collections:** Declared in [`src/content.config.ts`](../../src/content.config.ts) for `blog`, `note`, and `tag`.
+- **Markdown/MDX loaders:** `glob()` loaders read from `src/content/blog`, `src/content/note`, and `src/content/tag`.
+- **Math:** `remark-math` + `rehype-katex` in [`astro.config.ts`](../../astro.config.ts).
+- **Custom remark plugins:** Backlinks, GitHub cards, reading time, and admonitions under `src/plugins/`.
 
-## Content And Rendering Tooling
+## Asset And Build Tooling
 
-- `src/content.config.ts` defines the `blog`, `note`, and `tag` collections with Zod schemas
-- `remark-math` and `rehype-katex` support math rendering
-- Custom remark plugins live in `src/plugins/`
-- `rehype-autolink-headings`, `rehype-external-links`, and `rehype-unwrap-images` shape rendered content output
-- `reading-time` is used through `src/plugins/remark-reading-time.ts`
+- **Satori + Resvg:** OG image generation in [`src/pages/og-image/[...slug].png.ts`](../../src/pages/og-image/[...slug].png.ts).
+- **Sharp:** Image pipeline dependency pinned in `package.json`.
+- **Pagefind:** Post-build static search index generated via `pnpm blogbuild`.
+- **pangu:** Client-side CJK/Latin spacing adjustment in [`src/layouts/Base.astro`](../../src/layouts/Base.astro).
 
-## Search And Asset Generation
+## Formatting And Static Analysis
 
-- Pagefind is integrated through the `blogbuild` script in `package.json`
-- Search UI mounts dynamically in `src/components/Search.astro`
-- OG image generation uses `satori`, `satori-html`, and `@resvg/resvg-js` in `src/pages/og-image/[...slug].png.ts`
-- Image optimization relies on `sharp`
+- **TypeScript config:** Strict Astro preset plus `@/*` path alias in [`tsconfig.json`](../../tsconfig.json).
+- **Biome:** Lint and JS/TS formatting rules in [`biome.json`](../../biome.json).
+- **Prettier:** Astro-aware formatting in [`.prettierrc.js`](../../.prettierrc.js).
+- **pre-commit:** Local hook orchestration in [`.pre-commit-config.yaml`](../../.pre-commit-config.yaml).
 
-## Formatting And Quality Tooling
+## Build Commands
 
-- Biome configuration lives in `biome.json`
-- Prettier configuration lives in `.prettierrc.js`
-- Git hooks are managed by `pre-commit` through `.pre-commit-config.yaml`
-- `pnpm check` runs `astro check && biome check`
+- `pnpm dev` / `pnpm start`: Local Astro dev server.
+- `pnpm build`: Static production build.
+- `pnpm blogbuild`: Pagefind indexing against `dist/`.
+- `pnpm preview`: Preview built output.
+- `pnpm check`: `astro check && biome check`.
 
-## Configuration Surface
+## Important Config Files
 
-- Site metadata and theme-level options live in `src/site.config.ts`
-- Astro integration wiring lives in `astro.config.ts`
-- Tailwind typography customization lives in `tailwind.config.ts`
-- TS path aliases are configured in `tsconfig.json`
+- [`package.json`](../../package.json)
+- [`astro.config.ts`](../../astro.config.ts)
+- [`tailwind.config.ts`](../../tailwind.config.ts)
+- [`biome.json`](../../biome.json)
+- [`.prettierrc.js`](../../.prettierrc.js)
+- [`tsconfig.json`](../../tsconfig.json)
+
+## Notes
+
+- The project currently has a dirty working tree during mapping, including removal of legacy webmention-related files. The map reflects the current working state, not necessarily the last committed state.
+- There is no server database or backend runtime in the app itself; everything is static generation plus optional third-party embeds.
