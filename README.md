@@ -9,7 +9,7 @@
 [![pnpm](https://img.shields.io/badge/pnpm-workspace-F69220?logo=pnpm&logoColor=white)](https://pnpm.io/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-2ea44f)](./LICENSE)
 
-Typefolio is a typography-first personal website starter built with [Astro](https://astro.build/), designed for researchers and developers who value clarity, elegance, and focus. Its name comes from type and folio, reflecting a professional, minimal, and academic-minded approach to presenting writing, projects, and ideas. Guided by the principle of Occam's razor, Typefolio keeps only the elements that matter most, delivering a clean reading experience and the most essential features for serious personal publishing.
+Typefolio is a professional, elegant, static-fast publishing template built with [Astro](https://astro.build/) for researchers and developers who want a focused personal site without a heavy product shell. Guided by Occam's razor, Typefolio keeps the publishing surfaces that matter most and trims the rest. The default feature set focuses on readable long-form writing, news timeline, lightweight project presentation, and maintainable site structure.
 
 ## Table Of Contents
 
@@ -38,9 +38,9 @@ Typefolio is a typography-first personal website starter built with [Astro](http
 
 ## Key Features
 
-- Responsive & SEO-friendly
-- Better dark & light mode
-- custom Typefolio visual them
+- Responsive, SEO-friendly layout
+- Balanced dark and light themes
+- Custom Typefolio visual theme
 - Tuned elements spacing and typography
 - MD & [MDX](https://docs.astro.build/en/guides/markdown-content/#mdx-only-features) posts & index pages
   - TL;DR block support
@@ -50,10 +50,10 @@ Typefolio is a typography-first personal website starter built with [Astro](http
   - [Admonitions](https://astro-cactus.chriswilliams.dev/posts/markdown-elements/admonitions/) card
   - [Expressive Code](https://expressive-code.com/) code blocks and syntax highlighter
   - Github card
-- Project Showcase
+- Project pages and showcase sections
 - Local bilingual font 🇬🇧 🇨🇳
 - Automatic CJK/Latin spacing via [pangu](https://github.com/vinta/pangu.js)
-- `What's New` timeline for research, writing, and project updates
+- News timeline for research, writing, release, and project updates
 - [Satori](https://github.com/vercel/satori) for open graph generation
 - [Automatic RSS feeds](https://docs.astro.build/en/guides/rss)
 - Auto-generated:
