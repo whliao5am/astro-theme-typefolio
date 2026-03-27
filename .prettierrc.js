@@ -1,6 +1,5 @@
 /** @type {import("@types/prettier").Options} */
 export default {
-	printWidth: 100,
 	semi: true,
 	singleQuote: false,
 	tabWidth: 2,
@@ -11,12 +10,6 @@ export default {
 			files: "**/*.astro",
 			options: {
 				parser: "astro",
-			},
-		},
-		{
-			files: ["*.mdx", "*.md"],
-			options: {
-				printWidth: 80,
 			},
 		},
 	],
