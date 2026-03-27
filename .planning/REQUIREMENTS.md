@@ -7,17 +7,17 @@
 
 ### Home
 
-- [ ] **HOME-01**: Visitor can understand Typefolio's target audience and purpose from the homepage hero/introduction
-- [ ] **HOME-02**: Visitor can open the project's GitHub repository directly from the homepage
-- [ ] **HOME-03**: Visitor can discover pinned posts from the homepage without navigating elsewhere first
-- [ ] **HOME-04**: Visitor can see current news/recent updates from the homepage
-- [ ] **HOME-05**: Homepage no longer uses the current list-style self/site presentation block
+- [x] **HOME-01**: Visitor can understand Typefolio's target audience and purpose from the homepage hero/introduction
+- [x] **HOME-02**: Visitor can open the project's GitHub repository directly from the homepage
+- [x] **HOME-03**: Visitor can discover pinned posts from the homepage without navigating elsewhere first
+- [x] **HOME-04**: Visitor can see current news/recent updates from the homepage
+- [x] **HOME-05**: Homepage no longer uses the current list-style self/site presentation block
 
 ### About
 
-- [ ] **ABOUT-01**: Visitor can find the detailed list-style personal/site presentation on the About page instead of the homepage
-- [ ] **ABOUT-02**: About page copy explains Typefolio's audience, positioning, and template goals using project-specific language
-- [ ] **ABOUT-03**: About page no longer contains upstream template framing or outdated placeholder descriptions
+- [x] **ABOUT-01**: Visitor can find the detailed list-style personal/site presentation on the About page instead of the homepage
+- [x] **ABOUT-02**: About page copy explains Typefolio's audience, positioning, and template goals using project-specific language
+- [x] **ABOUT-03**: About page no longer contains upstream template framing or outdated placeholder descriptions
 
 ### Blog
 
@@ -51,39 +51,41 @@
 
 ## Out of Scope
 
-| Feature | Reason |
-|---------|--------|
-| New functional features beyond current template capabilities | This milestone is a content and presentation alignment pass |
-| New page types or major route additions | Existing routes are sufficient for the official v1 release |
-| README TODO implementation work | Explicitly deferred until after the v1 content refresh ships |
+| Feature                                                      | Reason                                                       |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| New functional features beyond current template capabilities | This milestone is a content and presentation alignment pass  |
+| New page types or major route additions                      | Existing routes are sufficient for the official v1 release   |
+| README TODO implementation work                              | Explicitly deferred until after the v1 content refresh ships |
 
 ## Traceability
 
-| Requirement | Phase | Status |
-|-------------|-------|--------|
-| HOME-01 | Phase 1 | Pending |
-| HOME-02 | Phase 1 | Pending |
-| HOME-03 | Phase 1 | Pending |
-| HOME-04 | Phase 1 | Pending |
-| HOME-05 | Phase 1 | Pending |
-| ABOUT-01 | Phase 1 | Pending |
-| ABOUT-02 | Phase 1 | Pending |
-| ABOUT-03 | Phase 1 | Pending |
-| BLOG-01 | Phase 2 | Pending |
-| BLOG-02 | Phase 2 | Pending |
-| BLOG-03 | Phase 2 | Pending |
-| BLOG-04 | Phase 2 | Pending |
-| BLOG-05 | Phase 2 | Pending |
-| TAGS-01 | Phase 3 | Pending |
-| TAGS-02 | Phase 3 | Pending |
-| CONS-01 | Phase 3 | Pending |
-| CONS-02 | Phase 3 | Pending |
+| Requirement | Phase   | Status   |
+| ----------- | ------- | -------- |
+| HOME-01     | Phase 1 | Complete |
+| HOME-02     | Phase 1 | Complete |
+| HOME-03     | Phase 1 | Complete |
+| HOME-04     | Phase 1 | Complete |
+| HOME-05     | Phase 1 | Complete |
+| ABOUT-01    | Phase 1 | Complete |
+| ABOUT-02    | Phase 1 | Complete |
+| ABOUT-03    | Phase 1 | Complete |
+| BLOG-01     | Phase 2 | Pending  |
+| BLOG-02     | Phase 2 | Pending  |
+| BLOG-03     | Phase 2 | Pending  |
+| BLOG-04     | Phase 2 | Pending  |
+| BLOG-05     | Phase 2 | Pending  |
+| TAGS-01     | Phase 3 | Pending  |
+| TAGS-02     | Phase 3 | Pending  |
+| CONS-01     | Phase 3 | Pending  |
+| CONS-02     | Phase 3 | Pending  |
 
 **Coverage:**
+
 - v1 requirements: 17 total
 - Mapped to phases: 17
 - Unmapped: 0 ✓
 
 ---
-*Requirements defined: 2026-03-27*
-*Last updated: 2026-03-27 after initial definition*
+
+_Requirements defined: 2026-03-27_
+_Last updated: 2026-03-27 after Phase 1 completion_

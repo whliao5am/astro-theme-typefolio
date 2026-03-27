@@ -15,11 +15,11 @@ Provide a professional, elegant, minimal, static-fast personal publishing templa
 - ✓ Homepage, about, blog, notes, projects, and tag routes exist and build successfully — existing codebase
 - ✓ Markdown and MDX publishing support exists with TOC, TLDR, admonitions, GitHub cards, backlinks, and generated OG images — existing codebase
 - ✓ Search, Giscus comments, pinned content surfaces, timeline/news presentation, and typography-focused styling already exist — existing codebase
+- ✓ Homepage now presents Typefolio as a concise entry surface with GitHub access, pinned posts, and news — validated in Phase 1
+- ✓ About now carries the denser capability inventory and Typefolio-specific positioning — validated in Phase 1
 
 ### Active
 
-- [ ] Reposition the homepage as a concise Typefolio introduction with GitHub access, pinned posts, and news, while removing the current list-heavy presentation
-- [ ] Move the list-style self/site presentation from the homepage to the About page and rewrite About around Typefolio's real audience and purpose
 - [ ] Refresh blog, tag, and related showcase content so public-facing copy no longer describes the previous template or test/demo content
 - [ ] Repurpose the current Markdown Admonitions article into a Typefolio blog-components showcase covering admonitions, GitHub card, Astro Icon, TLDR, backlinks, and related blog UI capabilities
 - [ ] Treat completion of this content-and-showcase refresh as the bar for the official v1 release
@@ -47,11 +47,11 @@ Provide a professional, elegant, minimal, static-fast personal publishing templa
 
 ## Key Decisions
 
-| Decision                                                                                | Rationale                                                                                                            | Outcome   |
-| --------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | --------- |
-| Define the next milestone as official v1 content alignment, not new feature development | The codebase already covers the desired core capabilities; presentation drift is the real blocker to a clean release | — Pending |
-| Prioritize updates in the order Home → About → Blog → Tags                              | This matches the highest-visibility entry points and the user's stated sequencing                                    | — Pending |
-| Use the existing feature set as the showcase baseline                                   | The goal is to explain and demonstrate current capabilities clearly before extending the template further            | — Pending |
+| Decision                                                                                | Rationale                                                                                                            | Outcome           |
+| --------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | ----------------- |
+| Define the next milestone as official v1 content alignment, not new feature development | The codebase already covers the desired core capabilities; presentation drift is the real blocker to a clean release | Phase 1 confirmed |
+| Prioritize updates in the order Home → About → Blog → Tags                              | This matches the highest-visibility entry points and the user's stated sequencing                                    | Phase 1 completed |
+| Use the existing feature set as the showcase baseline                                   | The goal is to explain and demonstrate current capabilities clearly before extending the template further            | Phase 1 completed |
 
 ## Evolution
 
@@ -74,4 +74,4 @@ This document evolves at phase transitions and milestone boundaries.
 
 ---
 
-_Last updated: 2026-03-27 after initialization_
+_Last updated: 2026-03-27 after Phase 1 completion_

@@ -11,11 +11,15 @@ import { collectionDateSort } from "@/utils/date";
 
 // Posts
 const allPosts = await getAllPosts();
-const allPostsByDate = allPosts.sort(collectionDateSort) as CollectionEntry<"blog">[];
+const allPostsByDate = allPosts.sort(
+	collectionDateSort,
+) as CollectionEntry<"blog">[];
 
 // Pinned Posts, set to a max of 3;
 const MAX_PINNED_POSTS = 5;
-const pinnedPosts = allPostsByDate.filter((p) => p.data.pinned).slice(0, MAX_PINNED_POSTS);
+const pinnedPosts = allPostsByDate
+	.filter((p) => p.data.pinned)
+	.slice(0, MAX_PINNED_POSTS);
 
 const whatsNewItems: WhatsNewItem[] = [
 	{
@@ -23,21 +27,21 @@ const whatsNewItems: WhatsNewItem[] = [
 		kind: "milestone",
 		label: "Milestone",
 		description:
-			"Released a redesigned archive view prototype with improved reading rhythm and lighter metadata treatment across the homepage.",
+			"Published the official v1 positioning pass so the homepage, About page, and public copy present Typefolio as a polished personal publishing template.",
 	},
 	{
 		date: "Feb 2026",
 		kind: "service",
 		label: "Service",
 		description:
-			"Joined the fictional Aurora Systems Workshop program committee to review submissions on dependable software tooling and interface design.",
+			"Launched a fictional research commons that curates reading groups, lab notes, and archival datasets for a distributed digital humanities cohort.",
 	},
 	{
 		date: "Jan 2026",
 		kind: "paper",
 		label: "Paper",
 		description:
-			"Shared a sample preprint on modular note-taking workflows for small research groups, using a fully synthetic project and placeholder dataset.",
+			"Released an imaginary preprint on annotation-first scholarly publishing, outlining how structured marginalia can improve long-form academic reading online.",
 		href: "/blog/markdown-elements/",
 	},
 	{
@@ -45,14 +49,14 @@ const whatsNewItems: WhatsNewItem[] = [
 		kind: "talk",
 		label: "Talk",
 		description:
-			"Gave an internal demo on how a clean timeline can present research progress, product updates, and writing milestones on a single homepage.",
+			"Delivered a mock keynote on humane research workflows, focusing on small-scale knowledge graphs, reproducible notes, and calmer seminar preparation.",
 	},
 	{
 		date: "Nov 2025",
 		kind: "award",
 		label: "Award",
 		description:
-			"Received the imaginary North Pier Design Mention for a prototype blog that balanced editorial typography with practical documentation needs.",
+			"Received a fictional society prize for public scholarship, recognizing an open archive project that translates specialist research into accessible essays.",
 	},
 ];
 ---
@@ -62,38 +66,24 @@ const whatsNewItems: WhatsNewItem[] = [
 		<section>
 			<h1 class="title mb-4">Hello World!</h1>
 			<p>
-				Hi, I’m a theme for Astro, a simple starter that you can use to create your website or blog.
-				If you want to know more about how you can customise me, add more posts, and make it your own,
-				click on the GitHub icon link below and it will take you to my repo.
+				Typefolio is a professional, elegant, static-fast Astro template for
+				researchers and developers who want a focused place for writing,
+				projects, notes, and release updates. It keeps the entry surface concise
+				so visitors understand the template quickly without wading through a
+				starter-kit checklist.
 			</p>
 			<p>
-				Inline icon example:
+				Find me on
 				<InlineIconLink
 					href="https://github.com/whliao5am/astro-theme-typefolio"
 					icon="mdi:github"
 					label="GitHub repository"
-					width="1.5em"
-					height="1.5em"
+					width="2em"
+					height="2em"
 					target="_blank"
 				/>
-				opens the repository in a new tab and stays aligned with text without changing line height.
 			</p>
 		</section>
-		<ul class="list-inside list-disc" role="list">
-			<li>I'm ultra fast as I'm a static site</li>
-			<li>I'm fully responsive</li>
-			<li>I come with a light and dark mode</li>
-			<li>I'm easy to customise and add additional content</li>
-			<li>I have Tailwind CSS styling</li>
-			<li>Shiki code syntax highlighting</li>
-			<li>Satori for auto generating OG images for blog posts</li>
-		</ul>
-		<ol class="list-inside list-decimal" role="list">
-			<li>Install dependencies with `pnpm install`.</li>
-			<li>Run the dev server with `pnpm dev`.</li>
-			<li>Edit content in `src/content/blog` and preview changes.</li>
-			<li>Build for production using `pnpm build`.</li>
-		</ol>
 	</div>
 
 	{
@@ -101,12 +91,12 @@ const whatsNewItems: WhatsNewItem[] = [
 			<section class="mt-8">
 				<h2 class="title mb-4 flex items-center gap-2 text-xl">
 					Pinned Posts
-          <Icon
-								aria-hidden="true"
-								class="h-5 w-5 rotate-45 text-accent"
-								focusable="false"
-								name="mdi:pin-outline"
-							/>
+					<Icon
+						aria-hidden="true"
+						class="text-accent h-5 w-5 rotate-45"
+						focusable="false"
+						name="mdi:pin-outline"
+					/>
 				</h2>
 				<ul class="space-y-1" role="list">
 					{pinnedPosts.map((p) => (
