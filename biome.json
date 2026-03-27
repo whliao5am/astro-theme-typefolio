@@ -6,10 +6,12 @@
 			"!**/build",
 			"!**/dist",
 			"!**/node_modules",
+			"!**/.planning",
 			"!**/.vercel",
 			"!**/.netlify",
 			"!**/.vscode",
-			"!**/.astro"
+			"!**/.astro",
+			"!src/env.d.ts"
 		]
 	},
 	"formatter": {
