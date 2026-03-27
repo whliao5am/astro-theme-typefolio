@@ -5,7 +5,6 @@ import Giscus from "@/components/blog/Giscus.astro";
 import Masthead from "@/components/blog/Masthead.astro";
 import TLDR from "@/components/blog/TLDR.astro";
 import TOC from "@/components/blog/TOC.astro";
-import WebMentions from "@/components/blog/webmentions/index.astro";
 import { getBacklinksForPost } from "@/data/post";
 import { commentDisplayConfig } from "@/site.config";
 
@@ -43,7 +42,6 @@ const readingTime: string = remarkPluginFrontmatter.readingTime;
 				<slot />
 				<Backlinks posts={backlinks} />
 				{commentDisplayConfig.giscus && giscus && <Giscus />}
-				{commentDisplayConfig.webmentions && <WebMentions />}
 			</div>
 		</div>
 	</article>

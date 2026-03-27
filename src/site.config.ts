@@ -40,7 +40,6 @@ export const giscusConfig = {
 // Toggle comment providers display without removing integration code.
 export const commentDisplayConfig = {
 	giscus: true,
-	webmentions: false,
 } as const;
 
 // Used to generate links in both the Header & Footer.

@@ -56,7 +56,6 @@ Typefolio is a typography-first personal website starter built with [Astro](http
 - `What's New` timeline for research, writing, and project updates
 - [Satori](https://github.com/vercel/satori) for open graph generation
 - [Automatic RSS feeds](https://docs.astro.build/en/guides/rss)
-- [Webmentions](https://webmention.io/)
 - Auto-generated:
   - [sitemap](https://docs.astro.build/en/guides/integrations-guide/sitemap/)
   - [robots.txt](https://github.com/alextim/astro-lib/blob/main/packages/astro-robots-txt/README.md)
@@ -81,7 +80,6 @@ Before deploying your own site, update the project metadata and optional integra
 - Set `siteConfig.url` in `src/site.config.ts` to your production domain.
 - Update the title, description, author, locale, and menu links in `src/site.config.ts`.
 - Configure `giscusConfig` if you want GitHub Discussions comments.
-- Add your `.env` values when enabling Webmentions.
 
 ### Deploy to Online Hosting
 
