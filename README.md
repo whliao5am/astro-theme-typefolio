@@ -1,6 +1,13 @@
 # Typefolio
 
-![Typefolio banner](./.github/assets/readme-banner.jpeg)
+![Typefolio banner](./.github/assets/readme-banner.png)
+
+[![Astro 5](https://img.shields.io/badge/Astro-5.16-FF5D01?logo=astro&logoColor=white)](https://astro.build/)
+[![Tailwind CSS 4](https://img.shields.io/badge/Tailwind_CSS-4.2-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![TypeScript 5](https://img.shields.io/badge/TypeScript-5.9-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Node.js 22](https://img.shields.io/badge/Node.js-22-5FA04E?logo=nodedotjs&logoColor=white)](https://nodejs.org/)
+[![pnpm](https://img.shields.io/badge/pnpm-workspace-F69220?logo=pnpm&logoColor=white)](https://pnpm.io/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-2ea44f)](./LICENSE)
 
 Typefolio is a typography-first personal website starter built with [Astro](https://astro.build/), designed for researchers and developers who value clarity, elegance, and focus. Its name comes from type and folio, reflecting a professional, minimal, and academic-minded approach to presenting writing, projects, and ideas. Guided by the principle of Occam's razor, Typefolio keeps only the elements that matter most, delivering a clean reading experience and the most essential features for serious personal publishing.
 
@@ -10,10 +17,11 @@ Typefolio is a typography-first personal website starter built with [Astro](http
   - [Table Of Contents](#table-of-contents)
   - [Key Features](#key-features)
   - [Demo 💻](#demo-)
+  - [Preview](#preview)
   - [Quick Start](#quick-start)
     - [Deploy to Online Hosting](#deploy-to-online-hosting)
     - [Clone the Template](#clone-the-template)
-    - [Fork the Template](#fork-the-template)
+    - [Use the GitHub Template](#use-the-github-template)
     - [Local deployment](#local-deployment)
   - [Commands](#commands)
   - [Configure](#configure)
@@ -60,13 +68,26 @@ Typefolio is a typography-first personal website starter built with [Astro](http
 
 ## Demo 💻
 
-Check out the [Demo](https://typefolio.chriswilliams.dev/), hosted on Netlify.
+Check out the [Demo](https://astro-typefolio.whliao.me/), hosted on Netlify.
+
+## Preview
+
+![Typefolio preview](./.github/assets/readme-preview1.png)
+
+![Typefolio preview](./.github/assets/readme-preview2.png)
 
 ## Quick Start
 
+Before deploying your own site, update the project metadata and optional integrations:
+
+- Set `siteConfig.url` in `src/site.config.ts` to your production domain.
+- Update the title, description, author, locale, and menu links in `src/site.config.ts`.
+- Configure `giscusConfig` if you want GitHub Discussions comments.
+- Add your `.env` values when enabling Webmentions.
+
 ### Deploy to Online Hosting
 
-[![Deploy with Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/chrismwilliams/astro-theme-cactus) [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fchrismwilliams%2Fastro-theme-cactus&project-name=astro-theme-cactus)
+[![Deploy with Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/whliao5am/astro-theme-typefolio) [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fwhliao5am%2Fastro-theme-typefolio&project-name=astro-theme-typefolio)
 
 [Astro docs](https://docs.astro.build/en/guides/deploy/) has a great section and breakdown of how to deploy your own Astro site on various platforms and their idiosyncrasies.
 
@@ -74,19 +95,17 @@ Check out the [Demo](https://typefolio.chriswilliams.dev/), hosted on Netlify.
 
 ```bash
 # npm 7+
-npm create astro@latest -- --template chrismwilliams/astro-theme-cactus
+npm create astro@latest -- --template whliao5am/astro-theme-typefolio
 
 # pnpm
-pnpm dlx create-astro --template chrismwilliams/astro-theme-cactus
+pnpm dlx create-astro --template whliao5am/astro-theme-typefolio
 ```
 
-### Fork the Template
+### Use the GitHub Template
 
-[Create a new repo](https://github.com/chrismwilliams/astro-theme-cactus/generate) from this template.
+Click `Use this template` on GitHub to create a new repository from Typefolio without creating a fork relationship to the upstream project.
 
-If you've forked the template, you can [sync the fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork) with your own project, remembering to **not** click Discard Changes as you will lose your own.
-
-If you have a template repository, you can add this template as a remote, [as discussed here](https://stackoverflow.com/questions/56577184/github-pull-changes-from-a-template-repository).
+If you already created a repository from the template and want to bring in later upstream changes, add this repository as an `upstream` remote and merge or cherry-pick selectively.
 
 ### Local deployment
 
