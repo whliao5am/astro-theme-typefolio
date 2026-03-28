@@ -91,7 +91,7 @@
 	}
 
 	.title {
-		@apply text-accent-2 text-2xl font-semibold;
+		@apply text-accent-2 text-2xl font-semibold wrap-break-word;
 	}
 
 	.site-title-highlight {

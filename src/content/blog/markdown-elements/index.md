@@ -1,49 +1,33 @@
 ---
-title: "A post of Markdown elements"
-description: "This post is for testing and listing a number of different markdown elements"
-publishDate: "22 Feb 2023"
-updatedDate: 22 Jan 2024
-tags: ["test", "markdown"]
+title: "Markdown Elements"
+description: "A reference post covering the Markdown and MDX-friendly formatting available in Typefolio."
+publishDate: "22 Feb 2026"
+tags: ["markdown", "writing"]
 pinned: true
 ---
 
-## This is a H2 Heading
+This reference post collects the core Markdown patterns that Typefolio styles well out of the box. For higher-level blog features such as TLDR blocks, GitHub cards, and backlinks, start with [Typefolio Blog Components](/blog/markdown-elements/typefolio-blog-components/).
+
+## Heading hierarchy
 
 ### This is a H3 Heading
 
-#### This is a H4 Heading
-
-##### This is a H5 Heading
-
-###### This is a H6 Heading
-
-## This is a H2 Heading
-
-test
-
-### This is a H3 Heading
-
-test
+Example body copy under a third-level heading.
 
 #### This is a H4 Heading
 
-test
+This level works well for shorter subsections inside a technical guide.
 
-##### This is a H5 Heading
+## Body copy rhythm
 
-test
+This paragraph sits here as a normal block of reading text so you can judge spacing, measure, and heading transitions inside the default prose styles.
 
-###### This is a H6 Heading
 
-test
-
-## Horizontal Rules
-
-test
+## Horizontal rules
 
 ---
 
-test
+text space between horizontal rules
 
 ---
 
@@ -80,19 +64,23 @@ _This is italic text_
 semibold</p>
 <p style="font-weight: 700;">这是bold / This is bold</p>
 
+## Pangu.js
+
+Typefolio uses `pangu.js` to improve mixed Chinese and English typography automatically.
+
+Without manual spacing, text like `这是 Typefolio 的 typography feature` and `支持 Astro, Markdown, MDX` will render with proper spacing between CJK and Latin text.
+
+你可以直接书写像这样的一段内容：Typefolio支持Markdown、MDX和Astro组件混排，pangu.js会在中文与English单词、数字2026、以及符号API之间自动补上更自然的间距。
+
 ## Quotes
 
 "Double quotes" and 'single quotes'
 
 ## Blockquotes
 
-Blockquote with a title, tests....
-
 > Blockquotes can also be nested...
 >
 > > ...by using additional greater-than signs right next to each other...
-
-blockquote with a title, tests....
 
 ## References
 
@@ -104,7 +92,7 @@ Second example containing a reference[^2] with a link to the source.
 
 [^2]: Second reference with a link.
 
-If you check out this example in `src/content/blog/markdown-elements/index.md`, you'll notice that the references and the heading "Footnotes" are added to the bottom of the page via the [remark-rehype](https://github.com/remarkjs/remark-rehype#options) plugin.
+If you inspect this file in `src/content/blog/markdown-elements/index.md`, you will notice that the references and the heading "Footnotes" are added to the bottom of the page via the [remark-rehype](https://github.com/remarkjs/remark-rehype#options) plugin.
 
 ## Lists
 
@@ -219,7 +207,7 @@ function demo() {
 
 Image in the same folder: `src/content/blog/markdown-elements/logo.webp`
 
-![Astro theme cactus logo](./logo.webp)
+![Astro theme typefolio logo](./logo.webp)
 
 ## Links
 

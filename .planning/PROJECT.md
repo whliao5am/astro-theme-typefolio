@@ -17,12 +17,13 @@ Provide a professional, elegant, minimal, static-fast personal publishing templa
 - ✓ Search, Giscus comments, pinned content surfaces, timeline/news presentation, and typography-focused styling already exist — existing codebase
 - ✓ Homepage now presents Typefolio as a concise entry surface with GitHub access, pinned posts, and news — validated in Phase 1
 - ✓ About now carries the denser capability inventory and Typefolio-specific positioning — validated in Phase 1
+- ✓ Blog archive and public showcase posts now describe Typefolio's real publishing features instead of inherited template/demo content — validated in Phase 2
+- ✓ Tag archives now use Typefolio-specific wording and align with the rest of the public narrative — validated in Phase 3
+- ✓ The v1 content-and-showcase milestone is complete and ready to present as the official release candidate — validated in Phase 3
 
 ### Active
 
-- [ ] Refresh blog, tag, and related showcase content so public-facing copy no longer describes the previous template or test/demo content
-- [ ] Repurpose the current Markdown Admonitions article into a Typefolio blog-components showcase covering admonitions, GitHub card, Astro Icon, TLDR, backlinks, and related blog UI capabilities
-- [ ] Treat completion of this content-and-showcase refresh as the bar for the official v1 release
+- None. The v1 content-alignment milestone is complete.
 
 ### Out of Scope
 
@@ -34,9 +35,8 @@ Provide a professional, elegant, minimal, static-fast personal publishing templa
 
 - The repository is a brownfield Astro project with an existing `.planning/codebase/` map covering stack, architecture, conventions, testing, and concerns
 - The current product direction targets researchers and developers who need a polished personal homepage, blog, and research-update template
-- Existing public content still contains upstream `astro-theme-cactus` residue, placeholder/test framing, and incomplete feature showcasing
-- The user already considers the feature set functionally complete enough for v1; the remaining work is public-facing narrative alignment and example content quality
-- Priority order for this milestone is: homepage, About page, blog system/showcase content, then tag-related surfaces
+- The v1 milestone has now aligned Home, About, Blog, and Tags around one coherent Typefolio narrative
+- Future work can move to post-v1 improvements rather than more public-facing residue cleanup
 
 ## Constraints
 
@@ -52,6 +52,9 @@ Provide a professional, elegant, minimal, static-fast personal publishing templa
 | Define the next milestone as official v1 content alignment, not new feature development | The codebase already covers the desired core capabilities; presentation drift is the real blocker to a clean release | Phase 1 confirmed |
 | Prioritize updates in the order Home → About → Blog → Tags                              | This matches the highest-visibility entry points and the user's stated sequencing                                    | Phase 1 completed |
 | Use the existing feature set as the showcase baseline                                   | The goal is to explain and demonstrate current capabilities clearly before extending the template further            | Phase 1 completed |
+| Repurpose the former admonitions article into an MDX component walkthrough              | Astro Icon needed to be rendered directly, and the showcase had to feel like product documentation instead of demo filler | Phase 2 completed |
+| Hide pure test posts from production rather than polishing them as public examples       | The release bar was a clean archive, not keeping internal verification posts visible                                  | Phase 2 completed |
+| Treat the tag/archive consistency pass as the final v1 release gate                     | Once Home, About, Blog, and Tags aligned, the milestone objective was fully satisfied                                | Phase 3 completed |
 
 ## Evolution
 
@@ -74,4 +77,4 @@ This document evolves at phase transitions and milestone boundaries.
 
 ---
 
-_Last updated: 2026-03-27 after Phase 1 completion_
+_Last updated: 2026-03-27 after Phase 3 completion_

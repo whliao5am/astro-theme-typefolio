@@ -16,7 +16,9 @@ export const getStaticPaths = (async ({ paginate }) => {
 	const allPosts = await getAllPosts();
 	const allPostsByDate = allPosts.sort(collectionDateSort);
 	const uniqueTags = getUniqueTags(allPosts).slice(0, MAX_TAGS);
-	const pinnedPosts = allPostsByDate.filter((p) => p.data.pinned).slice(0, MAX_PINNED_POSTS);
+	const pinnedPosts = allPostsByDate
+		.filter((p) => p.data.pinned)
+		.slice(0, MAX_PINNED_POSTS);
 	const pageSize = ENABLE_POSTS_PAGINATION
 		? MAX_POSTS_PER_PAGE
 		: Math.max(allPostsByDate.length, 1);
@@ -35,7 +37,7 @@ interface Props {
 const { page, uniqueTags, pinnedPosts } = Astro.props;
 
 const meta = {
-	description: "Read my collection of posts and the things that interest me",
+	description: "My collection of posts and the things that interest me",
 	title: "Blog",
 };
 
@@ -63,11 +65,16 @@ const descYearKeys = Object.keys(groupedByYear).sort((a, b) => +b - +a);
 		<h1 class="title">Blog</h1>
 		<a class="text-accent" href="/rss.xml" target="_blank">
 			<span class="sr-only">RSS feed</span>
-			<Icon aria-hidden="true" class="h-6 w-6" focusable="false" name="mdi:rss" />
+			<Icon
+				aria-hidden="true"
+				class="h-6 w-6"
+				focusable="false"
+				name="mdi:rss"
+			/>
 		</a>
 	</div>
 	<div class="grid sm:grid-cols-[3fr_1fr] sm:gap-x-8 sm:gap-y-16">
-		<div class="mt-6 lg:mt-0 order-last sm:order-0">
+		<div class="order-last mt-6 sm:order-0 lg:mt-0">
 			{
 				pinnedPosts.length > 0 && (
 					<section class="mb-4">

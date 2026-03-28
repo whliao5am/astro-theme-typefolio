@@ -1,10 +1,12 @@
 ---
-title: "Example Cover Image"
-description: "This post is an example of how to add a cover/hero image"
-publishDate: "04 July 2023"
-updatedDate: "14 August 2023"
+title: "Cover Images for Feature Posts"
+description: "A minimal example showing how Typefolio handles cover images for long-form posts."
+publishDate: "04 March 2024"
+updatedDate: "27 March 2026"
 coverImage:
   src: "./cover.png"
   alt: "Astro build wallpaper"
-tags: ["test", "image"]
+tags: ["image"]
 ---
+
+Cover images are optional in Typefolio, but they work well when a post needs a stronger sense of arrival. The shared blog masthead will render the image before the title and keep the rest of the article metadata unchanged.

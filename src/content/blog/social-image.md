@@ -1,6 +1,6 @@
 ---
-title: "Example OG Social Image"
-publishDate: "27 January 2023"
+title: "Custom Social Cards in Typefolio"
+publishDate: "25 March 2025"
 description: "An example post for Astro Typefolio, detailing how to add a custom social image card in the frontmatter"
 tags: ["example", "blog", "image"]
 ogImage: "/social-card.png"

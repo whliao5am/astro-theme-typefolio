@@ -9,13 +9,13 @@
 
 This roadmap turns the existing brownfield Typefolio codebase into an official v1 release by aligning public-facing content with the actual feature set already present in the template.
 
-**3 phases** | **17 requirements mapped** | All v1 requirements covered ✓
+**3 phases** | **17 requirements mapped** | All v1 requirements complete ✓
 
 | #   | Phase                                           | Goal                                                                                                          | Requirements                                                              | Success Criteria |
 | --- | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ---------------- |
 | 1   | Reposition Entry Surfaces (Complete 2026-03-27) | Make the homepage and About page present Typefolio clearly and accurately                                     | HOME-01, HOME-02, HOME-03, HOME-04, HOME-05, ABOUT-01, ABOUT-02, ABOUT-03 | 4                |
-| 2   | Refresh Blog Showcase                           | Update blog-facing showcase content so it demonstrates Typefolio rather than inherited template copy          | BLOG-01, BLOG-02, BLOG-03, BLOG-04, BLOG-05                               | 4                |
-| 3   | Clean Tag Surfaces And Ship v1                  | Remove remaining public-facing drift in tag/archive surfaces and complete the release-ready consistency sweep | TAGS-01, TAGS-02, CONS-01, CONS-02                                        | 4                |
+| 2   | Refresh Blog Showcase (Complete 2026-03-27)    | Update blog-facing showcase content so it demonstrates Typefolio rather than inherited template copy          | BLOG-01, BLOG-02, BLOG-03, BLOG-04, BLOG-05                               | 4                |
+| 3   | Clean Tag Surfaces And Ship v1 (Complete 2026-03-27) | Remove remaining public-facing drift in tag/archive surfaces and complete the release-ready consistency sweep | TAGS-01, TAGS-02, CONS-01, CONS-02                                        | 4                |
 
 ## Phase Details
 
@@ -38,6 +38,8 @@ This roadmap turns the existing brownfield Typefolio codebase into an official v
 
 ### Phase 2: Refresh Blog Showcase
 
+**Status:** Complete (2026-03-27)
+
 **Goal:** Turn the blog surface into a coherent explanation and demonstration of Typefolio's real content features.
 
 **Requirements:** BLOG-01, BLOG-02, BLOG-03, BLOG-04, BLOG-05
@@ -52,6 +54,8 @@ This roadmap turns the existing brownfield Typefolio codebase into an official v
 4. The components showcase clearly demonstrates admonitions, GitHub card, Astro Icon, TLDR, and backlinks
 
 ### Phase 3: Clean Tag Surfaces And Ship v1
+
+**Status:** Complete (2026-03-27)
 
 **Goal:** Remove remaining archive/tag drift and complete a final public-facing consistency pass for the official v1 release.
 
@@ -92,4 +96,4 @@ All v1 requirements map to exactly one phase.
 
 ---
 
-_Last updated: 2026-03-27 after Phase 1 completion_
+_Last updated: 2026-03-27 after Phase 3 completion_
