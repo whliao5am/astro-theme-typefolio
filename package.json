@@ -1,7 +1,7 @@
 {
 	"name": "astro-typefolio",
 	"type": "module",
-	"version": "6.11.0",
+	"version": "1.0.0",
 	"private": false,
 	"scripts": {
 		"postinstall": "npm rebuild sharp --force",
