@@ -69,9 +69,20 @@ Check out the [Demo](https://astro-typefolio.whliao.me/), hosted on Netlify.
 
 ## Preview
 
-![Typefolio preview](./.github/assets/readme-preview1.png)
-
-![Typefolio preview](./.github/assets/readme-preview2.png)
+<table>
+<tr>
+  <td>
+    <img src="./.github/assets/readme-preview-light.png" width="500px" alt="Preview of the Typefolio website in light theme">
+  </td>
+  <td>
+    <img src="./.github/assets/readme-preview-dark.png" width="500px" alt="Preview of the Typefolio website in dark theme">
+  </td>
+</tr>
+<tr>
+  <td style="text-align: center;">Light Theme</td>
+  <td style="text-align: center;">Dark Theme</td>
+</tr>
+</table>
 
 ## Quick Start
 
