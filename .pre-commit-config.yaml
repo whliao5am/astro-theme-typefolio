@@ -11,9 +11,9 @@ repos:
 
   - repo: local
     hooks:
-      - id: astro-check
-        name: astro check
-        entry: pnpm astro check
+      - id: check
+        name: check
+        entry: pnpm check
         language: system
         pass_filenames: false
         stages: [pre-commit]

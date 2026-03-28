@@ -248,6 +248,8 @@ Typefolio supports [Giscus](https://giscus.app/) comments on blog posts.
 - [ ] Better pagefind search style.
 - [ ] Selected paper section.
 - [ ] Important news, news pages.
+- [ ] typst cv generation. [oicana/oicana: Cross-Platform PDF templating based on Typst](https://github.com/oicana/oicana)
+- [ ] CDN
 
 ### Git Hooks
 

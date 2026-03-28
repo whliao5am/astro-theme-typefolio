@@ -207,7 +207,7 @@ function demo() {
 
 Image in the same folder: `src/content/blog/markdown-elements/logo.webp`
 
-![Astro theme cactus logo](./logo.webp)
+![Astro theme typefolio logo](./logo.webp)
 
 ## Links
 
