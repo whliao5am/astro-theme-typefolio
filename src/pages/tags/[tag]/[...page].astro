@@ -35,7 +35,7 @@ const TagContent = tagMeta ? (await render(tagMeta)).Content : null;
 const meta = {
 	description:
 		tagMeta?.data.description ??
-		`Browse the Typefolio archive for posts filed under ${tag}.`,
+		`Browse posts filed under ${tag}.`,
 	title: tagMeta?.data.title ?? `#${tag} Archive`,
 };
 

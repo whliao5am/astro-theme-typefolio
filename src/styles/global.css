@@ -148,6 +148,16 @@
 	.index-content li + li {
 		margin-block-start: 0.2em;
 	}
+
+	.index-divider {
+		border: 0;
+		height: 1px;
+		background-image: repeating-linear-gradient(
+			to right,
+			color-mix(in oklch, var(--color-rule) 55%, transparent) 0 4px,
+			transparent 4px 6px
+		);
+	}
 }
 
 /* Keep copy button styles outside Tailwind layers: Expressive Code injects `.copy` markup at runtime,

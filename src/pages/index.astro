@@ -62,9 +62,28 @@ const whatsNewItems: WhatsNewItem[] = [
 ---
 
 <PageLayout meta={{ title: "Home" }}>
-	<div class="index-content">
-		<section>
-			<h1 class="title mb-4">Hello World!</h1>
+	<section class="index-content">
+		<div class="flex items-center gap-4">
+			<img
+				alt="Portrait of Adrian Vale"
+				class="h-20 w-20 rounded-full object-cover"
+				height="320"
+				src="/assets/avatar.png"
+				width="320"
+			/>
+			<div>
+				<h1 class="text-accent-2 text-xl font-semibold wrap-break-word">Adrian Vale</h1>
+				<div>Independent researcher and technical writer, 2022-present.</div>
+				<div>
+					North Coast Institute for Applied Systems
+				</div>
+				<div>
+					Harbor City School of Computing
+				</div>
+			</div>
+		</div>
+    <hr class="index-divider mt-4">
+		<div class="mt-4">
 			<p>
 				Typefolio is a professional, elegant, static-fast Astro template for
 				researchers and developers who want a focused place for writing,
@@ -83,8 +102,8 @@ const whatsNewItems: WhatsNewItem[] = [
 					target="_blank"
 				/>
 			</p>
-		</section>
-	</div>
+		</div>
+	</section>
 
 	{
 		pinnedPosts.length > 0 && (
@@ -110,4 +129,34 @@ const whatsNewItems: WhatsNewItem[] = [
 	}
 
 	<WhatsNewTimeline items={whatsNewItems} />
+
+	<section class="mt-8">
+		<h2 class="title mb-4 text-xl">Selected Manuscripts</h2>
+		<div class="space-y-2">
+			<p>
+				[1] M. Rowan, <span class="font-semibold">A. Vale</span>, T. Mercer, I. Solis, and K.
+				Hart, "LanternGraph: Interpretable Workflow Tracing for Collaborative
+				Knowledge Systems," <em>Journal of Applied Digital Practices</em>,
+				vol. 8, no. 2, pp. 101-119, 2025.
+				<a class="font-medium typefolio-link-lighter" href="#">[paper]</a>
+				<a class="font-medium typefolio-link-lighter" href="#">[website]</a>
+				<a class="font-medium typefolio-link-lighter" href="#">[data]</a>
+				<a class="font-medium typefolio-link-lighter" href="#">[pipeline]</a>
+				<a class="font-medium typefolio-link-lighter" href="#">[model]</a>
+				<a class="font-medium typefolio-link-lighter" href="#">[blog]</a>
+			</p>
+			<p>
+				[2] <span class="font-semibold">A. Vale</span>, R. Quinn, and P. Ibarra, "Quiet Signals:
+				Summarizing Research Activity Streams for Reflective Review," in
+				<em>Proceedings of the Symposium on Humane Computing</em>,
+				pp. 55-68, 2024.
+				<a class="font-medium typefolio-link-lighter" href="#">[paper]</a>
+			</p>
+			<p>
+				[3] <span class="font-semibold">A. Vale</span>, "Field Notes for Small-Scale Personal
+				Knowledge Infrastructures," <em>Open Archive Preprints</em>, 2023.
+				<a class="font-medium typefolio-link-lighter" href="#">[paper]</a>
+			</p>
+		</div>
+	</section>
 </PageLayout>
