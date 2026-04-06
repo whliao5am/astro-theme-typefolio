@@ -2,7 +2,7 @@
 
 ![Typefolio banner](./.github/assets/readme-banner.png)
 
-[![Astro 5](https://img.shields.io/badge/Astro-5.16-FF5D01?logo=astro&logoColor=white)](https://astro.build/)
+[![Astro 5](https://img.shields.io/badge/Astro-5.18-FF5D01?logo=astro&logoColor=white)](https://astro.build/)
 [![Tailwind CSS 4](https://img.shields.io/badge/Tailwind_CSS-4.2-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
 [![TypeScript 5](https://img.shields.io/badge/TypeScript-5.9-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Node.js 22](https://img.shields.io/badge/Node.js-22-5FA04E?logo=nodedotjs&logoColor=white)](https://nodejs.org/)
@@ -252,12 +252,12 @@ Typefolio supports [Giscus](https://giscus.app/) comments on blog posts.
 
 ### TODO
 
-- [ ] Photography template.
+- [x] Selected paper section.
+- [ ] Photography collection.
 - [ ] Better open graph png images.
 - [ ] Update giscus theme color.
 - [ ] Better image, icon pipeline.
 - [ ] Better pagefind search style.
-- [ ] Selected paper section.
 - [ ] Important news, news pages.
 - [ ] typst cv generation. [oicana/oicana: Cross-Platform PDF templating based on Typst](https://github.com/oicana/oicana)
 - [ ] CDN
