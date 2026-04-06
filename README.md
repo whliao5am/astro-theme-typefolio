@@ -182,7 +182,7 @@ Adding a post or tag page is as simple as creating a new `.md` or `.mdx` file in
 
 The filename becomes the slug. Tag entries can override the generated tag archive copy for matching tag names.
 
-Gallery entries use directory-based content so each collection can keep its image files beside `index.md`. The Gallery index page renders each collection as a horizontal image rail with local-image optimization and GLightbox-based full-size viewing.
+Gallery entries use directory-based content, and images can be referenced with relative paths from each collection’s `index.md`. The Gallery index page renders each collection as a horizontal image rail with local-image optimization and GLightbox-based full-size viewing.
 
 ### Post Frontmatter
 
