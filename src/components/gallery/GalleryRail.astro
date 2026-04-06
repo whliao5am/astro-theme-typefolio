@@ -1,0 +1,183 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import "glightbox/dist/css/glightbox.css";
+
+interface Props {
+	entry: CollectionEntry<"gallery">;
+	index: number;
+}
+
+const { entry, index } = Astro.props;
+const railId = `gallery-rail-${index}-${entry.id.replaceAll("/", "-")}`;
+const labelId = `${railId}-title`;
+const dateLabel = entry.data.publishDate.toLocaleDateString("en-GB", {
+	day: "numeric",
+	month: "short",
+	year: "numeric",
+});
+---
+
+<gallery-rail class="block" data-gallery-root={railId}>
+	<section aria-labelledby={labelId} class="grid gap-4 rounded-2xl border border-black/10 p-4 dark:border-white/10">
+		<div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+			<div class="max-w-2xl space-y-2">
+				<h2 class="title mb-0 text-xl" id={labelId}>{entry.data.title}</h2>
+				<p class="text-sm leading-6">{entry.data.description}</p>
+			</div>
+			<div class="flex flex-wrap gap-2 text-[0.72rem] font-medium uppercase tracking-[0.16em] text-gray-500 dark:text-gray-400 sm:max-w-xs sm:justify-end">
+				<span class="rounded-full border border-black/10 px-3 py-1 dark:border-white/10">{dateLabel}</span>
+				{
+					entry.data.tags.map((tag) => (
+						<span class="rounded-full border border-black/10 px-3 py-1 dark:border-white/10">
+							{tag}
+						</span>
+					))
+				}
+			</div>
+		</div>
+
+		<div class="relative">
+			<button
+				aria-controls={railId}
+				class="absolute left-2 top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-black/10 bg-white/90 text-lg text-global-text shadow-sm backdrop-blur transition hover:border-black/20 hover:text-accent disabled:cursor-not-allowed disabled:opacity-35 dark:border-white/10 dark:bg-black/60 dark:hover:border-white/20 sm:inline-flex"
+				data-gallery-prev
+				type="button"
+			>
+				<span aria-hidden="true">←</span>
+				<span class="sr-only">Scroll {entry.data.title} left</span>
+			</button>
+
+			<div
+				aria-label={`${entry.data.title} image rail`}
+				class="gallery-rail-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth px-0 py-1 sm:px-12"
+				data-gallery-track
+				id={railId}
+				tabindex="0"
+			>
+				{
+					entry.data.images.map((image, imageIndex) => (
+						<a
+							class="group relative block w-[17rem] shrink-0 snap-start overflow-hidden rounded-2xl border border-black/10 bg-black/5 transition hover:border-black/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent dark:border-white/10 dark:bg-white/5 dark:hover:border-white/20 sm:w-[21rem]"
+							data-gallery={railId}
+							data-glightbox={image.caption
+								? `title: ${entry.data.title}; description: ${image.caption};`
+								: `title: ${entry.data.title};`}
+							href={image.src.src}
+						>
+							<Image
+								alt={image.alt}
+								class="aspect-[4/3] h-auto w-full object-cover transition duration-300 group-hover:scale-[1.015]"
+								height={320}
+								loading={imageIndex === 0 && index === 0 ? "eager" : "lazy"}
+								src={image.src}
+								width={460}
+							/>
+							<div class="absolute inset-x-0 bottom-0 bg-linear-to-t from-black/75 via-black/10 to-transparent px-4 pb-4 pt-8 text-white">
+								<p class="text-sm font-semibold">{image.alt}</p>
+								{
+									image.caption && (
+										<p class="mt-1 text-xs leading-5 text-white/80">{image.caption}</p>
+									)
+								}
+							</div>
+						</a>
+					))
+				}
+			</div>
+
+			<button
+				aria-controls={railId}
+				class="absolute right-2 top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-black/10 bg-white/90 text-lg text-global-text shadow-sm backdrop-blur transition hover:border-black/20 hover:text-accent disabled:cursor-not-allowed disabled:opacity-35 dark:border-white/10 dark:bg-black/60 dark:hover:border-white/20 sm:inline-flex"
+				data-gallery-next
+				type="button"
+			>
+				<span aria-hidden="true">→</span>
+				<span class="sr-only">Scroll {entry.data.title} right</span>
+			</button>
+		</div>
+	</section>
+</gallery-rail>
+
+<script>
+	import GLightbox from "glightbox";
+
+	class GalleryRail extends HTMLElement {
+		#controller = new AbortController();
+		#lightbox?: ReturnType<typeof GLightbox>;
+		#nextButton: HTMLButtonElement | null;
+		#previousButton: HTMLButtonElement | null;
+		#track: HTMLDivElement | null;
+		#resizeObserver?: ResizeObserver;
+		#galleryId: string | null;
+
+		constructor() {
+			super();
+			this.#track = this.querySelector<HTMLDivElement>("[data-gallery-track]");
+			this.#previousButton = this.querySelector<HTMLButtonElement>("[data-gallery-prev]");
+			this.#nextButton = this.querySelector<HTMLButtonElement>("[data-gallery-next]");
+			this.#galleryId = this.dataset.galleryRoot ?? null;
+		}
+
+		connectedCallback() {
+			if (!this.#track || !this.#galleryId) {
+				console.warn("Gallery rail: track not found");
+				return;
+			}
+
+			this.#previousButton?.addEventListener("click", () => this.#scrollByViewport(-1), {
+				signal: this.#controller.signal,
+			});
+			this.#nextButton?.addEventListener("click", () => this.#scrollByViewport(1), {
+				signal: this.#controller.signal,
+			});
+			this.#track.addEventListener("scroll", this.#syncButtons, {
+				passive: true,
+				signal: this.#controller.signal,
+			});
+
+			this.#resizeObserver = new ResizeObserver(() => this.#syncButtons());
+			this.#resizeObserver.observe(this.#track);
+
+			this.#lightbox = GLightbox({
+				loop: true,
+				selector: `a[data-gallery="${this.#galleryId}"]`,
+				touchNavigation: true,
+			});
+
+			this.#syncButtons();
+		}
+
+		disconnectedCallback() {
+			this.#controller.abort();
+			this.#resizeObserver?.disconnect();
+			this.#lightbox?.destroy();
+		}
+
+		#scrollByViewport(direction: 1 | -1) {
+			if (!this.#track) return;
+
+			this.#track.scrollBy({
+				left: this.#track.clientWidth * direction,
+				behavior: "smooth",
+			});
+		}
+
+		#syncButtons = () => {
+			if (!this.#track) return;
+
+			const { clientWidth, scrollLeft, scrollWidth } = this.#track;
+			const maxScrollLeft = scrollWidth - clientWidth;
+			const tolerance = 6;
+			const atStart = scrollLeft <= tolerance;
+			const atEnd = scrollLeft >= maxScrollLeft - tolerance || maxScrollLeft <= tolerance;
+
+			if (this.#previousButton) this.#previousButton.disabled = atStart;
+			if (this.#nextButton) this.#nextButton.disabled = atEnd;
+		};
+	}
+
+	if (!customElements.get("gallery-rail")) {
+		customElements.define("gallery-rail", GalleryRail);
+	}
+</script>

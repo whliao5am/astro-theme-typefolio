@@ -51,6 +51,7 @@ Typefolio is a professional, elegant, static-fast publishing template built with
   - [Expressive Code](https://expressive-code.com/) code blocks and syntax highlighter
   - Github card
 - Project pages and showcase sections
+- Gallery index with horizontally scrollable photography collections
 - Local bilingual font 🇬🇧 🇨🇳
 - Automatic CJK/Latin spacing via [pangu](https://github.com/vinta/pangu.js)
 - News timeline for research, writing, release, and project updates
@@ -166,18 +167,22 @@ pnpm preview
   - This includes the intro copy and the `What's New` timeline items.
 - Add or edit content inside:
   - `src/content/blog/`
+  - `src/content/gallery/`
   - `src/content/tag/`
 
-## Adding Posts and Tags
+## Adding Posts, Galleries, and Tags
 
 This project uses [Astro Content Collections](https://docs.astro.build/en/guides/content-collections/) to organize local Markdown and MDX files with schema validation in `src/content.config.ts`.
 
 Adding a post or tag page is as simple as creating a new `.md` or `.mdx` file in:
 
 - `src/content/blog`
+- `src/content/gallery/<collection>/index.md`
 - `src/content/tag`
 
 The filename becomes the slug. Tag entries can override the generated tag archive copy for matching tag names.
+
+Gallery entries use directory-based content so each collection can keep its image files beside `index.md`. The Gallery index page renders each collection as a horizontal image rail with local-image optimization and GLightbox-based full-size viewing.
 
 ### Post Frontmatter
 
@@ -219,6 +224,34 @@ giscus: true
 | `title`       | Optional custom tag page title.       |
 | `description` | Optional custom tag page description. |
 
+### Gallery Frontmatter
+
+| Property      | Description                                                                  |
+| :------------ | :--------------------------------------------------------------------------- |
+| `title`       | Collection title. Required.                                                  |
+| `description` | Short collection intro shown on `/gallery/`. Required.                       |
+| `publishDate` | Collection date, parsed into a JavaScript `Date`. Required.                  |
+| `tags`        | Optional tag list for lightweight collection metadata.                       |
+| `images`      | Required array of local images with `src`, `alt`, and optional `caption`.    |
+| `draft`       | Optional boolean to exclude the collection from production output. Defaults to `false`. |
+
+Example:
+
+```yaml
+---
+title: "Harbor Walks"
+description: "A dusk sequence of piers, signage, and reflective surfaces."
+publishDate: 2026-04-06
+tags: ["harbor", "night"]
+images:
+  - src: "./pier-01.jpg"
+    alt: "A long pier under blue dusk light."
+    caption: "The opening frame sets the horizon and color temperature."
+  - src: "./pier-02.jpg"
+    alt: "A close study of wet railings and reflected lights."
+---
+```
+
 ## Search
 
 Typefolio uses [Pagefind](https://pagefind.app/) for static search.
@@ -253,7 +286,7 @@ Typefolio supports [Giscus](https://giscus.app/) comments on blog posts.
 ### TODO
 
 - [x] Selected paper section.
-- [ ] Photography collection.
+- [x] Photography collection.
 - [ ] Better open graph png images.
 - [ ] Update giscus theme color.
 - [ ] Better image, icon pipeline.
