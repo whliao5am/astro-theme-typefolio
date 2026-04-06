@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import { type CollectionEntry } from "astro:content";
 import { Icon } from "astro-icon/components";
 import PostPreview from "@/components/blog/PostPreview.astro";
@@ -64,12 +65,13 @@ const whatsNewItems: WhatsNewItem[] = [
 <PageLayout meta={{ title: "Home" }}>
 	<section class="index-content">
 		<div class="flex items-center gap-4">
-			<img
+			<Image
+				priority
 				alt="Portrait of Adrian Vale"
 				class="h-20 w-20 rounded-full object-cover"
-				height="320"
+				height={320}
 				src="/assets/avatar.png"
-				width="320"
+				width={320}
 			/>
 			<div>
 				<h1 class="text-accent-2 text-xl font-semibold wrap-break-word">Adrian Vale</h1>
@@ -82,7 +84,7 @@ const whatsNewItems: WhatsNewItem[] = [
 				</div>
 			</div>
 		</div>
-    <hr class="index-divider mt-4">
+		<hr class="index-divider mt-4" />
 		<div class="mt-4">
 			<p>
 				Typefolio is a professional, elegant, static-fast Astro template for

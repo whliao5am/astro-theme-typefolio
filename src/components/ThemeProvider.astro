@@ -46,26 +46,30 @@
 	// initial setup
 	setTheme(getUserPref());
 
-	// apply the theme before the new document is swapped in
-	document.addEventListener("astro:before-swap", (event) => {
-		const nextTheme = getUserPref();
-		const nextRoot = event.newDocument.documentElement;
-		const fallback = fallbackTheme[nextTheme];
+	if (!window.__typefolioThemeProviderInitialized) {
+		window.__typefolioThemeProviderInitialized = true;
 
-		nextRoot.setAttribute("data-theme", nextTheme);
-		nextRoot.style.backgroundColor = fallback.backgroundColor;
-		nextRoot.style.color = fallback.color;
-		nextRoot.style.colorScheme = nextTheme;
-	});
+		// apply the theme before the new document is swapped in
+		document.addEventListener("astro:before-swap", (event) => {
+			const nextTheme = getUserPref();
+			const nextRoot = event.newDocument.documentElement;
+			const fallback = fallbackTheme[nextTheme];
 
-	// View Transitions hook to restore theme
-	document.addEventListener("astro:after-swap", () => setTheme(getUserPref()));
+			nextRoot.setAttribute("data-theme", nextTheme);
+			nextRoot.style.backgroundColor = fallback.backgroundColor;
+			nextRoot.style.color = fallback.color;
+			nextRoot.style.colorScheme = nextTheme;
+		});
 
-	// listen for theme-change custom event, fired in src/components/ThemeToggle.astro
-	document.addEventListener("theme-change", (e) => {
-		setTheme(e.detail.theme);
-	});
+		// View Transitions hook to restore theme
+		document.addEventListener("astro:after-swap", () => setTheme(getUserPref()));
 
-	// listen for prefers-color-scheme change.
-	lightModePref.addEventListener("change", (e) => setTheme(e.matches ? "light" : "dark"));
+		// listen for theme-change custom event, fired in src/components/ThemeToggle.astro
+		document.addEventListener("theme-change", (e) => {
+			setTheme(e.detail.theme);
+		});
+
+		// listen for prefers-color-scheme change.
+		lightModePref.addEventListener("change", (e) => setTheme(e.matches ? "light" : "dark"));
+	}
 </script>
