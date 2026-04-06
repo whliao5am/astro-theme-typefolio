@@ -28,7 +28,11 @@ const { posts } = Astro.props;
 								date={post.data.publishDate}
 							/>
 							<div>
-								<a class="typefolio-link" href={`/blog/${post.id}/`}>
+								<a
+									aria-label={post.data.title}
+									class="typefolio-link"
+									href={`/blog/${post.id}/`}
+								>
 									{post.data.title}
 								</a>
 							</div>

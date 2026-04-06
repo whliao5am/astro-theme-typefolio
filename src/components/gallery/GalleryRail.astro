@@ -113,6 +113,8 @@ const desktopPreviewHeight = 248;
 	class GalleryRail extends HTMLElement {
 		#controller = new AbortController();
 		#lightbox?: ReturnType<typeof GLightbox>;
+		#lightboxTriggers: HTMLAnchorElement[] = [];
+		#lastFocusedTrigger: HTMLElement | null = null;
 		#nextButton: HTMLButtonElement | null;
 		#previousButton: HTMLButtonElement | null;
 		#track: HTMLDivElement | null;
@@ -125,6 +127,9 @@ const desktopPreviewHeight = 248;
 			this.#previousButton = this.querySelector<HTMLButtonElement>("[data-gallery-prev]");
 			this.#nextButton = this.querySelector<HTMLButtonElement>("[data-gallery-next]");
 			this.#galleryId = this.dataset.galleryRoot ?? null;
+			this.#lightboxTriggers = Array.from(
+				this.querySelectorAll<HTMLAnchorElement>("[data-gallery]"),
+			);
 		}
 
 		connectedCallback() {
@@ -147,10 +152,24 @@ const desktopPreviewHeight = 248;
 			this.#resizeObserver = new ResizeObserver(() => this.#syncButtons());
 			this.#resizeObserver.observe(this.#track);
 
+			for (const trigger of this.#lightboxTriggers) {
+				trigger.addEventListener("click", this.#prepareLightboxOpen, {
+					capture: true,
+					signal: this.#controller.signal,
+				});
+			}
+
 			this.#lightbox = GLightbox({
 				loop: true,
 				selector: `a[data-gallery="${this.#galleryId}"]`,
 				touchNavigation: true,
+			});
+			this.#lightbox.on("open", () => {
+				const lightboxContainer = document.getElementById("glightbox-body");
+				lightboxContainer?.focus();
+			});
+			this.#lightbox.on("close", () => {
+				this.#lastFocusedTrigger?.focus();
 			});
 
 			this.#syncButtons();
@@ -188,6 +207,16 @@ const desktopPreviewHeight = 248;
 			if (this.#nextButton) {
 				this.#nextButton.disabled = atEnd;
 				this.#nextButton.style.display = showDesktopButtons && !atEnd ? "inline-flex" : "none";
+			}
+		};
+
+		#prepareLightboxOpen = (event: Event) => {
+			const trigger = event.currentTarget;
+			if (!(trigger instanceof HTMLElement)) return;
+
+			this.#lastFocusedTrigger = trigger;
+			if (document.activeElement instanceof HTMLElement) {
+				document.activeElement.blur();
 			}
 		};
 	}
