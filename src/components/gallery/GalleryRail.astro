@@ -154,9 +154,16 @@ const labelId = `${railId}-title`;
 			const tolerance = 6;
 			const atStart = scrollLeft <= tolerance;
 			const atEnd = scrollLeft >= maxScrollLeft - tolerance || maxScrollLeft <= tolerance;
+			const showDesktopButtons = window.matchMedia("(min-width: 640px)").matches;
 
-			if (this.#previousButton) this.#previousButton.disabled = atStart;
-			if (this.#nextButton) this.#nextButton.disabled = atEnd;
+			if (this.#previousButton) {
+				this.#previousButton.disabled = atStart;
+				this.#previousButton.style.display = showDesktopButtons && !atStart ? "inline-flex" : "none";
+			}
+			if (this.#nextButton) {
+				this.#nextButton.disabled = atEnd;
+				this.#nextButton.style.display = showDesktopButtons && !atEnd ? "inline-flex" : "none";
+			}
 		};
 	}
 
