@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 import "glightbox/dist/css/glightbox.css";
+import FormattedDate from "@/components/FormattedDate.astro";
 
 interface Props {
 	entry: CollectionEntry<"gallery">;
@@ -11,30 +12,19 @@ interface Props {
 const { entry, index } = Astro.props;
 const railId = `gallery-rail-${index}-${entry.id.replaceAll("/", "-")}`;
 const labelId = `${railId}-title`;
-const dateLabel = entry.data.publishDate.toLocaleDateString("en-GB", {
-	day: "numeric",
-	month: "short",
-	year: "numeric",
-});
 ---
 
 <gallery-rail class="block" data-gallery-root={railId}>
-	<section aria-labelledby={labelId} class="grid gap-4 rounded-2xl border border-black/10 p-4 dark:border-white/10">
-		<div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-			<div class="max-w-2xl space-y-2">
-				<h2 class="title mb-0 text-xl" id={labelId}>{entry.data.title}</h2>
-				<p class="text-sm leading-6">{entry.data.description}</p>
+	<section aria-labelledby={labelId} class="grid gap-2">
+		<div class="grid gap-2">
+			<div class="flex items-baseline justify-between gap-3">
+				<h2 class="title mb-0 min-w-0 flex-1 text-xl" id={labelId}>{entry.data.title}</h2>
+				<FormattedDate
+					class="min-w-30 shrink-0 text-right font-semibold text-gray-600 dark:text-gray-400"
+					date={entry.data.publishDate}
+				/>
 			</div>
-			<div class="flex flex-wrap gap-2 text-[0.72rem] font-medium uppercase tracking-[0.16em] text-gray-500 dark:text-gray-400 sm:max-w-xs sm:justify-end">
-				<span class="rounded-full border border-black/10 px-3 py-1 dark:border-white/10">{dateLabel}</span>
-				{
-					entry.data.tags.map((tag) => (
-						<span class="rounded-full border border-black/10 px-3 py-1 dark:border-white/10">
-							{tag}
-						</span>
-					))
-				}
-			</div>
+			<p class="max-w-2xl">{entry.data.description}</p>
 		</div>
 
 		<div class="relative">
@@ -50,7 +40,7 @@ const dateLabel = entry.data.publishDate.toLocaleDateString("en-GB", {
 
 			<div
 				aria-label={`${entry.data.title} image rail`}
-				class="gallery-rail-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth px-0 py-1 sm:px-12"
+				class="gallery-rail-scrollbar flex snap-x snap-mandatory gap-2 overflow-x-auto scroll-smooth px-0 py-1 sm:px-12"
 				data-gallery-track
 				id={railId}
 				tabindex="0"

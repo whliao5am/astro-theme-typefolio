@@ -14,15 +14,15 @@ const meta = {
 ---
 
 <PageLayout meta={meta}>
-	<section class="grid gap-8">
-		<div class="space-y-3">
-			<h1 class="title mb-0">Gallery</h1>
-			<p class="max-w-2xl leading-7">
+	<section class="index-content grid gap-4">
+		<div>
+			<h1 class="title mb-4">Gallery</h1>
+			<p>
 				A dedicated surface for photography collections. Each row keeps a set together, supports direct horizontal browsing, and opens into a full lightbox view when you want to inspect a frame more closely.
 			</p>
 		</div>
 
-		<div class="grid gap-6">
+		<div class="grid gap-4">
 			{galleryEntries.map((entry, index) => <GalleryRail entry={entry} index={index} />)}
 		</div>
 	</section>
