@@ -14,9 +14,9 @@ const railId = `gallery-rail-${index}-${entry.id.replaceAll("/", "-")}`;
 const labelId = `${railId}-title`;
 ---
 
-<gallery-rail class="block" data-gallery-root={railId}>
-	<section aria-labelledby={labelId} class="grid gap-2">
-		<div class="grid gap-2">
+<gallery-rail class="block min-w-0 max-w-full" data-gallery-root={railId}>
+	<section aria-labelledby={labelId} class="grid min-w-0 max-w-full gap-2 overflow-x-hidden">
+		<div class="grid min-w-0 gap-2">
 			<div class="flex items-baseline justify-between gap-3">
 				<h2 class="title mb-0 min-w-0 flex-1 text-xl" id={labelId}>{entry.data.title}</h2>
 				<FormattedDate
@@ -27,7 +27,7 @@ const labelId = `${railId}-title`;
 			<p class="max-w-2xl">{entry.data.description}</p>
 		</div>
 
-		<div class="relative">
+		<div class="relative min-w-0 max-w-full overflow-x-hidden">
 			<button
 				aria-controls={railId}
 				class="absolute left-2 top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-black/10 bg-white/90 text-lg text-global-text shadow-sm backdrop-blur transition hover:border-black/20 hover:text-accent disabled:cursor-not-allowed disabled:opacity-35 dark:border-white/10 dark:bg-black/60 dark:hover:border-white/20 sm:inline-flex"
@@ -40,7 +40,7 @@ const labelId = `${railId}-title`;
 
 			<div
 				aria-label={`${entry.data.title} image rail`}
-				class="gallery-rail-scrollbar flex snap-x snap-mandatory gap-2 overflow-x-auto scroll-smooth px-0 py-1 sm:px-12"
+				class="gallery-rail-scrollbar flex w-full min-w-0 max-w-full snap-x snap-mandatory gap-2 overflow-x-auto overflow-y-hidden scroll-smooth px-0 py-1 sm:px-12"
 				data-gallery-track
 				id={railId}
 				tabindex="0"
@@ -48,7 +48,7 @@ const labelId = `${railId}-title`;
 				{
 					entry.data.images.map((image, imageIndex) => (
 						<a
-							class="group relative block w-68 shrink-0 snap-start overflow-hidden transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent sm:w-84"
+							class="group relative block w-68 shrink-0 snap-start overflow-hidden outline-none transition focus:outline-none sm:w-84"
 							data-gallery={railId}
 							data-desc-position={image.descPosition}
 							data-description={image.caption}
