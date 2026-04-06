@@ -81,13 +81,17 @@ const config = {
 	mountGiscus();
 	syncGiscusTheme();
 
-	document.addEventListener("theme-change", syncGiscusTheme);
-	document.addEventListener("astro:after-swap", () => {
-		mountGiscus();
-		syncGiscusTheme();
-	});
+	if (!window.__typefolioGiscusInitialized) {
+		window.__typefolioGiscusInitialized = true;
 
-	// Keep giscus in sync when the theme changes via OS preference media query.
-	const themeObserver = new MutationObserver(() => syncGiscusTheme());
-	themeObserver.observe(root, { attributeFilter: ["data-theme"], attributes: true });
+		document.addEventListener("theme-change", syncGiscusTheme);
+		document.addEventListener("astro:after-swap", () => {
+			mountGiscus();
+			syncGiscusTheme();
+		});
+
+		// Keep giscus in sync when the theme changes via OS preference media query.
+		const themeObserver = new MutationObserver(() => syncGiscusTheme());
+		themeObserver.observe(root, { attributeFilter: ["data-theme"], attributes: true });
+	}
 </script>

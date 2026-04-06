@@ -37,14 +37,6 @@ const {
 						where: {
 							href_matches: "/*",
 						},
-						eagerness: "immediate",
-					},
-				],
-				prerender: [
-					{
-						where: {
-							href_matches: "/*",
-						},
 						eagerness: "moderate",
 					},
 				],
@@ -54,6 +46,9 @@ const {
 			const supportsSpeculationRules =
 				typeof HTMLScriptElement.supports === "function" &&
 				HTMLScriptElement.supports("speculationrules");
+			const resumeNavigationThresholdMs = 15_000;
+			let hiddenAt = 0;
+			let shouldBypassClientRouter = false;
 
 			const ensureSpeculationRules = () => {
 				if (!supportsSpeculationRules) return;
@@ -70,15 +65,60 @@ const {
 				const mainEl = document.getElementById("main");
 				if (mainEl) pangu.spacingNode(mainEl);
 			};
-
-			ensureSpeculationRules();
-			document.addEventListener("DOMContentLoaded", () => {
+			const onPageLoad = () => {
+				ensureSpeculationRules();
 				pangu.autoSpacingPage();
 				applyPanguToMain();
-			});
+			};
 
-			document.addEventListener("astro:page-load", ensureSpeculationRules);
-			document.addEventListener("astro:page-load", applyPanguToMain);
+			const shouldUseNativeNavigation = (anchor: HTMLAnchorElement, event: MouseEvent) => {
+				if (!shouldBypassClientRouter) return false;
+				if (event.defaultPrevented) return false;
+				if (event.button !== 0) return false;
+				if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return false;
+				if (anchor.target && anchor.target !== "_self") return false;
+				if (anchor.hasAttribute("download")) return false;
+
+				const url = new URL(anchor.href, window.location.href);
+				if (url.origin !== window.location.origin) return false;
+				if (url.pathname === window.location.pathname && url.search === window.location.search) {
+					return false;
+				}
+
+				return true;
+			};
+
+			const onVisibilityChange = () => {
+				if (document.visibilityState === "hidden") {
+					hiddenAt = window.performance.now();
+					return;
+				}
+
+				if (!hiddenAt) return;
+
+				shouldBypassClientRouter =
+					window.performance.now() - hiddenAt >= resumeNavigationThresholdMs;
+				hiddenAt = 0;
+			};
+
+			const onDocumentClick = (event: MouseEvent) => {
+				if (!(event.target instanceof Element)) return;
+
+				const anchor = event.target.closest("a[href]");
+				if (!(anchor instanceof HTMLAnchorElement)) return;
+				if (!shouldUseNativeNavigation(anchor, event)) return;
+
+				shouldBypassClientRouter = false;
+				event.preventDefault();
+				window.location.assign(anchor.href);
+			};
+
+			ensureSpeculationRules();
+			onPageLoad();
+
+			document.addEventListener("visibilitychange", onVisibilityChange);
+			document.addEventListener("click", onDocumentClick, { capture: true });
+			document.addEventListener("astro:page-load", onPageLoad);
 		</script>
 	</body>
 </html>
