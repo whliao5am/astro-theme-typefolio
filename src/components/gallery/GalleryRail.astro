@@ -58,29 +58,21 @@ const dateLabel = entry.data.publishDate.toLocaleDateString("en-GB", {
 				{
 					entry.data.images.map((image, imageIndex) => (
 						<a
-							class="group relative block w-[17rem] shrink-0 snap-start overflow-hidden rounded-2xl border border-black/10 bg-black/5 transition hover:border-black/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent dark:border-white/10 dark:bg-white/5 dark:hover:border-white/20 sm:w-[21rem]"
+							class="group relative block w-68 shrink-0 snap-start overflow-hidden transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent sm:w-84"
 							data-gallery={railId}
-							data-glightbox={image.caption
-								? `title: ${entry.data.title}; description: ${image.caption};`
-								: `title: ${entry.data.title};`}
+							data-desc-position={image.descPosition}
+							data-description={image.caption}
+							data-title={image.title}
 							href={image.src.src}
 						>
 							<Image
-								alt={image.alt}
-								class="aspect-[4/3] h-auto w-full object-cover transition duration-300 group-hover:scale-[1.015]"
+								alt={`${image.title} image`}
+								class="aspect-4/3 h-auto w-full cursor-zoom-in object-cover transition duration-500 ease-out will-change-transform group-hover:scale-[1.08]"
 								height={320}
 								loading={imageIndex === 0 && index === 0 ? "eager" : "lazy"}
 								src={image.src}
 								width={460}
 							/>
-							<div class="absolute inset-x-0 bottom-0 bg-linear-to-t from-black/75 via-black/10 to-transparent px-4 pb-4 pt-8 text-white">
-								<p class="text-sm font-semibold">{image.alt}</p>
-								{
-									image.caption && (
-										<p class="mt-1 text-xs leading-5 text-white/80">{image.caption}</p>
-									)
-								}
-							</div>
 						</a>
 					))
 				}

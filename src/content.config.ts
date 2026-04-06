@@ -71,9 +71,10 @@ const gallery = defineCollection({
 			tags: z.array(z.string()).default([]).transform(removeDupsAndLowerCase),
 			images: z.array(
 				z.object({
+					title: titleSchema,
 					src: image(),
-					alt: z.string(),
 					caption: z.string().optional(),
+					descPosition: z.enum(["top", "right", "bottom", "left"]).default("bottom"),
 				}),
 			),
 		}),

@@ -232,7 +232,7 @@ giscus: true
 | `description` | Short collection intro shown on `/gallery/`. Required.                       |
 | `publishDate` | Collection date, parsed into a JavaScript `Date`. Required.                  |
 | `tags`        | Optional tag list for lightweight collection metadata.                       |
-| `images`      | Required array of local images with `src`, `alt`, and optional `caption`.    |
+| `images`      | Required array of local images with `src`, per-image `title`, optional `caption`, and optional `descPosition`. |
 | `draft`       | Optional boolean to exclude the collection from production output. Defaults to `false`. |
 
 Example:
@@ -245,10 +245,11 @@ publishDate: 2026-04-06
 tags: ["harbor", "night"]
 images:
   - src: "./pier-01.jpg"
-    alt: "A long pier under blue dusk light."
+    title: "Pier At Dusk"
     caption: "The opening frame sets the horizon and color temperature."
+    descPosition: "right"
   - src: "./pier-02.jpg"
-    alt: "A close study of wet railings and reflected lights."
+    title: "Reflected Railings"
 ---
 ```
 
