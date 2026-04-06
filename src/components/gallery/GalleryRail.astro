@@ -49,7 +49,7 @@ const labelId = `${railId}-title`;
 				{
 					entry.data.images.map((image, imageIndex) => (
 						<a
-							class="group relative block w-68 shrink-0 snap-start overflow-hidden outline-none transition focus:outline-none sm:w-84"
+							class="block shrink-0 snap-start outline-none transition focus:outline-none"
 							data-gallery={railId}
 							data-desc-position={image.descPosition}
 							data-description={image.caption}
@@ -58,11 +58,11 @@ const labelId = `${railId}-title`;
 						>
 							<Image
 								alt={`${image.title} image`}
-								class="aspect-4/3 h-auto w-full cursor-zoom-in object-cover transition duration-500 ease-out will-change-transform group-hover:scale-[1.06]"
-								height={320}
+								class="h-56 w-auto max-w-none cursor-zoom-in object-contain sm:h-62"
+								height={image.src.height}
 								loading={imageIndex === 0 && index === 0 ? "eager" : "lazy"}
 								src={image.src}
-								width={460}
+								width={image.src.width}
 							/>
 						</a>
 					))
