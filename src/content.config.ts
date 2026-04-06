@@ -39,17 +39,6 @@ const blog = defineCollection({
 		}),
 });
 
-const note = defineCollection({
-	loader: glob({ base: "./src/content/note", pattern: "**/*.{md,mdx}" }),
-	schema: baseSchema.extend({
-		description: z.string().optional(),
-		publishDate: z
-			.string()
-			.datetime({ offset: true }) // Ensures ISO 8601 format with offsets allowed (e.g. "2024-01-01T00:00:00Z" and "2024-01-01T00:00:00+02:00")
-			.transform((val) => new Date(val)),
-	}),
-});
-
 const tag = defineCollection({
 	loader: glob({ base: "./src/content/tag", pattern: "**/*.{md,mdx}" }),
 	schema: z.object({
@@ -58,4 +47,26 @@ const tag = defineCollection({
 	}),
 });
 
-export const collections = { blog, note, tag };
+const gallery = defineCollection({
+	loader: glob({ base: "./src/content/gallery", pattern: "**/index.md" }),
+	schema: ({ image }) =>
+		baseSchema.extend({
+			description: z.string(),
+			draft: z.boolean().default(false),
+			publishDate: z
+				.string()
+				.or(z.date())
+				.transform((val) => new Date(val)),
+			tags: z.array(z.string()).default([]).transform(removeDupsAndLowerCase),
+			images: z.array(
+				z.object({
+					title: titleSchema,
+					src: image(),
+					caption: z.string().optional(),
+					descPosition: z.enum(["top", "right", "bottom", "left"]).default("bottom"),
+				}),
+			),
+		}),
+});
+
+export const collections = { blog, tag, gallery };

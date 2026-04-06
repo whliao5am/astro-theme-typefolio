@@ -60,6 +60,10 @@ export const menuLinks: { path: string; title: string }[] = [
 		path: "/projects/",
 		title: "Projects",
 	},
+	{
+		path: "/gallery/",
+		title: "Gallery",
+	},
 ];
 
 // https://expressive-code.com/reference/configuration/

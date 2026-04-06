@@ -160,6 +160,24 @@
 	}
 }
 
+.gallery-rail-scrollbar {
+	scrollbar-width: thin;
+	scrollbar-color: color-mix(in oklch, var(--color-rule) 85%, transparent) transparent;
+}
+
+.gallery-rail-scrollbar::-webkit-scrollbar {
+	height: 0.5rem;
+}
+
+.gallery-rail-scrollbar::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+.gallery-rail-scrollbar::-webkit-scrollbar-thumb {
+	background: color-mix(in oklch, var(--color-rule) 85%, transparent);
+	border-radius: 999px;
+}
+
 /* Keep copy button styles outside Tailwind layers: Expressive Code injects `.copy` markup at runtime,
  * so layer-based rules can be tree-shaken away before they ever reach the browser. */
 :root .expressive-code .copy button {
