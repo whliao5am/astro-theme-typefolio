@@ -7,6 +7,7 @@
 [![TypeScript 5](https://img.shields.io/badge/TypeScript-5.9-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Node.js 22](https://img.shields.io/badge/Node.js-22-5FA04E?logo=nodedotjs&logoColor=white)](https://nodejs.org/)
 [![pnpm](https://img.shields.io/badge/pnpm-workspace-F69220?logo=pnpm&logoColor=white)](https://pnpm.io/)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/970d38f7-2f07-45b6-a7bc-3d39f7d2c217/deploy-status)](https://app.netlify.com/projects/sweet-concha-5f5cbf/deploys)
 [![License: MIT](https://img.shields.io/badge/License-MIT-2ea44f)](./LICENSE)
 
 Typefolio is a professional, elegant, static-fast publishing template built with [Astro](https://astro.build/) for researchers and developers who want a focused personal site without a heavy product shell. Guided by Occam's razor, Typefolio keeps the publishing surfaces that matter most and trims the rest. The default feature set focuses on readable long-form writing, news timeline, lightweight project presentation, and maintainable site structure.
@@ -25,9 +26,10 @@ Typefolio is a professional, elegant, static-fast publishing template built with
     - [Local deployment](#local-deployment)
   - [Commands](#commands)
   - [Configure](#configure)
-  - [Adding Posts and Tags](#adding-posts-and-tags)
+  - [Adding Posts, Galleries, and Tags](#adding-posts-galleries-and-tags)
     - [Post Frontmatter](#post-frontmatter)
     - [Tag Frontmatter](#tag-frontmatter)
+    - [Gallery Frontmatter](#gallery-frontmatter)
   - [Search](#search)
   - [Comments](#comments)
   - [Developer Guide](#developer-guide)
