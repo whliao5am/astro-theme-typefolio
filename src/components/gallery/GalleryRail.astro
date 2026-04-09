@@ -51,6 +51,9 @@ const desktopPreviewHeight = 248;
 				{
 					entry.data.images.map((image, imageIndex) => {
 						const aspectRatio = image.src.width / image.src.height;
+						const imageTitle = image.title ?? undefined;
+						const imageDescription = image.caption ?? undefined;
+						const imageAlt = image.title ?? image.caption ?? "";
 						const mobilePreviewWidth = Math.min(
 							image.src.width,
 							Math.max(160, Math.round(mobilePreviewHeight * aspectRatio)),
@@ -73,13 +76,13 @@ const desktopPreviewHeight = 248;
 							<a
 								class="group block shrink-0 snap-start overflow-hidden outline-none transition focus:outline-none"
 								data-gallery={railId}
-								data-desc-position={image.descPosition}
-								data-description={image.caption}
-								data-title={image.title}
+								data-desc-position={imageDescription ? image.descPosition : undefined}
+								data-description={imageDescription}
+								data-title={imageTitle}
 								href={image.src.src}
 							>
 								<Image
-									alt={`${image.title}`}
+									alt={imageAlt}
 									class="h-56 w-auto max-w-none cursor-zoom-in object-contain transition-transform duration-300 ease-out motion-safe:group-hover:scale-[1.05] motion-safe:group-focus-visible:scale-[1.05] sm:h-62"
 									height={image.src.height}
 									loading={imageIndex === 0 && index === 0 ? "eager" : "lazy"}
